@@ -1,0 +1,190 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
+
+* {
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.main-section {
+  background: linear-gradient(45deg, #0033ff 0%, #b98bfd 100%);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+section {
+  padding: 10px;
+  width: 40%;
+  height: 70%;
+  background-color: white;
+  display: flex;
+  border-radius: 7px;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+form {
+  width: 80%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.login-btn {
+  box-sizing: border-box;
+  width: 100%;
+  background: linear-gradient(45deg, #0033ff 0%, #b98bfd 100%);
+  border-radius: 15px;
+  padding: 15px;
+  border: 1px solid transparent;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  margin-top: 10%;
+  transition: background 3s ease, color 0.5s ease-in;
+  margin-bottom: 20px;
+}
+
+.login-btn:hover {
+  cursor: pointer;
+  color: blue;
+  background: white;
+  border: 1px solid black;
+  /*TODO animatie */
+}
+
+label {
+  padding: 4px 0px;
+}
+form input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid gray;
+  margin-bottom: 10px;
+  padding: 10px 0px;
+  color: gray;
+  padding-left: 30px;
+  font-size: 1.2em;
+}
+
+form input:focus {
+  outline: none;
+  font-weight: bolder;
+}
+
+.register-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#register-link {
+  letter-spacing: 0.1em;
+  font-weight: bolder;
+  font-size: 1em;
+  text-decoration: none;
+  padding: 10px 0px;
+}
+
+#register-link:visited {
+  color: black;
+}
+
+.fas {
+  color: black;
+  font-size: 1.3em;
+}
+
+#user-icon {
+  position: relative;
+  top: 30px;
+  left: 0px;
+}
+
+#password-icon {
+  position: relative;
+  top: 28px;
+  left: 0px;
+}
+
+.toggle-show-password {
+  position: relative;
+  font-size: 1.4em;
+  color: gray;
+  top: -14%;
+  left: 95%;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  /* body {
+    color: red;
+  } */
+
+  section{
+    width: 80%;
+  }
+
+  .toggle-show-password {
+    position: relative;
+    font-size: 1.4em;
+    color: gray;
+    top: -14%;
+    left: 92%;
+  }
+
+
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  body {
+    color: green;
+  }
+
+  section{
+    width: 80%;
+  }
+
+  
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  body {
+    color: blue;
+  }
+
+  section{
+    width: 70%;
+  }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  body {
+    color: gray;
+  }
+
+  section{
+    width: 70%;
+  }
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  body {
+    color: black;
+  }
+
+  section{
+    width: 40%;
+  }
+}

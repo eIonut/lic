@@ -1,0 +1,67 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="register.css" />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+
+    <title>Register</title>
+  </head>
+  <body>
+    <main class="main-section">
+      <section>
+        <h1>Register</h1>
+        <form method="post" action="">
+          <?php echo display_error(); ?>
+          <label for="user-input">Username</label>
+          <i id="user-icon" class="far fa-user"></i>
+          <input
+            id="user-input"
+            type="text"
+            placeholder="Introduceti username-ul"
+            required
+            name="username"
+            value="<?php echo $username; ?>"
+          />
+          <label for="user-email">Email</label>
+          <i id="email-icon" class="far fa-envelope"></i>
+          <input
+            id="user-email"
+            type="email"
+            required
+            placeholder="Introduceti email-ul"
+            name="email"
+            value="<?php echo $email; ?>"
+          />
+          <label for="user-password">Password</label>
+          <i id="password-icon" class="far fa-lock"></i>
+          <input
+            id="user-password"
+            type="password"
+            placeholder="Introduceti parola"
+            required
+            name="password"
+          />
+          <i class="far fa-eye toggle-show-password"></i>
+          <input
+            class="register-btn"
+            type="submit"
+            name="register-btn"
+            value="Register"
+          />
+        </form>
+        <div class="register-div">
+          <p>Aveti deja cont?</p>
+          <a id="register-link" href="">Logati-va</a>
+        </div>
+      </section>
+    </main>
+  </body>
+  <script src="login.js"></script>
+</html>
