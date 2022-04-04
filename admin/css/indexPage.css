@@ -92,18 +92,6 @@ section {
   position: relative;
 }
 
-.course-content {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 150px;
-  background: white;
-  /* box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; */
-  border-radius: 10px;
-}
-
 .your-courses {
   text-align: center;
   height: fit-content;
@@ -133,7 +121,7 @@ form {
 #clear-btn:hover {
   cursor: pointer;
   background: var(--btn-color);
-  color:  #2a2b77;
+  color: #2a2b77;
   border: 1px solid var(--btn-border-color);
   /*TODO animatie */
 }
@@ -190,7 +178,6 @@ form {
     #53349b
   );
   --btn-border-color: #ffa400;
- 
 }
 
 .shadow-mode {
@@ -203,4 +190,21 @@ form {
 
 .your-courses {
   color: var(--first-h1-color);
+}
+
+.course-image {
+  width: 100px;
+  height: 100px;
+  border: 1px solid red;
+}
+
+.course-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+  background: white;
+  border-radius: 10px;
 }
