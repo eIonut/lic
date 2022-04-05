@@ -11,7 +11,7 @@
 		
 		// image
 		
-		$name = $_FILES['file']['name'];
+  $name = $_FILES['file']['name'];
   $target_dir = "upload/";
   $target_file = $target_dir . basename($_FILES["file"]["name"]);
 
@@ -24,11 +24,10 @@
   // Check extension
   if( in_array($imageFileType,$extensions_arr) ){
      // Upload file
-    //  if(move_uploaded_file($_FILES['file']['tmp_name'],$target_dir.$name)){
-    //     // Insert record
-    //     $query = "insert into courses(course_image) values('".$name."')";
-    //     mysqli_query($con,$query);
-    //  }
+     if(move_uploaded_file($_FILES['file']['tmp_name'],$target_dir.$name)){
+        // Insert record
+        // $query = "insert into courses(course_image) values('".$name."')";
+     }
 
   }
 	
@@ -40,14 +39,13 @@
 		} else{
 			$course_name = $_POST['course_name'];
 			$course_description = $_POST['course-description'];
-			$course_image = $_POST['course_image'];
 			if(!preg_match('/^[a-zA-Z\s]+$/', $course_name)){
 				$errors['course_name'] = 'Course name must be letters and spaces only';
 			}
 		}
 
 		if(array_filter($errors)){
-			//echo 'errors in form';
+			echo 'errors in form';
 		} else {
 			// escape sql chars
 		
@@ -91,6 +89,7 @@
 			<!-- ADD IMAGE for the course -->
 			<input type="file" 
                    name="file" 
+				   required
             />
 
 			<div class="center">
