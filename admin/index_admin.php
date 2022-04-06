@@ -4,8 +4,8 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="css/indexPage.css?v=e031s0c3d8b" />
-    <link rel="stylesheet" href="css/sidebar.css?v=e031es0c3d8b" />
+    <link rel="stylesheet" href="css/indexPage.css?v=e031erzs0c3d8b" />
+    <link rel="stylesheet" href="css/sidebar.css?v=e031es0cZd8b" />
     <link rel="stylesheet" href="css/commonStyles.css?v=e031e80c328b" />
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -84,47 +84,14 @@ function clearClasses()
         <title>Document</title>
       </head>
       <body>
-      <button class="openbtn" onclick="openNav()">&#9776;</button>
-        
-     
-      <div id="mySidebar" class="sidebar">
       
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <div class="right-content-div">
-            <h1>
-              Welcome back,
-              <span class="user-name-log">
-              <?php
-echo $_SESSION['login_admin'] . "!";
-?>
-</span>
-           </h1>
-            
-          </div>
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
-  <a href="add_course_admin.php">Add Course</a>
-  <a href="add_class.php">Add Subject</a>
-  <button id="logout-btn">
-              <a
-                href="logout_admin.php"
-                id="logout-btn"
-                class="btn btn-primary btn-large"
-                >Logout
-              </a>
-            </button>
-</div>
-
-
-
-
-        
-
-        <main id="main-content">
-        <section class="welcome-section">
-          <h1>Welcome to Enapedia!</h1>
+     
+      <main id="main-content">
+        <section class="welcome-section first-section">
+          <h1>Lorem ipsum</h1>
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia enim aspernatur dolor facere aliquid delectus ab excepturi labore, rem soluta itaque officiis cumque, quasi saepe quibusdam commodi! Quas, ratione quidem!
+          Iusto sint amet, tempore a modi quisquam mollitia deserunt, ipsum, ipsa dolores voluptate ullam adipisci ducimus est cupiditate sit dolor perferendis dolore quia asperiores labore cum quos nostrum provident? Quia.</p>
+          <button><a href="#course-section">Start Learning here!</a></button>
         </section>
         <div class="add-content-div">
     
@@ -190,8 +157,43 @@ foreach ($courses as $course) {
 ?>
         </section>
         </main>
+     
+      <div id="mySidebar" class="sidebar">
+      <button class="openbtn" onclick="openNav()">&#9776;</button>
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <div class="right-content-div">
+            <h1 class="hide-event">
+              Welcome back,
+              <span class="user-name-log">
+              <?php
+echo $_SESSION['login_admin'] . "!";
+?>
+</span>
+           </h1>
+            
+          </div>
+  <a class="sidebar-links hide-event" href="#">About</a>
+  <a class="sidebar-links hide-event" href="#">Contact</a>
+  <a class="sidebar-btns hide-event" href="add_course_admin.php">Add Course</a>
+  <a class="sidebar-btns hide-event" href="add_class.php">Add Subject</a>
+  
+              <a
+                href="logout_admin.php"
+                id="logout-btn"
+                class="logout-btn sidebar-btns hide-event"
+                >Logout
+              </a>
+           
+</div>
+
+
+
+
+        
+
+      
       </body>
-      <script src="js/sidebar.js?v=e031e80c3d8b"></script>
+      <script src="js/sidebar.js?v=e031e80ssc3d8b"></script>
 
     </html>
     

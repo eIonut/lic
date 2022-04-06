@@ -56,6 +56,7 @@ $asd = $_GET["course_name"];
     </div>
 
     <?php
+    
     $sql = "SELECT * FROM lessons WHERE lesson_subject= '$asd'";
     $result = mysqli_query($con, $sql);
     
@@ -64,16 +65,27 @@ $asd = $_GET["course_name"];
       while($row = mysqli_fetch_assoc($result)) {
         echo "Curs: " . $row["lesson_subject"] . " " . "Lectia nr: " . $row["lesson_number"]. " " . "Fisier atasat: " . $row["pdf_location"];
         echo "<br>";
-        echo '<a href="../images/'.$row["pdf_location"].'" target="_new">Download File </a>';
+        echo '<a href="../images/'.$row["pdf_location"].'" target="_blank">Download File </a>';
       }
       
      
     } else {
       echo "No subjects were added to this course so far. Talk to an administrator for adding.";
     }
-    
+
     mysqli_close($con);
     ?>
+
+<div id="vid-gallery"><?php
+  // (A) GET ALL VIDEO FILES FROM THE GALLERY FOLDER
+  $dir = __DIR__ . DIRECTORY_SEPARATOR . "../images" . DIRECTORY_SEPARATOR;
+  $videos = glob("$dir*.{webm,mp4,ogg, mkv}", GLOB_BRACE);
+ 
+  // (B) OUTPUT ALL VIDEOS
+  if (count($videos) > 0) { foreach ($videos as $vid) {
+    printf("<video src='..images/%s'></video>", rawurlencode(basename($vid)));
+  }}
+?></div>
 
   
     <form action="delete_course_admin.php" method="POST">
@@ -82,4 +94,5 @@ $asd = $_GET["course_name"];
     </form>
 
 </body>
+<script src="js/videos.js"></script>
 </html>

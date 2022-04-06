@@ -1,3 +1,5 @@
+const hideBarItems = document.querySelectorAll('.hide-event');
+const sideBar = document.getElementById("mySidebar");
 function openNav() {
   document.getElementById("main-content").classList.add("card-transition");
   document.getElementById("course-section").classList.add("card-transition");
@@ -24,13 +26,30 @@ const closebtn = document.querySelector(".closebtn");
 const openbtn = document.querySelector(".openbtn");
 
 closebtn.addEventListener('click', function(){
+  hideBarItems.forEach(item => {
+    item.style.display = 'none';
+  })
   
+  if(sideBar.style.width == '0px'){
+    openbtn.classList.remove('disable');
+  }
   openbtn.style.left = "0px";
+  
+    
   
 })
 
 openbtn.addEventListener('click', function(){
-
+  hideBarItems.forEach(item => {
+    item.style.display = 'block';
+  })
+  if(sideBar.style.width == '200px'){
+    openbtn.classList.add('disable');
+  }
   openbtn.style.left = "200px";
+  
+ 
+  
+ 
  
 })

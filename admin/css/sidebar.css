@@ -7,7 +7,7 @@
   top: 0;
   left: 0;
   background-color: #111; /* Black*/
-  overflow-x: hidden; /* Disable horizontal scroll */
+  /* overflow-x: hidden; */
   padding-top: 60px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
   display: flex;
@@ -19,7 +19,7 @@
 /* The sidebar links */
 .sidebar a {
   text-decoration: none;
-  font-size: 25px;
+  font-size: 18px;
   color: #ffffff;
   display: block;
   transition: 0.3s;
@@ -27,6 +27,8 @@
   padding: 0px;
   margin: 10px 20px;
 }
+
+
 
 .sidebar a:nth-of-type(2) {
   margin-top: 50px;
@@ -46,28 +48,48 @@
   position: absolute;
   top: 0;
   right: 25px;
-  font-size: 36px;
+  font-size: 28px;
   margin-left: 50px;
 }
 
 /* The button used to open the sidebar */
-.openbtn {
+button.openbtn {
   font-size: 20px;
   cursor: pointer;
   background-color: #111;
   color: white;
   padding: 10px 15px;
   border: none;
-  position: sticky;
+  position: relative;
   left: 200px;
-  top: 0px;
+  top: -65px;
   transition: left 0.5s;
   z-index: 2;
- 
+  outline: none;
+  overflow-x: visible;
 }
 
 .openbtn:hover {
   background-color: #444;
+}
+
+a#logout-btn{
+  color: rgb(129, 129, 129);
+  border: 1px solid rgb(129, 129, 129);
+}
+
+a.sidebar-btns{
+  border: 1px solid lightgray;
+  padding: 10px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a.sidebar-btns:hover{
+  color: black;
+  background: white;
+  border: 1px solid transparent;
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
@@ -76,7 +98,18 @@
   /* padding: 20px;
   width: 0px;
 /* } */ 
+.hide{
+  display: none;
+}
 
+.disable{
+  pointer-events: none;
+}
+
+
+.display-event{
+  display: block;
+}
 
 
 
