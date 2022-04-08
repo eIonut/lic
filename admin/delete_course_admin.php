@@ -1,3 +1,30 @@
+<?php
+unset($_SESSION);
+$_SESSION = array();
+session_unset();
+session_start();
+session_regenerate_id(TRUE); //THIS DOES THE TRICK! Calling it after session_start. Dunno if true makes a difference.
+
+?>
+
+<link rel="stylesheet" href="css/sidebar.css?v=e031ddes0sssscZd8b" />
+<link rel="stylesheet" href="css/commonStyles.css?v=e031se80c328b" />
+<link rel="stylesheet" href="css/individualCoursePage.css?v=s031e80c328b" />
+<script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
 <?php 
     include('../dbconnection.php');
 
@@ -13,6 +40,7 @@
         {
             echo 'query error: ' . mysqli_error($con);
         }
+
        
     }
     //check GET request name param
@@ -46,6 +74,39 @@ $asd = $_GET["course_name"];
     <title>dETAILS</title>
 </head>
 <body>
+<div id="mySidebar" class="sidebar">
+      <button class="openbtn">&#9776;</button>
+        <div class="sidebar-content">
+     
+  <a href="javascript:void(0)" class="closebtn">&times;</a>
+  <div class="right-content-div">
+            <h1 class="hide-event">
+              Welcome back,
+              <span class="user-name-log">
+              <?php
+echo $_SESSION['login_admin'] . "!";
+?>
+</span>
+           </h1>
+            
+          </div>
+          <a class="sidebar-links hide-event" href="#">ABOUT</a>
+  <a class="sidebar-links hide-event" href="index_admin.php">COURSES</a>
+  <a class="sidebar-links hide-event" href="#">CONTACT</a>
+  <a class="sidebar-btns hide-event" href="add_course_admin.php">ADD COURSE</a>
+  <a class="sidebar-btns hide-event" href="add_class.php">ADD SUBJECT</a>
+  
+              <a
+                href="logout_admin.php"
+                id="logout-btn"
+                class="logout-btn sidebar-btns hide-event"
+                >LOGOUT
+              </a>
+          
+</div>
+</div>
+</div>
+
     <div class="container">
         <?php if($course): ?>
             <h4><?php echo htmlspecialchars($course['course_name']);?></h4>
@@ -63,9 +124,22 @@ $asd = $_GET["course_name"];
     if (mysqli_num_rows($result) > 0) {
       // output data of each row
       while($row = mysqli_fetch_assoc($result)) {
-        echo "Curs: " . $row["lesson_subject"] . " " . "Lectia nr: " . $row["lesson_number"]. " " . "Fisier atasat: " . $row["pdf_location"];
+       
+        if (str_contains($row["pdf_location"], '.mp4')) {
+            echo "Curs: " . $row["lesson_subject"] . " " . "Lectia nr: " . $row["lesson_number"]. " ";
+            echo '<video width="320" height="240" controls volume="1">
+            <source src="../images/'.$row["pdf_location"].'" type="video/mp4">
+            </video>';
+        }
+
+        else{
+            echo "Curs: " . $row["lesson_subject"] . " " . "Lesson title: " . $row["lesson_number"]. " " . "Fisier atasat: " . $row["pdf_location"];
+            echo "<br>";
+            echo '<a href="../images/'.$row["pdf_location"].'" target="_blank">Download File </a>';
+            
+        }
         echo "<br>";
-        echo '<a href="../images/'.$row["pdf_location"].'" target="_blank">Download File </a>';
+ 
       }
       
      
@@ -76,16 +150,7 @@ $asd = $_GET["course_name"];
     mysqli_close($con);
     ?>
 
-<div id="vid-gallery"><?php
-  // (A) GET ALL VIDEO FILES FROM THE GALLERY FOLDER
-  $dir = __DIR__ . DIRECTORY_SEPARATOR . "../images" . DIRECTORY_SEPARATOR;
-  $videos = glob("$dir*.{webm,mp4,ogg, mkv}", GLOB_BRACE);
- 
-  // (B) OUTPUT ALL VIDEOS
-  if (count($videos) > 0) { foreach ($videos as $vid) {
-    printf("<video src='..images/%s'></video>", rawurlencode(basename($vid)));
-  }}
-?></div>
+
 
   
     <form action="delete_course_admin.php" method="POST">
@@ -94,5 +159,5 @@ $asd = $_GET["course_name"];
     </form>
 
 </body>
-<script src="js/videos.js"></script>
+<script src="js/courseSideBar.js"></script>
 </html>

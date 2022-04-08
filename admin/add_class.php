@@ -3,7 +3,7 @@ include('../dbconnection.php');
 
 $lesson_subject = '';
 $lesson_number = '';
-$errors = array('lesson_subject' => '', 'lesson_number' => '');
+// $errors = array('lesson_subject' => '', 'lesson_number' => '');
 
 if(isset($_POST['submit']))
 {   
@@ -44,15 +44,13 @@ $file_loc = $_FILES['file']['tmp_name'];
         }
         
   
+        $lesson_subject = $_POST['class-option'];
+        $lesson_number = $_POST['lesson_number'];
  }
 
- if(empty($_POST['class-option']) || (empty($_POST['lesson_number']))){
-    $errors['lesson_number'] = 'A number is required';
-} else{
-    $lesson_subject = $_POST['class-option'];
-    $lesson_number = $_POST['lesson_number'];
+ 
 
-}
+
 
 
     //echo 'errors in form';
@@ -104,7 +102,7 @@ $file_loc = $_FILES['file']['tmp_name'];
             </select>
 			
             <label>Lesson Number</label>
-            <input type="text" name="lesson_number" value="">
+            <input type="text" name="lesson_number">
             <label for="">File Upload</label>
             <input type="file" name="file">
            
@@ -112,6 +110,9 @@ $file_loc = $_FILES['file']['tmp_name'];
 				<input type="submit" name="submit" value="Submit" class="btn brand z-depth-0">
 			</div>
 		</form>
+
+        
+    </form>
 
       
 	</section>

@@ -4,9 +4,10 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="css/indexPage.css?v=e031erzs0c3d8b" />
-    <link rel="stylesheet" href="css/sidebar.css?v=e031es0cZd8b" />
-    <link rel="stylesheet" href="css/commonStyles.css?v=e031e80c328b" />
+    <link rel="stylesheet" href="css/indexPage.css?v=es031rzs0c3d8b" />
+    <link rel="stylesheet" href="css/sidebar.css?v=e031dds0sscZd8b" />
+    <link rel="stylesheet" href="css/commonStyles.css?v=ess031e80c32s8b" />
+   
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -78,23 +79,26 @@ function clearClasses()
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" type="text/css" href="css/indexPage.css?v=e031e80c3d8b">
+        
 
 
         <title>Document</title>
       </head>
       <body>
-      
-     
+
+     <div class="all-content">
       <main id="main-content">
-        <section class="welcome-section first-section">
-          <h1>Lorem ipsum</h1>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia enim aspernatur dolor facere aliquid delectus ab excepturi labore, rem soluta itaque officiis cumque, quasi saepe quibusdam commodi! Quas, ratione quidem!
-          Iusto sint amet, tempore a modi quisquam mollitia deserunt, ipsum, ipsa dolores voluptate ullam adipisci ducimus est cupiditate sit dolor perferendis dolore quia asperiores labore cum quos nostrum provident? Quia.</p>
-          <button><a href="#course-section">Start Learning here!</a></button>
+
+      <!-- FIRST SECTION -->
+        <section id="Asd" class="welcome-section first-section">
+          <h1>Learn everything at your own pace... with <span class="us">us!</span></h1>
+          <p>Take your pen and start learning right away, for FREE</p> 
+          <a class="start-learn-btn" href="#course-section">BEGIN NOW</a>
         </section>
+        <!-- FIRST SECTION -->
+
+        <!-- SECOND SECTION -->
         <div class="add-content-div">
-    
             <form id="search-clear-form" action="index_admin.php" method="POST">
               <input
                 type="text"
@@ -111,12 +115,20 @@ function clearClasses()
                 onclick="clearClasses()"
               />
             </form>
+            
           </div>
+          
+           <!-- SECOND SECTION -->
 
           
         
-          <h1 class="your-courses">YOUR COURSES</h1>
+         
+
+          <!-- THIRD SECTION -->
+          <div id="wrapper">
           <section id="course-section">
+          <h1 class="your-courses">Your courses</h1>  
+         
             <?php
 foreach ($courses as $course) {
 ?>
@@ -136,12 +148,12 @@ foreach ($courses as $course) {
                     <?php
     echo htmlspecialchars($course['course_name']);
 ?>
-                </h5>
+               </h5>
                   <p class="card-text">
                     <?php
     echo htmlspecialchars($course['course_description']);
 ?>
-                </p>
+               </p>
                   <a
                     class="btn btn-primary"
                     href="delete_course_admin.php?course_name=<?php
@@ -151,16 +163,23 @@ foreach ($courses as $course) {
                   >
                 </div>
               </div>
+              
             
             <?php
 }
 ?>
-        </section>
+
+       </section>
+       </div>
+       <!-- THIRD SECTION -->
         </main>
-     
+    
+
       <div id="mySidebar" class="sidebar">
-      <button class="openbtn" onclick="openNav()">&#9776;</button>
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <button class="openbtn">&#9776;</button>
+        <div class="sidebar-content">
+     
+  <a href="javascript:void(0)" class="closebtn">&times;</a>
   <div class="right-content-div">
             <h1 class="hide-event">
               Welcome back,
@@ -172,18 +191,21 @@ echo $_SESSION['login_admin'] . "!";
            </h1>
             
           </div>
-  <a class="sidebar-links hide-event" href="#">About</a>
-  <a class="sidebar-links hide-event" href="#">Contact</a>
-  <a class="sidebar-btns hide-event" href="add_course_admin.php">Add Course</a>
-  <a class="sidebar-btns hide-event" href="add_class.php">Add Subject</a>
+  <a class="sidebar-links hide-event" href="#">ABOUT</a>
+  <a class="sidebar-links hide-event" href="index_admin.php">COURSES</a>
+  <a class="sidebar-links hide-event" href="#">CONTACT</a>
+  <a class="sidebar-btns hide-event" href="add_course_admin.php">ADD COURSE</a>
+  <a class="sidebar-btns hide-event" href="add_class.php">ADD SUBJECT</a>
   
               <a
                 href="logout_admin.php"
                 id="logout-btn"
                 class="logout-btn sidebar-btns hide-event"
-                >Logout
+                >LOGOUT
               </a>
-           
+          
+</div>
+</div>
 </div>
 
 
@@ -193,7 +215,7 @@ echo $_SESSION['login_admin'] . "!";
 
       
       </body>
-      <script src="js/sidebar.js?v=e031e80ssc3d8b"></script>
+      <script src="js/sidebar.js"></script>
+    
 
     </html>
-    
