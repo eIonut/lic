@@ -7,6 +7,10 @@
   scroll-behavior: smooth;
 } 
 
+body{
+  background-color: #0d0f12;
+}
+
 
 div.all-content{
   margin: 0;
@@ -24,14 +28,22 @@ div.all-content{
   color: #F05A28;
 }
 
-
-
 .card-body{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   word-break: break-all;
+  height: 200px;
+  background: #0d0f12;
+  color: white;
+  /* border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px; */
+  border: none;
+}
+
+.card-body:hover{
+  cursor: default;
 }
 
  main#main-content{
@@ -39,13 +51,30 @@ div.all-content{
   grid-row: 1;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 0.5fr 0.45fr 0.3fr 1fr;
-
+  grid-template-rows: 1fr 0.45fr 0.3fr auto;
+  background-color: #0d0f12;
 }
+
+input#search{
+  width:60%;
+  grid-column: 1/4;
+  margin: auto;
+  margin-top: 50px;
+  padding: 10px 10px;
+  text-align: start;
+  font-weight: bold;
+}
+
+input#search:focus{
+  outline: none;
+  font-weight: bold;
+}
+
 
 section.welcome-section.first-section{
   grid-column: 1/4;
   grid-row: 1/3 ;
+  height: 1000px;
   display: flex;  
   flex-direction: column;
   justify-content: center;
@@ -66,16 +95,20 @@ section#course-section {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(auto, 1fr);
-  grid-gap: 15px 15px;
+  grid-gap: 35px 35px;
   margin: auto;
   padding-bottom: 50px;
   padding-top: 50px;
+  
 }
 
 #wrapper{
+  height: 100%;
   grid-column: 1/4;
   width: 100%;
   background-color: #0d0f12;
+  margin: auto;
+  text-align: center;
 }
 
 
@@ -89,14 +122,22 @@ section#course-section {
 }
 
 div.card {
-  border: 1px solid hsla(0,0%,100%,.95);
+  /* border: 1px solid rgb(88, 88, 88); */
+
+  transition: box-shadow .3s;
   outline: none;
-  /* height: fit-content; */
   width: 100%;
-  height: 70%;
+  border: 1px solid white;
+  max-height: 500px;
   margin: auto;
   text-align: center;
+  box-sizing: content-box;
   
+}
+
+div.card:hover{
+  border: none;
+  box-shadow: 0 0 11px rgba(255, 255, 255, 0.6); 
 }
 
 
@@ -104,17 +145,69 @@ div.card {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40%;
+  height: 200px;
   width: 100%;
-  /* border-radius: 2px; */
+  border: none;
+  /* border-bottom: 1px solid gray; */
 }
 
+/* BUtoane */
+.btn-hover {
+  width: 200px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  /* padding: 0;
+  height: 80px!important; */
+  padding: 10px 10px!important;
+  text-align:center;
+  border: none;
+  background-size: 300% 100%;
+  border-radius: 5px;
+  -moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
 
-
-/* .card-transition {
-  transition: margin 0.2s ease-out;
+/* a.btn-primary{
+  border:none;  
 } */
 
+.btn-hover:hover {
+  color: white;
+  text-decoration: none ;
+  background-position: 100% 0;
+  -moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.btn-hover:focus {
+  outline: none;
+}
+
+.no-criteria-p{
+  margin: auto;
+  width: 100%;
+  grid-column: 1/6;
+  color: white;
+  font-size: 24px;
+}
+
+.btn-hover.color-2 {
+  padding: 0;
+  background-image: linear-gradient(to right, #f5ce62, #e43603, #fa7199, #e85a19);
+  box-shadow: 0 4px 15px 0 rgba(229, 66, 10, 0.75);
+}
+
+/* butoane */
 
 .user-name-log{
   color: gray;
@@ -127,10 +220,12 @@ div.add-content-div{
   grid-row: 3;
   width: 100%;
   margin: auto;
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #0d0f12;
 
  
 }
@@ -143,23 +238,33 @@ div.add-content-div{
   align-items: center;
 }
 
-.search-input{
-  width: 80%;
+/* .search-input{
+  width: 84%;
   padding: 10px;
-  border-radius: 10px;
+  
   outline: none;
   border: 1px solid black;
-}
+  font-weight: bold;
+  margin-right: 10px;
+} */
 
-input.search-btns{
+/* input.search-btns{
   height: 46px;
   font-size: 18px;
-  border-radius: 5px;
-  border: 1px solid black;
+  border: 1px solid white;
   width: fit-content;
-  padding: 0px 10px;
+  padding: 0px 20px;
   margin: 0px 10px;
-}
+  background: #111;
+  color: white;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+} */
+
+/* input.search-btns:hover{
+  color: #111;
+  background: white;
+} */
 
 a.start-learn-btn {
   background-image: linear-gradient(to right,#F05A28,#EC008C, #F05A28);

@@ -14,6 +14,10 @@
   position: fixed;
   width: 10%;
   max-width: 10%;
+  font-weight: bold;
+  /* z-index: 9999; */
+  /* display: none; */
+ 
  
 }
 
@@ -30,7 +34,7 @@
 }
 
 .user-name-log{
-  color: gray;
+  color: #e43603;
 }
 
 
@@ -42,6 +46,8 @@
 
 .sidebar a:hover {
   color: #f1f1f1;
+  text-decoration: none;
+  color: #e43603;
 }
 
 .sidebar .closebtn {
@@ -53,9 +59,21 @@
   margin-top: -2px;
   margin-right: 0px;
   padding: 10px 15px;
+  
 }
 
+a.closebtn{
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 54px;
+}
+
+
 a.closebtn:hover {
+  text-decoration: none;
   background-color: #444;
 }
 
@@ -86,11 +104,21 @@ button.openbtn {
   position: relative;
   z-index: 2;
   outline: none;
-  overflow-x: visible;
+  /* overflow-x: visible; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .openbtn:hover {
   background-color: #444;
+  color: #e43603;
+}
+
+.openbtn:focus{
+  border: none;
+  outline: none;
 }
 
 a#logout-btn{
@@ -110,6 +138,7 @@ a.sidebar-btns:hover{
   color: black;
   background: white;
   border: 1px solid transparent;
+
 }
 
 .hide{

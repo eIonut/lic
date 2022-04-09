@@ -1,31 +1,12 @@
-<link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="css/indexPage.css?v=es031rzs0c3d8b" />
-    <link rel="stylesheet" href="css/sidebar.css?v=e031dds0sscZd8b" />
-    <link rel="stylesheet" href="css/commonStyles.css?v=ess031e80c32s8b" />
-   
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
 
+    <link rel="stylesheet" href="css/indexPage.css?v=ess0ssssss3rszss0c3d8b" />
+    <link rel="stylesheet" href="css/sidebar.css?v=e031dds0sssssscZd8b" />
+    <link rel="stylesheet" href="css/commonStyles.css?v=ess03sss1e80c32s8b" />
+
+   
     <?php
 include '../dbconnection.php';
+include 'includes.php';
 unset($_SESSION);
 $_SESSION = array();
 session_unset();
@@ -91,14 +72,14 @@ function clearClasses()
 
       <!-- FIRST SECTION -->
         <section id="Asd" class="welcome-section first-section">
-          <h1>Learn everything at your own pace... with <span class="us">us!</span></h1>
-          <p>Take your pen and start learning right away, for FREE</p> 
-          <a class="start-learn-btn" href="#course-section">BEGIN NOW</a>
+          <h1>Learn everything at your own pace... with us!</h1>
+          <p>Take your pen and start learning right away, for <span class="us">FREE</span></p> 
+          <a class="btn-hover color-2" href="#course-section">BEGIN NOW</a>
         </section>
         <!-- FIRST SECTION -->
 
         <!-- SECOND SECTION -->
-        <div class="add-content-div">
+        <!-- <div class="add-content-div">
             <form id="search-clear-form" action="index_admin.php" method="POST">
               <input
                 type="text"
@@ -110,64 +91,28 @@ function clearClasses()
               <input
                 class="search-btns"
                 type="submit"
-                value="Clear search"
+                value="Clear"
                 id="clear-btn"
                 onclick="clearClasses()"
               />
             </form>
             
-          </div>
+          </div> -->
           
            <!-- SECOND SECTION -->
+<!--  -->
 
-          
-        
-         
 
-          <!-- THIRD SECTION -->
-          <div id="wrapper">
+<input type="text" name="search" id="search" placeholder="Search courses..." onkeyup="load_data(this.value);" />
+
+<div id="wrapper">
+
           <section id="course-section">
+      
           <h1 class="your-courses">Your courses</h1>  
-         
-            <?php
-foreach ($courses as $course) {
-?>
+          <!-- <p id="no-criteria-p">No courses found matching your criteria</p> -->
+          <!-- THIRD SECTION -->
 
-            
-              <div class="card">
-                <img
-                  class="card-img-top"
-                  src="<?php
-    echo 'upload/' . $course['course_image'];
-?>"
-                  alt=""
-                />
-
-                <div class="card-body">
-                  <h5 class="card-title">
-                    <?php
-    echo htmlspecialchars($course['course_name']);
-?>
-               </h5>
-                  <p class="card-text">
-                    <?php
-    echo htmlspecialchars($course['course_description']);
-?>
-               </p>
-                  <a
-                    class="btn btn-primary"
-                    href="delete_course_admin.php?course_name=<?php
-    echo $course['course_name'];
-?>"
-                    >More info</a
-                  >
-                </div>
-              </div>
-              
-            
-            <?php
-}
-?>
 
        </section>
        </div>
@@ -216,6 +161,7 @@ echo $_SESSION['login_admin'] . "!";
       
       </body>
       <script src="js/sidebar.js"></script>
+      <script src="js/loadData.js"></script>
     
 
     </html>

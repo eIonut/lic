@@ -5,6 +5,13 @@ $lesson_subject = '';
 $lesson_number = '';
 // $errors = array('lesson_subject' => '', 'lesson_number' => '');
 
+
+$sql = 'SELECT course_name from courses';
+$result = mysqli_query($con, $sql);
+$courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
+mysqli_free_result($result);
+
+
 if(isset($_POST['submit']))
 {   
      
@@ -67,11 +74,6 @@ $file_loc = $_FILES['file']['tmp_name'];
     mysqli_free_result($result);
 
 
-    $sql = 'SELECT course_name from courses';
-        $result = mysqli_query($con, $sql);
-        $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
-        mysqli_free_result($result);
-        mysqli_close($con);
  
    
     // check title
