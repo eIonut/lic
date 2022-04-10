@@ -19,15 +19,14 @@ if(isset($_POST["query"]))
 		$condition = str_replace(" ", "%", $condition);
 
 		$sample_data = array(
-			':course_name'			=>	'%' . $condition . '%',
-           
-		
+			':course_name' => '%' . $condition . '%'
 		);
 
 		$query = "
-		SELECT course_name
+		SELECT course_name, course_description, course_image
 		FROM courses
 		WHERE course_name LIKE :course_name 
+		
 		";
 
 		$statement = $connect->prepare($query);
@@ -40,13 +39,17 @@ if(isset($_POST["query"]))
 
 		foreach($replace_array_1 as $row_data)
 		{
-			$replace_array_2[] = '<span style="background-color:#'.rand(100000, 999999).'; color:#fff">'.$row_data.'</span>';
+			$replace_array_2[] = ''.$row_data.'';
+			
 		}
 
 		foreach($result as $row)
 		{
 			$data[] = array(
-				'course_name'		=>	str_ireplace($replace_array_1, $replace_array_2, $row["course_name"])
+				'course_name' => str_ireplace($replace_array_1, $replace_array_2, $row["course_name"]),
+				'course_description' => str_ireplace($replace_array_1, $replace_array_2, $row["course_description"]),
+				'course_image' => str_ireplace($replace_array_1, $replace_array_2, $row["course_image"]),
+				
                 
 			);
 		}
@@ -56,7 +59,7 @@ if(isset($_POST["query"]))
 	{
 
 		$query = "
-		SELECT course_name
+		SELECT course_name, course_description, course_image
 		FROM courses
 		";
 
@@ -65,13 +68,15 @@ if(isset($_POST["query"]))
 		foreach($result as $row)
 		{
 			$data[] = array(
-				'course_name'			=>	$row['course_name'],
+				'course_name' => $row['course_name'],
+				'course_description' =>	$row['course_description'],
+				'course_image' => $row['course_image']
                 
 			);
 		}
 
 	}
-
+	
 	echo json_encode($data);
 
 }

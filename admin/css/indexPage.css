@@ -33,13 +33,17 @@ div.all-content{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  word-break: break-all;
+
   height: 200px;
   background: #0d0f12;
   color: white;
   /* border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px; */
   border: none;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  word-break: break-word;
+  
 }
 
 .card-body:hover{
@@ -88,6 +92,7 @@ section.welcome-section.first-section{
 
 
 section#course-section {
+  box-sizing: border-box;
   grid-column: 1/4;
   grid-row: 4;
   width: 80%;
@@ -132,12 +137,12 @@ div.card {
   margin: auto;
   text-align: center;
   box-sizing: content-box;
-  
+  box-shadow: 0 0 11px rgba(255, 255, 255, 0.6);  
+  border-radius: 5px;
 }
 
 div.card:hover{
-  border: none;
-  box-shadow: 0 0 11px rgba(255, 255, 255, 0.6); 
+  box-shadow: none;
 }
 
 
@@ -148,6 +153,8 @@ div.card:hover{
   height: 200px;
   width: 100%;
   border: none;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   /* border-bottom: 1px solid gray; */
 }
 

@@ -1,5 +1,5 @@
 
-    <link rel="stylesheet" href="css/indexPage.css?v=ess0ssssss3rszss0c3d8b" />
+    <link rel="stylesheet" href="css/indexPage.css?v=ess0s3rszss0c3d8b" />
     <link rel="stylesheet" href="css/sidebar.css?v=e031dds0sssssscZd8b" />
     <link rel="stylesheet" href="css/commonStyles.css?v=ess03sss1e80c32s8b" />
 
@@ -108,13 +108,13 @@ function clearClasses()
 <div id="wrapper">
 
           <section id="course-section">
-      
           <h1 class="your-courses">Your courses</h1>  
           <!-- <p id="no-criteria-p">No courses found matching your criteria</p> -->
           <!-- THIRD SECTION -->
 
 
        </section>
+
        </div>
        <!-- THIRD SECTION -->
         </main>
@@ -161,7 +161,7 @@ echo $_SESSION['login_admin'] . "!";
       
       </body>
       <script src="js/sidebar.js"></script>
-      <script src="js/loadData.js"></script>
+      <script src="js/loadData.js?"></script>
     
 
     </html>
