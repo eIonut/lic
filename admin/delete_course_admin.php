@@ -7,10 +7,10 @@ session_regenerate_id(TRUE); //THIS DOES THE TRICK! Calling it after session_sta
 include 'includes.php';
 ?>
 
-<link rel="stylesheet" href="css/sidebar.css?v=e031ddses0sssssscZd8b" />
-<link rel="stylesheet" href="css/commonStyles.css?v=e031se80scs328b" />
-<link rel="stylesheet" href="css/individualCoursePage.css?v=sss0ssss0sc328b" />
-<link rel="stylesheet" href="css/accordion.css?v=ss03sssss0c3s28b" />
+<link rel="stylesheet" href="css/sidebar.css?v=e031ddses0ssssscZd8b" />
+<link rel="stylesheet" href="css/commonStyles.css?v=e031se80sc328b" />
+<link rel="stylesheet" href="css/individualCoursePage.css?v=ssss0sss0sc328b" />
+<link rel="stylesheet" href="css/accordion.css?v=ss03sssss03s28b" />
 
     
 <?php
@@ -132,26 +132,24 @@ if (mysqli_num_rows($result) > 0) {
     // output data of each row
     while ($row = mysqli_fetch_assoc($result)) {
         
-        if (str_contains($row["pdf_location"], '.mp4')) {   
+        if (str_contains($row["pdf_location"], '.mp4') || str_contains($row["pdf_location"], '.pdf') || str_contains($row["pdf_location"], '.docx')) {   
             
             echo '<button class="accordion">' . $row["lesson_number"] . '</button>';
             echo '<div class="panel">';
-            echo '<video width="100%" height="300px" controls volume="1">';
-            echo '<source src="../images/' . $row["pdf_location"] . '" type="video/mp4">';
+            echo '<video class="course-video" src="../images/' . $row["pdf_location"] . '" width="100%" height="300px" controls volume="1">';
             echo ' </video>';
+            echo "Lesson title: " . $row["lesson_number"] . "<br>" . "Fisier atasat: " . $row["pdf_location"];
+            echo '<button class="play-btn">play</button>';
+            echo '<button class="collapse-btn">collapse</button>';
+            echo "<br>";
+            echo '<a href="../images/' . $row["pdf_location"] . '" target="_blank">Download File </a>';
             echo '</div>';
 
            
         }
         
-        else{
-            echo '<button class="accordion">' . $row["lesson_number"] . ' (Resources)'.'</button>';
-            echo '<div class="panel">';
-              echo "Lesson title: " . $row["lesson_number"] . "<br>" . "Fisier atasat: " . $row["pdf_location"];
-              echo "<br>";
-              echo '<a href="../images/' . $row["pdf_location"] . '" target="_blank">Download File </a>';
-            echo '</div>';  
-        }
+      
+          
        
       
     }
@@ -179,6 +177,6 @@ echo $course['course_id'];
 
 </body>
 <script src="js/courseSideBar.js"></script>
-<script src="js/accordion.js?v=ss0ssss80328b"></script>
+<script src="js/accordion.js?v=ss0ssss8ssss0328b"></script>
 
 </html>
