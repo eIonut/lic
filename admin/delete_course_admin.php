@@ -7,10 +7,10 @@ session_regenerate_id(TRUE); //THIS DOES THE TRICK! Calling it after session_sta
 include 'includes.php';
 ?>
 
-<link rel="stylesheet" href="css/sidebar.css?v=e031ddses0ssssscZd8b" />
-<link rel="stylesheet" href="css/commonStyles.css?v=e031se80sc328b" />
-<link rel="stylesheet" href="css/individualCoursePage.css?v=s03ss8ss0sc328b" />
-<link rel="stylesheet" href="css/accordion.css?v=ss03sss8s0c3s28b" />
+<link rel="stylesheet" href="css/sidebar.css?v=e031ddses0sssssscZd8b" />
+<link rel="stylesheet" href="css/commonStyles.css?v=e031se80scs328b" />
+<link rel="stylesheet" href="css/individualCoursePage.css?v=sss0ssss0sc328b" />
+<link rel="stylesheet" href="css/accordion.css?v=ss03sssss0c3s28b" />
 
     
 <?php
@@ -104,8 +104,8 @@ echo $_SESSION['login_admin'] . "!";
 </div>
 </div>
 </div>
-
-    <div class="container">
+<main class="main-content">
+   
         <?php
 if ($course):
 ?>
@@ -145,7 +145,8 @@ if (mysqli_num_rows($result) > 0) {
         }
         
         else{
-            echo '<div>';
+            echo '<button class="accordion">' . $row["lesson_number"] . ' (Resources)'.'</button>';
+            echo '<div class="panel">';
               echo "Lesson title: " . $row["lesson_number"] . "<br>" . "Fisier atasat: " . $row["pdf_location"];
               echo "<br>";
               echo '<a href="../images/' . $row["pdf_location"] . '" target="_blank">Download File </a>';
@@ -173,21 +174,11 @@ echo $course['course_id'];
         <input type="submit" name="delete" value="Delete Course!"> 
     </form>
 
-<!--    
-    <form action="delete_course_admin.php" method="POST">
-        <input type="hidden" name="lesson_id_to_delete" value="
-echo $lessons['id'];
-?>">
-        <input type="submit" name="delete_lesson" value="Delete"> 
-    </form>
-    
-  </div>
-   -->
-   </div>
+    </main>
 
 
 </body>
 <script src="js/courseSideBar.js"></script>
-<script src="js/accordion.js?v=ss0ss3ss80c328b"></script>
+<script src="js/accordion.js?v=ss0ssss80328b"></script>
 
 </html>

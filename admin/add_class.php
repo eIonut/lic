@@ -1,6 +1,8 @@
 <?php
 include('../dbconnection.php');
 
+$course_names = '';
+$lesson_subjectt = '';
 $lesson_subject = '';
 $lesson_number = '';
 // $errors = array('lesson_subject' => '', 'lesson_number' => '');
@@ -10,6 +12,7 @@ $sql = 'SELECT course_name from courses';
 $result = mysqli_query($con, $sql);
 $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
 mysqli_free_result($result);
+
 
 
 if(isset($_POST['submit']))
@@ -54,26 +57,72 @@ $file_loc = $_FILES['file']['tmp_name'];
         $lesson_subject = $_POST['class-option'];
         $lesson_number = $_POST['lesson_number'];
  }
+   
+
+if(isset($_POST['submit_delete']))
+{   
+    $lesson_subjectt =  $_POST['lesson-delete-option'];
+    print_r($lesson_subject);
+   
+        $query= "DELETE FROM `lessons` WHERE `lesson_number` = '$lesson_subjectt' ";
+ 
+    
+
+    if(mysqli_query($con, $query)){
+        echo "Records were deleted successfully.";
+    } else{
+        echo "ERROR: Could not able to execute $query. " . mysqli_error($con);
+    }
+     
+    // Close connection
+    // mysqli_close($con);
+
+        // save to db and check
+        // if(mysqli_query($con, $sql)){
+        //     // success
+        //     header('Location: index_admin.php');
+        // } else {
+        //     echo 'query error: '. mysqli_error($con);
+        // }
+    
+        // }
+}
+
+ 
+ $sql = "SELECT lesson_subject, lesson_number FROM lessons";
+
+ //get the query result
+ $result = mysqli_query($con, $sql);
+
+ //fetch result in array format
+ $lessons = mysqli_fetch_all($result, MYSQLI_ASSOC);
+//  mysqli_free_result($result);
+
+$sql = "SELECT lesson_number FROM lessons WHERE lesson_subject = 'HTML ONE'";
+
+//get the query result
+$result = mysqli_query($con, $sql);
+
+//fetch result in array format
+$lessons2 = mysqli_fetch_all($result, MYSQLI_ASSOC);
+//  mysqli_free_result($result);
+
+
 
  
 
 
-
+//  $sql = 'SELECT course_name from courses';
+//  $result = mysqli_query($con, $sql);
+//  $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
+//  mysqli_free_result($result);
+ 
 
     //echo 'errors in form';
 
 
-    $sql = "SELECT * FROM lessons";
 
-    //get the query result
-    $result = mysqli_query($con, $sql);
-
-    //fetch result in array format
-    $doc = mysqli_fetch_assoc($result);
-
-    mysqli_free_result($result);
-
-
+    // echo '<p>'.$doc['lesson_subject'].'</p>';
  
    
     // check title
@@ -103,7 +152,7 @@ $file_loc = $_FILES['file']['tmp_name'];
                 
             </select>
 			
-            <label>Lesson Number</label>
+            <label>Lesson Name</label>
             <input type="text" name="lesson_number">
             <label for="">File Upload</label>
             <input type="file" name="file">
@@ -111,12 +160,40 @@ $file_loc = $_FILES['file']['tmp_name'];
 			<div class="center">
 				<input type="submit" name="submit" value="Submit" class="btn brand z-depth-0">
 			</div>
-		</form>
+	
+<!-- SECOND FORM -->
 
         
-    </form>
+<!-- 			
+			<label>Course name</label> -->
 
-      
+            <!-- <select  name="course-delete-option" id="">
+            <?php
+                foreach($courses as $course){ ?>
+                <option name="" value="<?php echo htmlspecialchars($course['course_name']);?>""><?php echo htmlspecialchars($course['course_name']);?></option>
+            <?php } ?>
+                
+            </select> -->
+			
+            <label>Lesson Name</label>
+           
+
+          
+            <select name="lesson-delete-option"id="">
+            <?php
+            foreach($lessons as $lesson){ ?>
+             
+                <option  name="" value="<?php echo htmlspecialchars($lesson['lesson_number']);?>"><?php echo htmlspecialchars($lesson['lesson_number']); echo " " . "-" . " "; echo htmlspecialchars($lesson['lesson_subject']);?></option>
+           
+            <?php } ?>
+            </select>
+           
+           
+			<div class="center">
+				<input type="submit" name="submit_delete" value="Delete" class="btn brand z-depth-0">
+			</div>
+		</form>
+
 	</section>
 
 </body>

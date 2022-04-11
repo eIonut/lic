@@ -1,7 +1,7 @@
 
-    <link rel="stylesheet" href="css/indexPage.css?v=ess0s3rszss0c3d8b" />
-    <link rel="stylesheet" href="css/sidebar.css?v=e031dds0sssssscZd8b" />
-    <link rel="stylesheet" href="css/commonStyles.css?v=ess03sss1e80c32s8b" />
+    <link rel="stylesheet" href="css/indexPage.css?v=ess0s3rsssszss0c3d8b" />
+    <link rel="stylesheet" href="css/sidebar.css?v=e031dds0ssssssscZd8b" />
+    <link rel="stylesheet" href="css/commonStyles.css?v=ess03ssss1e80c32s8b" />
 
    
     <?php

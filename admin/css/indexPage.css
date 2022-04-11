@@ -9,6 +9,8 @@
 
 body{
   background-color: #0d0f12;
+  /* cursor: url('../imgs/cursor.png'), auto; */
+  
 }
 
 
@@ -150,8 +152,10 @@ div.card:hover{
   display: flex;
   justify-content: center;
   align-items: center;
+  object-fit: fill;
   height: 200px;
-  width: 100%;
+  
+  width: 100%; 
   border: none;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;

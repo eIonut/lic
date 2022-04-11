@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="css/modals.css?v=esss0s3rsszss0c3d8b" />
 <?php
 
 	include('../dbconnection.php');
@@ -56,12 +57,20 @@
 			$sql = "INSERT INTO courses(course_name, course_description, course_image) VALUES ('$course_name', '$course_description', '$name')";
 
 			// save to db and check
+			try{
 			if(mysqli_query($con, $sql)){
 				// success
 				header('Location: index_admin.php');
 			} else {
 				echo 'query error: '. mysqli_error($con);
 			}
+		}catch(Exception $e) {
+			
+			echo '<div class="modal">
+			<p>Please choose another name for the course. This one is already taken!</p>
+			<a href="javascript:void(0)" class="closebtn">&times;</a>
+			</div>';
+		  }
 		
 		}
 
@@ -73,6 +82,8 @@
 <!DOCTYPE html>
 <html>
 	
+	<body>
+		
 	
 
 	<section class="container grey-text">
@@ -97,5 +108,6 @@
 			</div>
 		</form>
 	</section>
-
+	</body>
+	<script src="js/addCourseModal.js"></script>
 </html>
