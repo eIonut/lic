@@ -3,8 +3,9 @@ var panels = document.querySelector(".panel");
 let courseVideo = document.querySelectorAll(".course-video");
 let courseVideoSource = document.querySelectorAll(".course-video-source");
 let playBtn = document.querySelectorAll(".play-btn");
-let collapseBtn = document.querySelectorAll(".collapse-btn");
+// let collapseBtn = document.querySelectorAll(".collapse-btn");
 var panelss = document.querySelectorAll(".panel");
+
 let videoSrc = '';
 var i;
 let panel;
@@ -22,7 +23,7 @@ function checkPdf(){
               
            
            
-              collapseBtn[index].style.display = "none";
+              // collapseBtn[index].style.display = "none";
                 
             
          
@@ -71,6 +72,11 @@ let video_indexes = [];
        courseVideo[video_indexes[video_indexes.length-2]].style.display = "none";
        }
 
+       sideBar.style.width = "0%";
+       sidebarHide.forEach(item  => {
+        item.style.display = "none";
+    
+    });
         courseVideo[video_indexes[video_indexes.length-1]].play();
         courseVideo[video_indexes[video_indexes.length-1]].style.position = 'absolute';
         courseVideo[video_indexes[video_indexes.length-1]].style.left = '0px';
@@ -83,14 +89,15 @@ let video_indexes = [];
   });
 
 
-  collapseBtn.forEach((item, index, buttons) => {
-    item.addEventListener('click', event => {
-      
-        courseVideo[index].style.position = 'relative';
-        courseVideo[index].style.width = '100%';
-        courseVideo[index].style.display = "none";
+  // collapseBtn.forEach((item, index, buttons) => {
+  //   item.addEventListener('click', event => {
+  //       courseVideo[index].pause();
+  //       courseVideo[index].currentTime = 0;
+  //       courseVideo[index].style.position = 'relative';
+  //       courseVideo[index].style.width = '100%';
+  //       courseVideo[index].style.display = "none";
 
       
         
-    })
-  });
+  //   })
+  // });

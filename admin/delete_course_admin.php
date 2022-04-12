@@ -7,10 +7,10 @@ session_regenerate_id(TRUE); //THIS DOES THE TRICK! Calling it after session_sta
 include 'includes.php';
 ?>
 
-<link rel="stylesheet" href="css/sidebar.css?v=e031ddses0ssssscZd8b" />
-<link rel="stylesheet" href="css/commonStyles.css?v=e031se80sc328b" />
-<link rel="stylesheet" href="css/individualCoursePage.css?v=ssss0sss0sc328b" />
-<link rel="stylesheet" href="css/accordion.css?v=ss03sssss03s28b" />
+<link rel="stylesheet" href="css/sidebar.css?v=e031ddses0sssssssssscZd8b" />
+<link rel="stylesheet" href="css/commonStyles.css?v=e031se80ssscssssss328b" />
+<link rel="stylesheet" href="css/individualCoursePage.css?v=sssssssssss0sssssss0sc328b" />
+<link rel="stylesheet" href="css/accordion.css?v=ss03ssssssssssssssssss03ss28b" />
 
     
 <?php
@@ -93,6 +93,12 @@ echo $_SESSION['login_admin'] . "!";
   <a class="sidebar-links hide-event" href="#">CONTACT</a>
   <a class="sidebar-btns hide-event" href="add_course_admin.php">ADD COURSE</a>
   <a class="sidebar-btns hide-event" href="add_class.php">ADD SUBJECT</a>
+  <form action="delete_course_admin.php" method="POST">
+        <input type="hidden" name="id_to_delete" value="<?php
+echo $course['course_id'];
+?>">
+        <input class="delete-course-btn" type="submit" name="delete" value="Delete Course"> 
+    </form>
   
               <a
                 href="logout_admin.php"
@@ -105,7 +111,7 @@ echo $_SESSION['login_admin'] . "!";
 </div>
 </div>
 <main class="main-content">
-   
+ 
         <?php
 if ($course):
 ?>
@@ -132,24 +138,35 @@ if (mysqli_num_rows($result) > 0) {
     // output data of each row
     while ($row = mysqli_fetch_assoc($result)) {
         
-        if (str_contains($row["pdf_location"], '.mp4') || str_contains($row["pdf_location"], '.pdf') || str_contains($row["pdf_location"], '.docx')) {   
+        if (str_contains($row["pdf_location"], '.mp4')) {   
             
             echo '<button class="accordion">' . $row["lesson_number"] . '</button>';
             echo '<div class="panel">';
             echo '<video class="course-video" src="../images/' . $row["pdf_location"] . '" width="100%" height="300px" controls volume="1">';
             echo ' </video>';
-            echo "Lesson title: " . $row["lesson_number"] . "<br>" . "Fisier atasat: " . $row["pdf_location"];
-            echo '<button class="play-btn">play</button>';
-            echo '<button class="collapse-btn">collapse</button>';
-            echo "<br>";
-            echo '<a href="../images/' . $row["pdf_location"] . '" target="_blank">Download File </a>';
+            echo '<p>';
+                echo "Lesson title: " . $row["lesson_number"] . "<br>" . "File: " . $row["pdf_location"];
+            echo '</p>';
+            echo '<button class="play-btn">Play video</button>';
+            // echo '<button class="collapse-btn">collapse</button>';
             echo '</div>';
 
            
         }
+        else{
         
-      
-          
+            
+        echo '<button class="accordion">' . $row["lesson_number"] . "(Resources)".'</button>';
+        echo '<div class="panel">';
+        echo '<p>';
+        echo "Lesson title: " . $row["lesson_number"] . "<br>" . "File: " . $row["pdf_location"];
+        echo '</p>';
+        echo "<br>";
+        
+        echo '<a href="../images/' . $row["pdf_location"] . '" target="_blank">Download File </a>';
+       
+        echo '</div>';
+        }
        
       
     }
@@ -165,18 +182,13 @@ mysqli_close($con);
 
 
 
-    <form action="delete_course_admin.php" method="POST">
-        <input type="hidden" name="id_to_delete" value="<?php
-echo $course['course_id'];
-?>">
-        <input type="submit" name="delete" value="Delete Course!"> 
-    </form>
+    
 
     </main>
 
 
 </body>
-<script src="js/courseSideBar.js"></script>
-<script src="js/accordion.js?v=ss0ssss8ssss0328b"></script>
+<script src="js/courseSideBar.js?v=dasdsadas"></script>
+<script src="js/accordion.js?v=ss0sssssss8sss0328b"></script>
 
 </html>

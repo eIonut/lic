@@ -1,15 +1,16 @@
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
-  background-color: #eee;
-  color: #444;
+  background-color: #0d0f12;
+  color: white;
   cursor: pointer;
-  padding: 18px;
+  padding: 24px;
   width: 100%;
   text-align: left;
   border: none;
   outline: none;
   transition: 0.4s;
   border-bottom: 1px solid rgb(161, 160, 160);
+  font-size: 1.1em;
 }
 
 .accordion:nth-of-type(1){
@@ -22,29 +23,46 @@
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active, .accordion:hover {
-  background-color: #ccc;
+  filter: invert(100%);
 }
 
 /* Style the accordion panel. Note: hidden by default */
 .panel {
 
-  background-color: #444;
-  background: white;
+  background: transparent;
   max-height: 0;
-  overflow: hidden;
   width: 100%;
-  height:fit-content;
+  height: 100%;
   transition: max-height 0.2s ease-out;
-}
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  word-break: break-word;
+  padding: 0px 24px;
+  font-size: 14px;
+  color: white;
 
+}
 .accordion:after {
+
   content: url('../imgs/expand.png'); /* Unicode character for "plus" sign (+) */
+  filter: invert(100%);
   font-size: 13px;
-  color: #777;
+ 
   float: right;
   margin-left: 5px;
+
 }
 
 .active:after {
- content: url('../imgs/collapse.png');; /* Unicode character for "minus" sign (-) */
+ content: url('../imgs/collapse.png'); /* Unicode character for "minus" sign (-) */
+
+ 
+}
+
+.panel a{
+  margin-bottom: 15px;
+  color: #e43603;
 }
