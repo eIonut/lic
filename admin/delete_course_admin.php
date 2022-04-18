@@ -7,10 +7,10 @@ session_regenerate_id(TRUE); //THIS DOES THE TRICK! Calling it after session_sta
 include 'includes.php';
 ?>
 
-<link rel="stylesheet" href="css/sidebar.css?v=e031ddses0sssssssssscZd8b" />
-<link rel="stylesheet" href="css/commonStyles.css?v=e031se80ssscssssss328b" />
-<link rel="stylesheet" href="css/individualCoursePage.css?v=sssssssssss0sssssss0sc328b" />
-<link rel="stylesheet" href="css/accordion.css?v=ss03ssssssssssssssssss03ss28b" />
+<link rel="stylesheet" href="css/sidebar.css?v=e031ddses0sssssssssssscZd8b" />
+<link rel="stylesheet" href="css/commonStyles.css?v=e031se80ssscsssssssssss328b" />
+<link rel="stylesheet" href="css/individualCoursePage.css?v=ssssssssssssssssss0sssssss0sc328b" />
+<link rel="stylesheet" href="css/accordion.css?v=ss03sssssssssssssssssssssssss03ss28b" />
 
     
 <?php
@@ -18,11 +18,22 @@ include('../dbconnection.php');
 
 
 if(isset($_POST['delete'])){
-    $asd = mysqli_real_escape_string($con, $_GET['course_name']);
+    $asd = mysqli_real_escape_string($con, $_POST['lesson_to_delete']);
     $id_to_delete = mysqli_real_escape_string($con, $_POST['id_to_delete']);
+    
+    $sql2 = "DELETE FROM lessons WHERE lesson_subject = '$asd'";
+    echo($sql2);
     $sql = "DELETE FROM courses WHERE course_id = $id_to_delete";
 
 
+    if(mysqli_query($con, $sql2)){
+        //success
+        header('Location: index_admin.php');
+    }
+    {
+        echo 'query error: ' . mysqli_error($con);
+    }
+    
     if(mysqli_query($con, $sql)){
         //success
         header('Location: index_admin.php');
@@ -52,12 +63,15 @@ if (isset($_GET['course_name'])) {
     
 }
 
+
 $asd = $_GET["course_name"];
 
 
 
 
  
+// $sql_1    = "SELECT lesson_subject FROM lessons";
+// $result_lesson = mysqli_query($con, $sql_1);
 
 ?>
 
@@ -94,11 +108,12 @@ echo $_SESSION['login_admin'] . "!";
   <a class="sidebar-btns hide-event" href="add_course_admin.php">ADD COURSE</a>
   <a class="sidebar-btns hide-event" href="add_class.php">ADD SUBJECT</a>
   <form action="delete_course_admin.php" method="POST">
-        <input type="hidden" name="id_to_delete" value="<?php
-echo $course['course_id'];
-?>">
+        <input type="hidden" name="id_to_delete" value="<?php echo $course['course_id'];?>"> 
+
+       <input type="hidden" name="lesson_to_delete" value="<?php echo $course['course_name'];?>"> 
         <input class="delete-course-btn" type="submit" name="delete" value="Delete Course"> 
     </form>
+   
   
               <a
                 href="logout_admin.php"
@@ -111,7 +126,9 @@ echo $course['course_id'];
 </div>
 </div>
 <main class="main-content">
- 
+    <div class="courses">
+
+  
         <?php
 if ($course):
 ?>
@@ -140,13 +157,14 @@ if (mysqli_num_rows($result) > 0) {
         
         if (str_contains($row["pdf_location"], '.mp4')) {   
             
-            echo '<button class="accordion">' . $row["lesson_number"] . '</button>';
+            echo '<button class="accordion">' . $row["lesson_number"] .'</button>';
             echo '<div class="panel">';
-            echo '<video class="course-video" src="../images/' . $row["pdf_location"] . '" width="100%" height="300px" controls volume="1">';
+            echo '<video poster="imgs/video-poster.jpg" class="course-video" src="../images/' . $row["pdf_location"] . '" width="100%" height="300px" controls volume="1">';
             echo ' </video>';
             echo '<p>';
                 echo "Lesson title: " . $row["lesson_number"] . "<br>" . "File: " . $row["pdf_location"];
             echo '</p>';
+            echo '<p class="timer">Duration: <span class="video-duration"></span></p>';
             echo '<button class="play-btn">Play video</button>';
             // echo '<button class="collapse-btn">collapse</button>';
             echo '</div>';
@@ -156,7 +174,7 @@ if (mysqli_num_rows($result) > 0) {
         else{
         
             
-        echo '<button class="accordion">' . $row["lesson_number"] . "(Resources)".'</button>';
+        echo '<button class="accordion">' . $row["lesson_number"] . " - (Resources)".'</button>';
         echo '<div class="panel">';
         echo '<p>';
         echo "Lesson title: " . $row["lesson_number"] . "<br>" . "File: " . $row["pdf_location"];
@@ -173,14 +191,15 @@ if (mysqli_num_rows($result) > 0) {
     
   
 } else {
-    echo "No subjects were added to this course so far. Talk to an administrator for adding.";
+    echo '<div class="no-subjects">';
+     echo "No subjects were added to this course so far. Talk to an administrator for adding.";
+    echo "</div>";
 }
 
 mysqli_close($con);
 
 ?>
-
-
+  </div>
 
     
 
@@ -188,7 +207,7 @@ mysqli_close($con);
 
 
 </body>
-<script src="js/courseSideBar.js?v=dasdsadas"></script>
-<script src="js/accordion.js?v=ss0sssssss8sss0328b"></script>
+<script src="js/courseSideBar.js?v=dassdssssssassssdas"></script>
+<script src="js/accordion.js?v=ss0ssssssss8ssssssssssss0328b"></script>
 
 </html>
