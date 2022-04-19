@@ -207,7 +207,7 @@ mysqli_close($con);
 
 
 </body>
-<script src="js/courseSideBar.js?v=dassdssssssassssdas"></script>
-<script src="js/accordion.js?v=ss0ssssssss8ssssssssssss0328b"></script>
+<script src="js/courseSideBar.js?v=dassdssssssssassssssdas"></script>
+<script src="js/accordion.js?v=ss0sssssssss8ssssssssssssssss0328b"></script>
 
 </html>

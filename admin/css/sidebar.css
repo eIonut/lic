@@ -102,7 +102,7 @@ button.openbtn {
   left: 100%;
   top: -65px;
   position: relative;
-  z-index: 2;
+  z-index: 9999;
   outline: none;
   /* overflow-x: visible; */
   display: flex;
