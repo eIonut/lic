@@ -7,6 +7,7 @@ let deleteCourseBtn = document.querySelector('.delete-course-btn');
 var panelss = document.querySelectorAll(".panel");
 const videoDurationTimer = document.querySelectorAll('.video-duration');
 let coursesDiv = document.querySelector('.courses');
+let courseBtn = document.querySelector('.courseCloseBtn');
 
 let videoSrc = '';
 var i;
@@ -15,6 +16,18 @@ let ok = false;
 
 let videoDuration;
 
+courseBtn.addEventListener('click', function(){
+
+  for(let [i, video] of courseVideo.entries()){
+  
+    video.style.visibility = 'visible';
+    video.style.width = '100%';  
+    
+  }
+
+  coursesDiv.style.visibility = "hidden";
+  
+})
   
 coursesDiv.addEventListener('mouseenter', function(){
   for(let [i, video] of courseVideo.entries()){
@@ -59,7 +72,7 @@ for (i = 0; i < acc.length; i++) {
     if (panel.style.maxHeight) {
       panel.style.maxHeight = null;
     } else {
-      panel.style.maxHeight = panel.scrollHeight + "px";
+      panel.style.maxHeight = panel.scrollHeight  + "px";
     }
   });
 }});
@@ -69,6 +82,8 @@ let video_indexes = [];
  playBtn.forEach((item, index, buttons) => {
     item.addEventListener('click', event => {
       deleteCourseBtn.style.display = "none";
+      openBtn.classList.add('openbtnAdd');
+   
       video_indexes.push(index);
        
        
@@ -85,7 +100,7 @@ let video_indexes = [];
        courseVideo[video_indexes[video_indexes.length-2]].style.display = "none";
        }
 
-       sideBar.style.width = "0%";
+       sideBar.style.display= "none";
        sidebarHide.forEach(item  => {
         item.style.display = "none";
     
@@ -94,8 +109,8 @@ let video_indexes = [];
         courseVideo[video_indexes[video_indexes.length-1]].style.position = 'absolute';
         courseVideo[video_indexes[video_indexes.length-1]].style.left = '0px';
         courseVideo[video_indexes[video_indexes.length-1]].style.top = '0%';
-        courseVideo[video_indexes[video_indexes.length-1]].style.width = '75%';
-        courseVideo[video_indexes[video_indexes.length-1]].style.height = '100%';
+        courseVideo[video_indexes[video_indexes.length-1]].style.width = '70%';
+        courseVideo[video_indexes[video_indexes.length-1]].style.height = '70%';
         courseVideo[video_indexes[video_indexes.length-1]].style.display = "block";   
 
         // console.log(video_indexes[video_indexes.length-1]);

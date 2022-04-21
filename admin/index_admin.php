@@ -1,7 +1,7 @@
 
-    <link rel="stylesheet" href="css/indexPage.css?v=ess0s3rsssszss0c3d8b" />
-    <link rel="stylesheet" href="css/sidebar.css?v=e031dds0ssssssscZd8b" />
-    <link rel="stylesheet" href="css/commonStyles.css?v=ess03ssss1e80c32s8b" />
+    <link rel="stylesheet" href="css/indexPage.css?v=ess0s3rsssssssssssssssssszssss0c3d8b" />
+    <link rel="stylesheet" href="css/sidebar.css?v=e031dds0ssssssssssssssssssssssscZd8b" />
+    <link rel="stylesheet" href="css/commonStyles.css?v=esss03sssssssssssssssss1se80c32s8b" />
 
    
     <?php
@@ -68,13 +68,60 @@ function clearClasses()
       <body>
 
      <div class="all-content">
-      <main id="main-content">
+     
+<button class="openbtn"></button>
 
+<div id="mySidebar" class="sidebar">
+     
+        <div class="sidebar-content">
+        
+  
+  <div class="right-content-div">
+            <h1 class="hide-event">
+                <span class="welcome">Welcome back,</span>
+              
+              <span class="user-name-log">
+                  <br>
+              <?php
+echo $_SESSION['login_admin'];
+?>
+</span>
+           </h1>
+           <a href="javascript:void(0)" class="closebtn">adassd</a>
+            
+          </div>
+         
+
+          <div class="sidebar-top-section">
+          <a class="sidebar-links hide-event" href="#">About</a>
+  <a class="sidebar-links hide-event" href="index_admin.php">Courses</a>
+  <a class="sidebar-links hide-event" href="#">Contact</a>
+  </div>
+
+  <div class="add-content"> 
+    <a class="sidebar-btns hide-event" href="add_course_admin.php">ADD COURSE</a>
+    <a class="sidebar-btns hide-event" href="add_class.php">ADD SUBJECT</a>
+    
+  </div>
+
+  
+              <a
+                href="logout_admin.php"
+                id="logout-btn"
+                class="logout-btn hide-event"
+                >LOGOUT
+              </a>
+          
+</div>
+</div>
+
+
+      <main id="main-content">
+      
       <!-- FIRST SECTION -->
         <section id="Asd" class="welcome-section first-section">
           <h1>Learn everything at your own pace... with us!</h1>
-          <p>Take your pen and start learning right away, for <span class="us">FREE</span></p> 
-          <a class="btn-hover color-2" href="#course-section">BEGIN NOW</a>
+          <p>Take your pen and start learning right away, for <span class="us">FREE.</span></p> 
         </section>
         <!-- FIRST SECTION -->
 
@@ -120,48 +167,17 @@ function clearClasses()
         </main>
     
 
-      <div id="mySidebar" class="sidebar">
-      <button class="openbtn">&#9776;</button>
-        <div class="sidebar-content">
-     
-  <a href="javascript:void(0)" class="closebtn">&times;</a>
-  <div class="right-content-div">
-            <h1 class="hide-event">
-              Welcome back,
-              <span class="user-name-log">
-              <?php
-echo $_SESSION['login_admin'] . "!";
-?>
-</span>
-           </h1>
-            
-          </div>
-  <a class="sidebar-links hide-event" href="#">ABOUT</a>
-  <a class="sidebar-links hide-event" href="index_admin.php">COURSES</a>
-  <a class="sidebar-links hide-event" href="#">CONTACT</a>
-  <a class="sidebar-btns hide-event" href="add_course_admin.php">ADD COURSE</a>
-  <a class="sidebar-btns hide-event" href="add_class.php">ADD SUBJECT</a>
-  
-              <a
-                href="logout_admin.php"
-                id="logout-btn"
-                class="logout-btn sidebar-btns hide-event"
-                >LOGOUT
-              </a>
-          
-</div>
-</div>
-</div>
+      
 
 
 
 
         
 
-      
+        </div>
       </body>
-      <script src="js/sidebar.js"></script>
-      <script src="js/loadData.js?"></script>
+      <script src="js/sidebar.js?v=dassdsssssssssssassssssss"></script>
+      <script src="js/loadData.js?v=dsaddsadas"></script>
     
 
     </html>

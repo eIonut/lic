@@ -1,7 +1,17 @@
+:root {
+  --background: #305397;
+  --course-page-color: linear-gradient(84.57deg, #1B3D7D 0%, #4A6DB0 100%);
+  --course-section-color: #EAEEF5;
+  --black-color: #262626;
+
+}
+
+
+
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
-  background-color: #0d0f12;
-  color: white;
+  background: var(--course-section-color);
+  color: var(--black-color);
   cursor: pointer;
   padding: 24px;
   width: 100%;
@@ -9,9 +19,13 @@
   border: none;
   outline: none;
   transition: 0.4s;
-  border-bottom: 1px solid rgb(161, 160, 160);
-  font-size: 1.1em;
+  font-size: 16px;
+  padding-left: 0px;
+  padding-bottom: 0px;
+  border-top: 1px solid rgb(161, 160, 160);
+  font-weight: 700;
 }
+
 
 .accordion:nth-of-type(1){
   border-top: 1px solid rgb(161, 160, 160);
@@ -22,45 +36,46 @@
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.active, .accordion:hover {
+/* .active, .accordion:hover {
   filter: invert(100%);
-}
+} */
 
 /* Style the accordion panel. Note: hidden by default */
 .panel {
-
-  background: transparent;
+ 
+  /* background: transparent; */
   max-height: 0;
   width: 100%;
-  
   transition: max-height 0.2s ease-out;
-  overflow: auto;
+  overflow: clip;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   word-break: break-word;
-  padding: 0px 24px;
   font-size: 14px;
-  color: white;
-  height: fit-content;
+  color: var(--black-color);
+  margin-bottom: 24px;
+ 
+
 
 }
 .accordion:after {
 
   content: url('../imgs/expand.png'); /* Unicode character for "plus" sign (+) */
-  filter: invert(100%);
-  font-size: 13px;
- 
   float: right;
   margin-left: 5px;
 
 }
 
-.active:after {
- content: url('../imgs/collapse.png'); /* Unicode character for "minus" sign (-) */
+.active{
 
+  transition: all 3s;
+}
+
+.active:after {
  
+ content: url('../imgs/collapse.png'); /* Unicode character for "minus" sign (-) */
 }
 
 .panel a{

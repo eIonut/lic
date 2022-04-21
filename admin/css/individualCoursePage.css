@@ -1,5 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap');
 
 
+
+:root {
+    --background: #305397;
+    --course-page-color: linear-gradient(84.57deg, #1B3D7D 0%, #4A6DB0 100%);
+    --course-section-color: #EAEEF5;
+    --black-color: #262626;
+
+  }
+
+  /* background: linear-gradient(84.57deg, #1B3D7D 0%, #4A6DB0 100%); Culoare secundara pagina curs
+ */
+  
 body {
     animation: fadeInAnimation ease 3s;
     animation-iteration-count: 1;
@@ -25,8 +38,7 @@ html{
 }
 
 body{
-    font-family: 'Noto Sans', sans-serif;
-    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .courses::-webkit-scrollbar {
@@ -76,27 +88,39 @@ main.main-content{
 
 .play-btn{
 
-    width: fit-content;
-    padding: 10px 30px;  
-    border: 1px solid black;
-    text-transform: uppercase;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    color: #e43603;
-    background: transparent;
-    border: 1px solid white;
-    font-weight: bold;
-    font-size: 1.2em;
-    border-radius: 0px;
+    display: flex;
+flex-direction: row;
+align-items: center;
+padding: 12px 24px;
+
+position: static;
+width: 100%;
+height: 45px;
+left: 0px;
+top: 165px;
+
+background: linear-gradient(84.57deg, #1B3D7D 0%, #4A6DB0 100%);
+border-radius: 5px;
+color: white;
+outline: none;
+border: none;
+
+/* Inside auto layout */
+
+flex: none;
+order: 3;
+align-self: stretch;
+flex-grow: 0;
+margin: 12px 0px;
 }
 
-.play-btn:hover{
+/* .play-btn:hover{
     outline: none;
     color: black;
     background: white;
     border: 1px solid white;
     transition: all 0.5s;
-}
+} */
 
 div.panel p{
     margin: 0;
@@ -105,47 +129,58 @@ div.panel p{
 }
 
 main.main-content h4{
-    color: white;
-    padding: 10px 0px;
-    text-align: center;
-    color: #e43603;
-    font-weight: bold;
+    font-family: 'Montserrat';
+font-style: normal;
+font-weight: 800;
+font-size: 20px;
+line-height: 150%;
+    margin: 24px;
+    margin-left: 0px;
+    margin-top: 0px;
+    color: var(--background);
+    grid-column: 1/3;
    
 }
 
-.delete-course-btn{
-    border: 1px solid lightgray;
- 
-    width: 80%;
-    font-size: 18px;
-    text-transform: uppercase;
-    margin-left: auto;
-    margin-right: auto;
-    background: transparent;
-    color: white;
-    font-weight: inherit;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-  }
-  
-.delete-course-btn:hover{
-    color: black;
-    background: white;
-    border: 1px solid transparent;
-  
+
+
+
+
+  input.delete-course-btn{
+      background: transparent;
+      color: white;
+      border: none;
+      text-align: left;
+      margin: 0;
+      opacity: 0.75;
+
   }
 
-  .sidebar form{
-      font-family: inherit;
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-  }
+  input.delete-course-btn:hover{
+    opacity: 1;
+
+}
+
+   .sidebar form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0!important;
+    padding: 24px 0px;    
+    text-align: left;
+} 
+
+.sidebar form::after{
+    content: '';
+  border-bottom: 1px solid white;
+  padding-top: 24px;
+  opacity: 0.25;
+  width: 100%;
+  display: block;
+}
+
 
 div.no-subjects{
     display: flex;
@@ -156,20 +191,57 @@ div.no-subjects{
 }
 
 .courses{
-    width: 25%;
-    height: 100%;
-    margin-left: 75%;
-    background-color: #0d0f12;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-    max-height: fit-content;
+    width: 30%;
+    height: fit-content;
+    margin-left: 70%;
+    background: var(--course-section-color);
     overflow: auto;
     z-index: 9999;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center; */
+    font-weight: 400;
+    font-size: 1em;
+    padding: 24px;
+    padding-bottom: 0;
+    border-radius: 5px;
 }
 
 .video-duration{
-    color: white;
+    color: #262626;
+    opacity: 0.5;
+    font-weight: 600;
+    font-size: 1em;
 }
+
+.bolded{
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.course-top-content{
+    width: 100%;
+ position: relative;
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ grid-row-start: 1;
+
+
+
+}
+
+.courseCloseBtn{
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    content: url('../imgs/collapse-right.png');
+      padding: 8px;
+      width: 28px;
+    height: 28px;
+    grid-column: 3;
+    
+    justify-self: end;
+    align-self: center;
+    margin-bottom: 14px;
+}
+

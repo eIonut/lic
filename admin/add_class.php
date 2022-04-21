@@ -43,6 +43,8 @@ $file_loc = $_FILES['file']['tmp_name'];
         // create sql
         $sql = "INSERT INTO lessons(lesson_subject, lesson_number, pdf_location) VALUES ('$lesson_subject', '$lesson_number', '$final_file')";
     
+   
+          try{
         // save to db and check
         if(mysqli_query($con, $sql)){
             // success
@@ -50,6 +52,10 @@ $file_loc = $_FILES['file']['tmp_name'];
         } else {
             echo 'query error: '. mysqli_error($con);
         }
+    }catch(Exception $e) {
+			
+        echo 'Too many characters';
+      }
     
         }
         

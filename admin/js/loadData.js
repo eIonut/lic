@@ -36,7 +36,7 @@ function load_data(query = '')
 					html += '<div class="card-body">';
 					html += '<h5 class="card-title">' + response[count].course_name +' </h5>';
 					html += '<p class="card-text">' + response[count].course_description + '</p>';
-					html += '<a class="btn-hover color-2" href="delete_course_admin.php?course_name='+response[count].course_name+'">More info</a>';
+					html += '<a class="btn-hover color-2" href="delete_course_admin.php?course_name='+response[count].course_name+'">Start course</a>';
 			
                		html += '</div>';
 					html += '</div>';

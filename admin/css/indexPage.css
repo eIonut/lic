@@ -5,10 +5,14 @@
 
  html {
   scroll-behavior: smooth;
+   font-family: 'Montserrat';
+  font-style: normal;
 } 
 
 body{
   background-color: #0d0f12;
+  font-family: 'Montserrat';
+  font-style: normal;
   /* cursor: url('../imgs/cursor.png'), auto; */
   
 }
@@ -18,8 +22,7 @@ div.all-content{
   margin: 0;
   padding:0;
   display: grid;
-  grid-template-columns: 10% 45% 45%;
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: 15% 42.5% 42.5%;
   width: 100%;
   height: 100%;  
  
@@ -27,7 +30,8 @@ div.all-content{
 }
 
 .us{
-  color: #F05A28;
+  text-transform: uppercase;
+  font-weight: 900;
 }
 
 .card-body{
@@ -36,7 +40,7 @@ div.all-content{
   justify-content: center;
   align-items: center;
 
-  height: 200px;
+  height: 150px;
   background: #0d0f12;
   color: white;
   /* border-bottom-left-radius: 5px;
@@ -45,7 +49,44 @@ div.all-content{
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   word-break: break-word;
-  
+
+}
+
+h5.card-title{
+  font-family: 'Montserrat';
+  font-style: normal;
+ width: 100%;
+ font-size: 14px;
+ font-weight: 600;
+ color: #262626;
+ text-align: left;
+ padding: 0px 24px;
+}
+
+div.card-body{
+  font-family: 'Montserrat';
+  font-style: normal;
+  height: fit-content;
+  padding-top: 24px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  background-color: white;
+  color: black;
+  height: 180px;
+}
+
+p.card-text{
+  font-family: 'Montserrat';
+  font-style: normal;
+  width: 100%;
+  padding: 0px 24px;
+  text-align: left;
+  font-size: 12px;
+line-height: 150%;
+color: #262626;
+
+opacity: 0.5;
 }
 
 .card-body:hover{
@@ -57,18 +98,24 @@ div.all-content{
   grid-row: 1;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr 0.45fr 0.3fr auto;
-  background-color: #0d0f12;
+  grid-template-rows: repeat(3, auto);
+  background-color: white;
 }
 
 input#search{
-  width:60%;
+ 
   grid-column: 1/4;
-  margin: auto;
-  margin-top: 50px;
   padding: 10px 10px;
   text-align: start;
   font-weight: bold;
+  margin: 24px;
+  padding: 16px 24px;
+  border: 1px solid rgba(38, 38, 38, 0.1);
+box-sizing: border-box;
+border-radius: 5px;
+font-family: 'Montserrat';
+font-style: normal;
+  
 }
 
 input#search:focus{
@@ -77,43 +124,53 @@ input#search:focus{
 }
 
 
+#mySidebar{
+  grid-column: 1;
+}
+
 section.welcome-section.first-section{
   grid-column: 1/4;
-  grid-row: 1/3 ;
-  height: 1000px;
+  font-family: 'Montserrat';
+  font-style: normal;
   display: flex;  
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  background-image: url('../imgs/background.jpg');
+  align-items: flex-start;
+  background: linear-gradient(270deg, rgba(48, 83, 151, 0) 0%, #305397 100%), url('../imgs/background2.jpg');
   background-size: cover;
-  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 90% 215%;
+  height: 200px;
   color: white;
-  padding-left: 50px;
+  padding-left: 24px;
+  padding-top: 24px;
 }
 
+.welcome-section h1{
+  text-transform: uppercase;
+  font-weight: 900;
+font-size: 32px;
+}
 
 section#course-section {
   box-sizing: border-box;
   grid-column: 1/4;
   grid-row: 4;
-  width: 80%;
+  width: 100%;
   height: fit-content;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(auto, 1fr);
-  grid-gap: 35px 35px;
-  margin: auto;
-  padding-bottom: 50px;
-  padding-top: 50px;
-  
+  grid-gap: 24px;
+  padding-bottom: 24px;
+  padding: 4px;
 }
 
 #wrapper{
   height: 100%;
   grid-column: 1/4;
   width: 100%;
-  background-color: #0d0f12;
+  background-color: white;
   margin: auto;
   text-align: center;
 }
@@ -131,28 +188,26 @@ section#course-section {
 div.card {
   /* border: 1px solid rgb(88, 88, 88); */
 
-  transition: box-shadow .3s;
+  transition: box-shadow .2s;
   outline: none;
-  width: 100%;
-  border: 1px solid white;
-  max-height: 500px;
+  width: 90%;
+
+  max-height: 600px;
   margin: auto;
   text-align: center;
-  box-sizing: content-box;
-  box-shadow: 0 0 11px rgba(255, 255, 255, 0.6);  
+  box-sizing: border-box;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
+
 }
 
 div.card:hover{
-  box-shadow: none;
-}
-
-
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;}
 .card-img-top {
   display: flex;
   justify-content: center;
   align-items: center;
-  object-fit: fill;
+  background-size: cover;
   height: 200px;
   
   width: 100%; 
@@ -162,47 +217,6 @@ div.card:hover{
   /* border-bottom: 1px solid gray; */
 }
 
-/* BUtoane */
-.btn-hover {
-  width: 200px;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 16px;
-  font-weight: 600;
-  color: #fff;
-  cursor: pointer;
-  /* padding: 0;
-  height: 80px!important; */
-  padding: 10px 10px!important;
-  text-align:center;
-  border: none;
-  background-size: 300% 100%;
-  border-radius: 5px;
-  -moz-transition: all .4s ease-in-out;
-  -o-transition: all .4s ease-in-out;
-  -webkit-transition: all .4s ease-in-out;
-  transition: all .4s ease-in-out;
-}
-
-/* a.btn-primary{
-  border:none;  
-} */
-
-.btn-hover:hover {
-  color: white;
-  text-decoration: none ;
-  background-position: 100% 0;
-  -moz-transition: all .4s ease-in-out;
-  -o-transition: all .4s ease-in-out;
-  -webkit-transition: all .4s ease-in-out;
-  transition: all .4s ease-in-out;
-}
-
-.btn-hover:focus {
-  outline: none;
-}
 
 .no-criteria-p{
   margin: auto;
@@ -212,10 +226,31 @@ div.card:hover{
   font-size: 24px;
 }
 
-.btn-hover.color-2 {
-  padding: 0;
-  background-image: linear-gradient(to right, #f5ce62, #e43603, #fa7199, #e85a19);
-  box-shadow: 0 4px 15px 0 rgba(229, 66, 10, 0.75);
+a.btn-hover.color-2 {
+  width: 100%;
+  background: linear-gradient(84.57deg, #1B3D7D 0%, #4A6DB0 100%);
+  border-radius: 0px 0px 5px 5px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  position: relative;
+  top: 20%;
+ 
+  text-align: left;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 12px 24px;
+  color: white;
+  font-weight: 600;
+font-size: 14px;
+outline: none;
+
+  
+}
+
+a.btn-hover.color-2:hover{
+  outline: none;
+  border: none;
 }
 
 /* butoane */
@@ -247,6 +282,7 @@ div.add-content-div{
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  padding: 24px;
 }
 
 /* .search-input{
