@@ -1,5 +1,6 @@
-var acc = document.getElementsByClassName("accordion");
+var acc = document.querySelectorAll(".accordion");
 var panels = document.querySelector(".panel");
+
 let courseVideo = document.querySelectorAll(".course-video");
 let courseVideoSource = document.querySelectorAll(".course-video-source");
 let playBtn = document.querySelectorAll(".play-btn");
@@ -8,6 +9,7 @@ var panelss = document.querySelectorAll(".panel");
 const videoDurationTimer = document.querySelectorAll('.video-duration');
 let coursesDiv = document.querySelector('.courses');
 let courseBtn = document.querySelector('.courseCloseBtn');
+let btnOpenCourseContent = document.querySelector('.close-course-btn');
 
 let videoSrc = '';
 var i;
@@ -17,17 +19,37 @@ let ok = false;
 let videoDuration;
 
 courseBtn.addEventListener('click', function(){
-
-  for(let [i, video] of courseVideo.entries()){
+  // btnOpenCourseContent.classList.add('courseOpenBtnAdd');
+  btnOpenCourseContent.style.display = "block";
+  btnOpenCourseContent.style.visibility = 'visible';
+  btnOpenCourseContent.classList.toggle("showCoursesAgain");
   
+  for(let [i, video] of courseVideo.entries()){
     video.style.visibility = 'visible';
     video.style.width = '100%';  
-    
   }
-
-  coursesDiv.style.visibility = "hidden";
   
-})
+  coursesDiv.style.visibility = "hidden";
+    console.log(acc)
+  acc.forEach(function(ac){
+    ac.style.transition = "all 0s";
+  })  
+});
+
+btnOpenCourseContent.addEventListener('click', function(){
+  btnOpenCourseContent.classList.toggle("showCoursesAgain");
+  btnOpenCourseContent.style.visibility = 'hidden';
+  for(let [i, video] of courseVideo.entries()){
+    video.style.width = '70%';  
+  }
+  
+  coursesDiv.style.visibility = "visible";
+    console.log(acc)
+  acc.forEach(function(ac){
+    ac.style.transition = "all 0.3s";
+  })  
+});
+
   
 coursesDiv.addEventListener('mouseenter', function(){
   for(let [i, video] of courseVideo.entries()){
@@ -56,7 +78,7 @@ function checkPdf(){
 
 
 window.addEventListener('load', function(){
- 
+  btnOpenCourseContent.style.visibility = "hidden";
   checkPdf();
 
   

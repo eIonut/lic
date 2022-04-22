@@ -56,7 +56,7 @@ h5.card-title{
   font-family: 'Montserrat';
   font-style: normal;
  width: 100%;
- font-size: 14px;
+ font-size: 16px;
  font-weight: 600;
  color: #262626;
  text-align: left;
@@ -73,7 +73,7 @@ div.card-body{
   padding-right: 0px;
   background-color: white;
   color: black;
-  height: 180px;
+  height: 220px;
 }
 
 p.card-text{
@@ -82,7 +82,7 @@ p.card-text{
   width: 100%;
   padding: 0px 24px;
   text-align: left;
-  font-size: 12px;
+  font-size: 14px;
 line-height: 150%;
 color: #262626;
 
@@ -98,29 +98,40 @@ opacity: 0.5;
   grid-row: 1;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, auto);
+  grid-template-rows: repeat(auto, 1fr);
   background-color: white;
 }
 
 input#search{
- 
-  grid-column: 1/4;
-  padding: 10px 10px;
+
+  text-align: center;
+  height: 60px;
   text-align: start;
   font-weight: bold;
-  margin: 24px;
+  width: 100%;
+  /* margin: 24px;
+  margin-top: 0px;
+  margin-bottom: 0px; */
   padding: 16px 24px;
   border: 1px solid rgba(38, 38, 38, 0.1);
 box-sizing: border-box;
 border-radius: 5px;
 font-family: 'Montserrat';
 font-style: normal;
+margin-left: 24px;
+margin-right: 24px;
+
+
+
+
   
 }
 
 input#search:focus{
   outline: none;
   font-weight: bold;
+  max-height: 200px;
+
 }
 
 
@@ -140,7 +151,7 @@ section.welcome-section.first-section{
   background-size: cover;
   background-attachment: fixed;
   background-position: 90% 215%;
-  height: 200px;
+  height: 100%;
   color: white;
   padding-left: 24px;
   padding-top: 24px;
@@ -152,27 +163,35 @@ section.welcome-section.first-section{
 font-size: 32px;
 }
 
+
+
 section#course-section {
   box-sizing: border-box;
   grid-column: 1/4;
   grid-row: 4;
   width: 100%;
-  height: fit-content;
+  height: 100%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(auto, 1fr);
-  grid-gap: 24px;
-  padding-bottom: 24px;
-  padding: 4px;
+  grid-gap: 36px;
+  padding: 24px;
+  padding-top: 0;
+
+  /* padding-right: 24px; */
+  /* margin-right: 24px; */
+ 
+  
 }
 
 #wrapper{
-  height: 100%;
+  height: fit-content;
   grid-column: 1/4;
   width: 100%;
   background-color: white;
   margin: auto;
   text-align: center;
+  margin-top: 24px;
 }
 
 
@@ -190,19 +209,20 @@ div.card {
 
   transition: box-shadow .2s;
   outline: none;
-  width: 90%;
-
+  width: 100%;
   max-height: 600px;
   margin: auto;
   text-align: center;
   box-sizing: border-box;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
+  /* margin: 24px; */
 
 }
 
 div.card:hover{
   box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;}
+
 .card-img-top {
   display: flex;
   justify-content: center;
@@ -222,8 +242,9 @@ div.card:hover{
   margin: auto;
   width: 100%;
   grid-column: 1/6;
-  color: white;
+  color: black;
   font-size: 24px;
+  
 }
 
 a.btn-hover.color-2 {
@@ -233,7 +254,7 @@ a.btn-hover.color-2 {
   font-family: 'Montserrat';
   font-style: normal;
   position: relative;
-  top: 20%;
+  top: 22%;
  
   text-align: left;
   display: flex;
@@ -242,8 +263,9 @@ a.btn-hover.color-2 {
   padding: 12px 24px;
   color: white;
   font-weight: 600;
-font-size: 14px;
+font-size: 16px;
 outline: none;
+
 
   
 }
@@ -276,14 +298,33 @@ div.add-content-div{
  
 }
 
-#search-clear-form{
+.search-form{
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+  grid-column: 1/4;
+  /* margin-bottom: 48px;
+  margin-top: 48px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 48px;
+  margin-left: 24px;
+  margin-right: 24px;   */
+}
+
+form.search-form{
+  margin-top: 24px;
+  box-sizing: content-box;
+}
+/* #search-clear-form{
   width: 80%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 24px;
-}
+} */
 
 /* .search-input{
   width: 84%;
@@ -329,7 +370,7 @@ a.start-learn-btn:hover {
 }
 
 .welcome-section a, .welcome-section p{
-  padding: 20px 10px;
+  padding: 20px 0px;
   font-size: 1.4rem;
 }
 

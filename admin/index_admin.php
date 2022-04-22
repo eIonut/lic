@@ -1,7 +1,8 @@
 
-    <link rel="stylesheet" href="css/indexPage.css?v=ess0s3rsssssssssssssssssszssss0c3d8b" />
-    <link rel="stylesheet" href="css/sidebar.css?v=e031dds0ssssssssssssssssssssssscZd8b" />
-    <link rel="stylesheet" href="css/commonStyles.css?v=esss03sssssssssssssssss1se80c32s8b" />
+    <link rel="stylesheet" href="css/indexPage.css?v=ess0ssssssssssssssasdsssssssssssszssss0c3d8b" />
+    <link rel="stylesheet" href="css/sidebar.css?v=e031dddsdasssssssssssssssssssssssssssscZd8b" />
+    <link rel="stylesheet" href="css/commonStyles.css?v=esssdasssssssssssssssssssssssssss1se80c32s8b" />
+    <link rel="stylesheet" href="css/indexPageQueries.css?v=esssdasssssadsssssssssssssssssssssss1se80c32s8b" />
 
    
     <?php
@@ -149,8 +150,9 @@ echo $_SESSION['login_admin'];
            <!-- SECOND SECTION -->
 <!--  -->
 
-
+<form class="search-form" action="">
 <input type="text" name="search" id="search" placeholder="Search courses..." onkeyup="load_data(this.value);" />
+</form>
 
 <div id="wrapper">
 
@@ -176,8 +178,8 @@ echo $_SESSION['login_admin'];
 
         </div>
       </body>
-      <script src="js/sidebar.js?v=dassdsssssssssssassssssss"></script>
-      <script src="js/loadData.js?v=dsaddsadas"></script>
+      <script src="js/sidebar.js?v=dassdssssssssdadassdssadasssssssssssassssssss"></script>
+      <script src="js/loadData.js?v=dsadssdasdadssssdadssasdsassadas"></script>
     
 
     </html>

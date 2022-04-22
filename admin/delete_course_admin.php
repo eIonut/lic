@@ -7,10 +7,10 @@ session_regenerate_id(TRUE); //THIS DOES THE TRICK! Calling it after session_sta
 include 'includes.php';
 ?>
 
-<link rel="stylesheet" href="css/sidebar.css?v=e031ddses0sssssssssssssssssssssssssssZsd8b" />
-<link rel="stylesheet" href="css/commonStyles.css?v=e031ses8ssssssssssssssssss328b" />
-<link rel="stylesheet" href="css/individualCoursePage.css?v=s0ssssssssssssssssssssssssss0sc328b" />
-<link rel="stylesheet" href="css/accordion.css?v=ss03ssss03ssssssssssssssssssssss8b" />
+<link rel="stylesheet" href="css/sidebar.css?v=e031ddses0sssssssssssssssssssssssssssssssssssssssssssssZsd8b" />
+<link rel="stylesheet" href="css/commonStyles.css?v=e031ses8sssssssssssssssssssssssssssssssssss328b" />
+<link rel="stylesheet" href="css/individualCoursePage.css?v=s0sssssssssssssssssssssssss0sc328b" />
+<link rel="stylesheet" href="css/accordion.css?v=ss03ssss03sssssssssssssssssssssssssssssssssss8b" />
 
     
 <?php
@@ -85,13 +85,13 @@ $asd = $_GET["course_name"];
 </head>
 <body>
 
-
+  
 <button class="openbtn"></button>
 
 <div id="mySidebar" class="sidebar">
-     
+
         <div class="sidebar-content">
-        
+     
   
   <div class="right-content-div">
             <h1 class="hide-event">
@@ -139,17 +139,21 @@ echo $_SESSION['login_admin'];
 </div>
 </div>
 <main class="main-content">
+
     <div class="courses">
+    
     
   
         <?php
 if ($course):
 ?>
+
 <div class="course-top-content">
            <h4><?php
     echo htmlspecialchars($course['course_name']);
 ?></h4>
 <a href="javascript:void(0)" class="courseCloseBtn"></a>
+<a href="javascript:void(0)" class="close-course-btn"></a>
 </div>
             <?php
 else:
@@ -231,7 +235,7 @@ mysqli_close($con);
 
 
 </body>
-<script src="js/courseSideBar.js?v=dsassdsssssssssssssssssssssdas"></script>
-<script src="js/accordion.js?v=ss0ssssssssssssssssssssssssssssssssssssss0328b"></script>
+<script src="js/courseSideBar.js?v=dsassdssssssssssssdssssassssssssssssssdas"></script>
+<script src="js/accordion.js?v=ss0sssssssssssssssssssssssssdassssssssssssssssssssssssss0328b"></script>
 
 </html>

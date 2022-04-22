@@ -22,13 +22,14 @@
   font-size: 16px;
   padding-left: 0px;
   padding-bottom: 0px;
-  border-top: 1px solid rgb(161, 160, 160);
+  border-top: 1px solid rgba(48, 83, 151, 0.25);
+  border-radius: 2px;
   font-weight: 700;
 }
 
 
 .accordion:nth-of-type(1){
-  border-top: 1px solid rgb(161, 160, 160);
+  border-top: 1px solid rgba(48, 83, 151, 0.25);
 }
 
 .accordion:focus{
