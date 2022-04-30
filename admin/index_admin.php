@@ -1,8 +1,8 @@
 
-    <link rel="stylesheet" href="css/indexPage.css?v=ess0ssssssssssssssasdsssssssssssszssss0c3d8b" />
-    <link rel="stylesheet" href="css/sidebar.css?v=e031dddsdasssssssssssssssssssssssssssscZd8b" />
-    <link rel="stylesheet" href="css/commonStyles.css?v=esssdasssssssssssssssssssssssssss1se80c32s8b" />
-    <link rel="stylesheet" href="css/indexPageQueries.css?v=esssdasssssadsssssssssssssssssssssss1se80c32s8b" />
+    <link rel="stylesheet" href="css/indexPage.css?v=ess0sssssssssssssssssssassdssssssssssssszssss0c3d8b" />
+    <link rel="stylesheet" href="css/sidebar.css?v=e031dddsdsasssssssssssssssssssssssssssssssssscZd8b" />
+    <link rel="stylesheet" href="css/commonStyles.css?v=esssdasssssssssssssssssssswssssssssssssss1se80c32s8b" />
+    <link rel="stylesheet" href="css/indexPageQueries.css?v=essssdasssssssssadsssssssssssssssssssssssss1se80c32s8b" />
 
    
     <?php

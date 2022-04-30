@@ -1,117 +1,106 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap');
-
-
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap");
 
 :root {
-    --background: #305397;
-    --course-page-color: linear-gradient(84.57deg, #1B3D7D 0%, #4A6DB0 100%);
-    --course-section-color: #EAEEF5;
-    --black-color: #262626;
+  --background: #305397;
+  --course-page-color: linear-gradient(84.57deg, #1b3d7d 0%, #4a6db0 100%);
+  --course-section-color: #eaeef5;
+  --black-color: #262626;
+}
 
-  }
-
-  /* background: linear-gradient(84.57deg, #1B3D7D 0%, #4A6DB0 100%); Culoare secundara pagina curs
+/* background: linear-gradient(84.57deg, #1B3D7D 0%, #4A6DB0 100%); Culoare secundara pagina curs
  */
-  
+
 body {
-    animation: fadeInAnimation ease 3s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 @keyframes fadeInAnimation {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
-*{
-    margin: 0;
-    padding: 0;
-}
-
-html{
-    width: 100vw;
-    height: 100vh;
-    
+* {
+  margin: 0;
+  padding: 0;
 }
 
-body{
-    font-family: 'Montserrat', sans-serif;
+html {
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
 }
 
 .courses::-webkit-scrollbar {
-    width: 6px;               /* width of the entire scrollbar */
-  }
+  width: 6px; /* width of the entire scrollbar */
+}
 
-  
-  
-  .courses::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-   
-      background-color: #F5F5F5;
-  }
-  
-  .courses::-webkit-scrollbar-thumb {
-    
-    border-radius: 2px;
-      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-      background-color: #111;
-  }
+.courses::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 
-  .courses::-webkit-scrollbar-thumb:hover {
-      background-color: rgb(54, 54, 54);
-      transition: background-color 0.4s;
-  }
+  background-color: #f5f5f5;
+}
 
+.courses::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #111;
+}
 
+.courses::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(54, 54, 54);
+  transition: background-color 0.4s;
+}
 
-main.main-content{
-
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    /* display: flex;
+main.main-content {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  /* display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-left: auto; */
-  
-    /* max-height: fit-content; */
+
+  /* max-height: fit-content; */
 }
 
-.course-video{
-    padding: 0;
-    margin: 0;
+.course-video {
+  padding: 0;
+  margin: 0;
 }
 
-.play-btn{
+.play-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px 24px;
 
-    display: flex;
-flex-direction: row;
-align-items: center;
-padding: 12px 24px;
+  position: static;
+  width: 100%;
+  height: 45px;
+  left: 0px;
+  top: 165px;
 
-position: static;
-width: 100%;
-height: 45px;
-left: 0px;
-top: 165px;
+  background: linear-gradient(84.57deg, #1b3d7d 0%, #4a6db0 100%);
+  border-radius: 5px;
+  color: white;
+  outline: none;
+  border: none;
 
-background: linear-gradient(84.57deg, #1B3D7D 0%, #4A6DB0 100%);
-border-radius: 5px;
-color: white;
-outline: none;
-border: none;
+  /* Inside auto layout */
 
-/* Inside auto layout */
-
-flex: none;
-order: 3;
-align-self: stretch;
-flex-grow: 0;
-margin: 12px 0px;
+  flex: none;
+  order: 3;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 12px 0px;
 }
 
 /* .play-btn:hover{
@@ -122,58 +111,51 @@ margin: 12px 0px;
     transition: all 0.5s;
 } */
 
-div.panel p{
-    margin: 0;
-    padding: 0;
-    padding-top: 10px;
+div.panel p {
+  margin: 0;
+  padding: 0;
+  padding-top: 10px;
 }
 
-main.main-content h4{
-    font-family: 'Montserrat';
-font-style: normal;
-font-weight: 800;
-font-size: 20px;
-line-height: 150%;
-    grid-row: 1;
-  
-    color: var(--background);
-    grid-column: 1/3;
-    margin-top: 24px;
-   
+main.main-content h4 {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 150%;
+  grid-row: 1;
+
+  color: var(--background);
+  grid-column: 1/3;
+  margin-top: 24px;
 }
 
-
-
-
-
-  input.delete-course-btn{
-      background: transparent;
-      color: white;
-      border: none;
-      text-align: left;
-      margin: 0;
-      opacity: 0.75;
-
-  }
-
-  input.delete-course-btn:hover{
-    opacity: 1;
-
+input.delete-course-btn {
+  background: transparent;
+  color: white;
+  border: none;
+  text-align: left;
+  margin: 0;
+  opacity: 0.75;
 }
 
-   .sidebar form{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin: 0!important;
-    padding: 24px 0px;    
-    text-align: left;
-} 
+input.delete-course-btn:hover {
+  opacity: 1;
+}
 
-.sidebar form::after{
-    content: '';
+.sidebar form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0 !important;
+  padding: 24px 0px;
+  text-align: left;
+}
+
+.sidebar form::after {
+  content: "";
   border-bottom: 1px solid white;
   padding-top: 24px;
   opacity: 0.25;
@@ -181,103 +163,98 @@ line-height: 150%;
   display: block;
 }
 
+div.no-subjects {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-div.no-subjects{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-   color: #e43603;
-    text-align: center;
+  text-align: center;
 }
 
-.courses{
-    width: 30%;
-    height: fit-content;
-    
-    margin-left: 70%;
-    background: var(--course-section-color);
-    overflow: auto;
-    z-index: 9999;
-    font-weight: 400;
-    font-size: 1em;
-    padding: 24px;
-    padding-bottom: 0;
-   
+.courses {
+  width: 30%;
+  height: fit-content;
+
+  margin-left: 70%;
+  background: var(--course-section-color);
+  overflow: auto;
+  z-index: 9999;
+  font-weight: 400;
+  font-size: 1em;
+  padding: 24px;
+  padding-bottom: 0;
 }
 
-.video-duration{
-    color: #262626;
-    opacity: 0.5;
-    font-weight: 600;
-    font-size: 1em;
+.video-duration {
+  color: #262626;
+  opacity: 0.5;
+  font-weight: 600;
+  font-size: 1em;
 }
 
-.bolded{
-    font-weight: bold;
-    font-size: 1.1em;
+.bolded {
+  font-weight: bold;
+  font-size: 1.1em;
 }
 
-.course-top-content{
-    width: 100%;
- position: relative;
- display: grid;
- grid-template-columns: repeat(3, 1fr);
+.course-top-content {
+  width: 100%;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
-.courseCloseBtn{
-    background: #FFFFFF;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 100px;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    content: url('../imgs/collapse-right.png');
-      padding: 8px;
-      width: 28px;
-    height: 28px;
-    grid-column: 3;
-    margin-right: 24px;
-    justify-self: end;
-    margin-top: 24px;
-    align-self: center;
-    
-}
-
-
-  a.close-course-btn{
-    background: #FFFFFF;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 100px;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    content: url('../imgs/collapse-left.png');
-      padding: 8px;
-      width: 28px;
-    height: 28px;
-    grid-column: 3;
-    
-    justify-self: end;
-    align-self: center;
-    margin-bottom: 14px;
-  }
-
-  .openbtn{
-    display: none;
-  }
-  
-  
-  .openbtnAdd{
-    position: absolute;
-    background: #FFFFFF;
+.courseCloseBtn {
+  background: #ffffff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   border-radius: 100px;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-    content: url('../imgs/collapse-right.png');
-    padding: 8px;
-    width: 28px;
+  content: url("../imgs/collapse-right.png");
+  padding: 8px;
+  width: 28px;
+  height: 28px;
+  grid-column: 3;
+  margin-right: 24px;
+  justify-self: end;
+  margin-top: 24px;
+  align-self: center;
+}
+
+a.close-course-btn {
+  background: #ffffff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  content: url("../imgs/collapse-left.png");
+  padding: 8px;
+  width: 28px;
+  height: 28px;
+  grid-column: 3;
+
+  justify-self: end;
+  align-self: center;
+  margin-bottom: 14px;
+}
+
+.openbtn {
+  display: none;
+}
+
+.openbtnAdd {
+  position: absolute;
+  background: #ffffff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  content: url("../imgs/collapse-right.png");
+  padding: 8px;
+  width: 28px;
   height: 28px;
   margin: auto;
   border: none;
@@ -285,44 +262,49 @@ div.no-subjects{
   z-index: 9999;
   top: 32px;
   left: 24px;
-  
-  
-  }
+}
 
+.btnAddCourse {
+  position: absolute;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  content: url("../imgs/collapse-left.png");
+  padding: 8px;
+  width: 28px;
+  height: 28px;
+  grid-column: 3;
+  justify-self: end;
+  align-self: center;
+  margin-bottom: 14px;
+  outline: none;
+  border: 0;
+}
 
-  .btnAddCourse{
-      position: absolute;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 100px;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    content: url('../imgs/collapse-left.png');
-    padding: 8px;
-    width: 28px;
-    height: 28px;
-    grid-column: 3;
-    justify-self: end;
-    align-self: center;
-    margin-bottom: 14px;
-    outline: none;
-    border: 0;
-  }
-  
-  .openbtn{
-    outline: none;
-  }
+.openbtn {
+  outline: none;
+}
 
-  .displayBtn{
-      display: block;
-  }
+.displayBtn {
+  display: block;
+}
 
-  .showCoursesAgain{
-     
-      position: absolute;
-      top: 7px;
-      right: 0px;
-      z-index: 9999;
-  }
+.showCoursesAgain {
+  position: absolute;
+  top: 7px;
+  right: 0px;
+  z-index: 9999;
+}
 
-  
+div.no-subjects {
+  padding-bottom: 24px;
+  text-align: left;
+}
+
+div.no-subjects p {
+  margin: 0;
+  padding: 0;
+  color: var(--black-color);
+}

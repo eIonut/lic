@@ -7,10 +7,10 @@ session_regenerate_id(TRUE); //THIS DOES THE TRICK! Calling it after session_sta
 include 'includes.php';
 ?>
 
-<link rel="stylesheet" href="css/sidebar.css?v=e031ddses0sssssssssssssssssssssssssssssssssssssssssssssZsd8b" />
-<link rel="stylesheet" href="css/commonStyles.css?v=e031ses8sssssssssssssssssssssssssssssssssss328b" />
-<link rel="stylesheet" href="css/individualCoursePage.css?v=s0sssssssssssssssssssssssss0sc328b" />
-<link rel="stylesheet" href="css/accordion.css?v=ss03ssss03sssssssssssssssssssssssssssssssssss8b" />
+<link rel="stylesheet" href="css/sidebar.css?v=e031ddses0sssssssssssssssssssssssssssssssssssssssssssssssZsd8b" />
+<link rel="stylesheet" href="css/commonStyles.css?v=e031ses8sssssssssssssssssssssssssssssssssssss328b" />
+<link rel="stylesheet" href="css/individualCoursePage.css?v=s0ssssssssssssssssssssssssss0sc328b" />
+<link rel="stylesheet" href="css/accordion.css?v=ss03ssss03sssssssssssssssssssssssssssssssssssss8b" />
 
     
 <?php
@@ -220,7 +220,7 @@ if (mysqli_num_rows($result) > 0) {
   
 } else {
     echo '<div class="no-subjects">';
-     echo "No subjects were added to this course so far. Talk to an administrator for adding.";
+     echo "<p>No subjects were added to this course so far. Talk to an administrator for adding.</p>";
     echo "</div>";
 }
 
@@ -235,7 +235,7 @@ mysqli_close($con);
 
 
 </body>
-<script src="js/courseSideBar.js?v=dsassdssssssssssssdssssassssssssssssssdas"></script>
-<script src="js/accordion.js?v=ss0sssssssssssssssssssssssssdassssssssssssssssssssssssss0328b"></script>
+
+<script src="js/accordion.js?v=ss0ssssssssssdasdsssssssssssddssassssssssssdasdassdsssssssssssaasssssssssssssssssssdsssasdssssaasssssdasssssssdsdasassssssssdassssssssssssssssssssssssss0328b"></script>
 
 </html>
