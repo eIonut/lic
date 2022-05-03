@@ -1,89 +1,39 @@
-:root {
-  --background: #305397;
-  --course-page-color: linear-gradient(84.57deg, #1B3D7D 0%, #4A6DB0 100%);
-  --course-section-color: #EAEEF5;
-  --black-color: #262626;
-
-}
-
-
-
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
-  background: var(--course-section-color);
-  color: var(--black-color);
+  background-color: #eee;
+  color: #444;
   cursor: pointer;
-  padding: 24px;
+  padding: 18px;
   width: 100%;
   text-align: left;
   border: none;
   outline: none;
   transition: 0.4s;
-  font-size: 16px;
-  padding-left: 0px;
-  padding-bottom: 0px;
-  border-top: 1px solid rgba(48, 83, 151, 0.25);
-  border-radius: 2px;
-  font-weight: 700;
-}
-
-
-.accordion:nth-of-type(1){
-  border-top: 1px solid rgba(48, 83, 151, 0.25);
-}
-
-.accordion:focus{
-  outline: none;
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-/* .active, .accordion:hover {
-  filter: invert(100%);
-} */
+.active,
+.accordion:hover {
+  background-color: #ccc;
+}
 
 /* Style the accordion panel. Note: hidden by default */
 .panel {
- 
-  /* background: transparent; */
+  padding: 0 18px;
+  background-color: white;
   max-height: 0;
-  width: 100%;
+  overflow: hidden;
   transition: max-height 0.2s ease-out;
-  overflow: clip;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  word-break: break-word;
-  font-size: 14px;
-  color: var(--black-color);
-  margin-bottom: 24px;
- 
-
-
 }
-.accordion:after {
 
-  content: url('../imgs/expand.png'); /* Unicode character for "plus" sign (+) */
+.accordion:after {
+  content: "\02795"; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: #777;
   float: right;
   margin-left: 5px;
-
-}
-
-.active{
-
-  transition: all 3s;
 }
 
 .active:after {
- 
- content: url('../imgs/collapse.png'); /* Unicode character for "minus" sign (-) */
-}
-
-.panel a{
-  margin-bottom: 15px;
-  color: #e43603;
-}
-
-video{
-  object-fit: auto;
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
