@@ -1,0 +1,107 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dETAILS</title>
+</head>
+<body>
+
+  <div class="container-fluid w-100 h-100">
+      <div class="row">
+<button class="openbtn"></button>
+
+<div id="mySidebar" class="sidebar col">
+
+        <div class="sidebar-content">
+     
+  
+  <div class="right-content-div">
+            <h1 class="hide-event">
+                <span class="welcome">Welcome back,</span>
+              
+              <span class="user-name-log">
+                  <br>
+              <?php
+echo $_SESSION['login_admin'];
+?>
+</span>
+           </h1>
+           <a href="javascript:void(0)" class="closebtn">adassd</a>
+            
+          </div>
+         
+
+          <div class="sidebar-top-section">
+          <a class="sidebar-links hide-event" href="#">About</a>
+  <a class="sidebar-links hide-event" href="index_admin.php">Courses</a>
+  <a class="sidebar-links hide-event" href="#">Contact</a>
+  </div>
+
+  <div class="add-content"> 
+    <a class="sidebar-btns hide-event" href="add_course_admin.php">ADD COURSE</a>
+    <a class="sidebar-btns hide-event" href="add_class.php">ADD SUBJECT</a>
+    
+  </div>
+ 
+  <form action="delete_course_admin.php" method="POST">
+        <input type="hidden" name="id_to_delete" value="<?php echo $course['course_id'];?>"> 
+
+       <input type="hidden" name="lesson_to_delete" value="<?php echo $course['course_name'];?>"> 
+        <input class="delete-course-btn" type="submit" name="delete" value="Delete Course"> 
+    </form>
+  
+              <a
+                href="logout_admin.php"
+                id="logout-btn"
+                class="logout-btn hide-event"
+                >LOGOUT
+              </a>
+          
+</div>
+</div>
+</div>
+
+
+    <div class="courses col">
+    
+    
+  
+        <?php
+if ($course):
+?>
+
+<div class="course-top-content">
+           <h4><?php
+    echo htmlspecialchars($course['course_name']);
+?></h4>
+<a href="javascript:void(0)" class="courseCloseBtn"></a>
+<a href="javascript:void(0)" class="close-course-btn"></a>
+</div>
+ 
+  </div>
+
+    
+  <div class="comments col" style="border: 1px solid red; width: 55%;  height: 50%;">
+  <?php
+ 
+  
+
+   ?>
+   <div class="leave-comment" style="height: fit-content; margin-top: 50%;">
+   <form name="form" action="" method="POST">
+  <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+  
+  <button type="submit">Click</button>
+</form>
+
+</div>
+</div>
+
+</div>
+    </div>
+</body>
+
+<script src="js/accordion.js?v=ss0ssssssssssdasdsssssssssssddssasssssssssssdasdassdsssssssssssaasssssssssssssssssssdsssasdssssaasssssdasssssssdsdasassssssssdassssssssssssssssssssssssss0328b"></script>
+
+</html>

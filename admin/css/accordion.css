@@ -3,12 +3,18 @@
   background-color: #eee;
   color: #444;
   cursor: pointer;
-  padding: 18px;
-  width: 100%;
+  padding: 0;
+  width: 90%;
   text-align: left;
-  border: none;
   outline: none;
   transition: 0.4s;
+  border: none;
+  border-bottom: 1px solid rgba(48, 83, 151, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  box-sizing: border-box;
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
@@ -27,7 +33,7 @@
 }
 
 .accordion:after {
-  content: "\02795"; /* Unicode character for "plus" sign (+) */
+  content: url("../imgs/accordion-down.png");
   font-size: 13px;
   color: #777;
   float: right;
@@ -35,5 +41,6 @@
 }
 
 .active:after {
-  content: "\2796"; /* Unicode character for "minus" sign (-) */
+  content: url("../imgs/2.png");
+  font-size: 2px;
 }

@@ -5,7 +5,7 @@ if(isset($_POST['login']))
 {
 $password=$_POST['password'];
 $username=$_POST['username'];
-$dec_password=$password;
+$dec_password=md5($password);
 $ret= mysqli_query($con,"SELECT * FROM users WHERE username='$username' and password='$dec_password'");
 $num=mysqli_fetch_array($ret);
 if($num>0)

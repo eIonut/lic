@@ -1,8 +1,8 @@
 
-    <link rel="stylesheet" href="css/indexPage.css?v=ess0sssssssssssssssssssassdssssssssssssszssss0c3d8b" />
-    <link rel="stylesheet" href="css/sidebar.css?v=e031dddsdsasssssssssssssssssssssssssssssssssscZd8b" />
-    <link rel="stylesheet" href="css/commonStyles.css?v=esssdasssssssssssssssssssswssssssssssssss1se80c32s8b" />
-    <link rel="stylesheet" href="css/indexPageQueries.css?v=essssdasssssssssadsssssssssssssssssssssssss1se80c32s8b" />
+    <link rel="stylesheet" href="css/indexPage.css?v=ess0ssssssssdsdassssssssssassdssssssssssssszssss0c3d8b" />
+    <link rel="stylesheet" href="css/sidebar.css?v=e031dddsdsassddadasssssssssssssssssssssssssssssssssscZd8b" />
+    <link rel="stylesheet" href="css/commonStyles.css?v=esssdassdssdasssssssssssssssswssssssssssssss1se80c32s8b" />
+    <link rel="stylesheet" href="css/indexPageQueries.css?v=esdsssdadasssssssssadsssssssssssssssssssssssss1se80c32s8b" />
 
    
     <?php
@@ -94,14 +94,14 @@ echo $_SESSION['login_admin'];
          
 
           <div class="sidebar-top-section">
-          <a class="sidebar-links hide-event" href="#">About</a>
+          
   <a class="sidebar-links hide-event" href="index_admin.php">Courses</a>
-  <a class="sidebar-links hide-event" href="#">Contact</a>
+
   </div>
 
   <div class="add-content"> 
-    <a class="sidebar-btns hide-event" href="add_course_admin.php">ADD COURSE</a>
-    <a class="sidebar-btns hide-event" href="add_class.php">ADD SUBJECT</a>
+    <a class="sidebar-links hide-event py-2" href="add_course_admin.php">Add course</a>
+    <a class="sidebar-links hide-event py-2" href="add_class.php">Add subject</a>
     
   </div>
 
@@ -109,7 +109,7 @@ echo $_SESSION['login_admin'];
               <a
                 href="logout_admin.php"
                 id="logout-btn"
-                class="logout-btn hide-event"
+                class="logout-btn hide-event pt-4 text-decoration-none"
                 >LOGOUT
               </a>
           

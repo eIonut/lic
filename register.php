@@ -13,11 +13,12 @@ if(isset($_POST['signup']))
 
 $sql=mysqli_query($con,"select id from users where email='$email'");
 $row=mysqli_num_rows($sql);
+$hashed_password = md5($password);
 if($row>0)
 {
 	echo "<script>alert('Email id already exist with another account. Please try with other email id');</script>";
 } else{
-	$msg=mysqli_query($con,"insert into users(email,password,username) values('$email','$password','$username')");
+	$msg=mysqli_query($con,"insert into users(email,password,username) values('$email','$hashed_password','$username')");
 
 if($msg)
 {
