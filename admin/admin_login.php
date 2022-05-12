@@ -1,5 +1,6 @@
 <?php session_start();
 require_once('../dbconnection.php');
+include 'includes.php';
 // Code for login 
 if(isset($_POST['login']))
 {
@@ -35,53 +36,67 @@ exit();
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../login.css" />
-    <link
-      rel="stylesheet"
-      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-      crossorigin="anonymous"
-    />
+   <link rel="stylesheet" href="../login.css?v=essdasda0sss" />
+   
 
     <title>Login</title>
   </head>
   <body>
-    <main class="main-section">
-      <section>
-        <h1>Admin Login</h1>
-        <form name="login"action="" method="post">
-          <label for="user-input">Username</label>
-          <i id="user-icon" class="far fa-user"></i>
-          <input
-            id="user-input"
-            type="text"
-            placeholder="Introduceti username-ul"
-            name="username"
-            required
-          />
-          <label for="user-password">Password</label>
-          <i id="password-icon" class="far fa-lock"></i>
-          <input
-            id="user-password"
-            type="password"
-            placeholder="Introduceti parola"
-            name="password"
-            required
-          />
-          <i class="far fa-eye toggle-show-password"></i>
-          <input
-            class="login-btn"
-            type="submit"
-            name="login"
-            value="Login"
-          />
-        </form>
-        <div class="register-div">
-          <p>Nu aveti cont?</p>
-          <a id="register-link" href="">INREGISTRARE</a>
+    <div class="row d-flex mx-auto h-75" style="width: 65%; margin-top: 6rem; box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;">
+      <div class="col mt-auto">
+          <form class="d-flex flex-column justify-content-center align-items-center 
+          w-100 h-100 form-group p-3 m-0 py-0"
+           name="login"action="" method="post">
+          <h1 class="w-100 text-left" style="opacity: 0.75;" >Admin Login</h1>
+            <label class="text-left w-100 py-3 m-0" for="user-input">Username</label>
+            <input
+              class="form-control"
+              id="user-input"
+              type="text"
+              placeholder="Enter username"
+              name="username"
+              required
+              style="border-radius: 25px;"
+            />
+            <label class="text-left w-100 py-3 m-0"  for="user-password">Password</label>
+          
+            <input
+              class="form-control"
+              id="user-password"
+              type="password"
+              placeholder="Enter password"
+              name="password"
+              required
+              style="border-radius: 25px;"
+            />
+          
+            <input
+              class="login-btn btn my-3 btn-block text-light"
+              type="submit"
+              name="login"
+              value="Login"
+              style="border-radius: 25px;background:rgba(48, 83, 151, 0.75);"
+            />
+            
+          </form>
+</div>
+
+          <div class="col d-flex flex-column justify-content-center align-items-center"
+          style="background: linear-gradient(270deg, rgba(48, 83, 151, 0) 0%, #305397 100%);">
+         
+          <h1 class="text-light" >Welcome to login</h1>
+            <p class="text-white" >Don't have an account?</p>
+            <a class="btn btn-danger bg-transparent pt-2 px-3 border border-light" 
+            style="border-radius: 25px;"
+             id="register-link" href="admin_register.php">Sign up</a>
+        
+        
+         
         </div>
-      </section>
-    </main>
+        </div>
+     
+      
+    
   </body>
   <script src="login.js"></script>
 </html>

@@ -65,7 +65,7 @@
 
   section#course-section {
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 24px;
+    grid-gap: 48px;
     padding: 0;
     padding-bottom: 24px;
     padding: 24px;
@@ -75,7 +75,7 @@
 @media (max-width: 800px) {
   section#course-section {
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 24px;
+    grid-gap: 48px;
     padding: 0;
     padding-bottom: 24px;
     padding: 24px;
@@ -99,7 +99,7 @@
 @media (max-width: 768px) {
   section.welcome-section {
     grid-template-columns: repeat(1, 1fr);
-    grid-gap: 36px;
+    grid-gap: 48px;
     padding: 0;
     padding-bottom: 24px;
     padding: 24px;

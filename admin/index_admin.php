@@ -1,8 +1,8 @@
 
-    <link rel="stylesheet" href="css/indexPage.css?v=ess0ssssssssdsdassssssssssassdssssssssssssszssss0c3d8b" />
-    <link rel="stylesheet" href="css/sidebar.css?v=e031dddsdsassddadasssssssssssssssssssssssssssssssssscZd8b" />
-    <link rel="stylesheet" href="css/commonStyles.css?v=esssdassdssdasssssssssssssssswssssssssssssss1se80c32s8b" />
-    <link rel="stylesheet" href="css/indexPageQueries.css?v=esdsssdadasssssssssadsssssssssssssssssssssssss1se80c32s8b" />
+    <link rel="stylesheet" href="css/indexPage.css?v=ess0ssssssssDAdadasddadsasdassssssssssassdsssssssdsssssszssss0c3d8b" />
+    <link rel="stylesheet" href="css/sidebar.css?v=e031dddsdsassddadasssssssssssssssssssssssdsssssssssssscZd8b" />
+    <link rel="stylesheet" href="css/commonStyles.css?v=esssdassdssdassssssssssssssssswssssdssssssssss1se80c32s8b" />
+    <link rel="stylesheet" href="css/indexPageQueries.css?v=esdsdasssdadassssssssssadsssssssssdssssssssssssssss1se80c32s8b" />
 
    
     <?php
@@ -119,53 +119,28 @@ echo $_SESSION['login_admin'];
 
       <main id="main-content">
       
-      <!-- FIRST SECTION -->
+     
         <section id="Asd" class="welcome-section first-section">
           <h1>Learn everything at your own pace... with us!</h1>
           <p>Take your pen and start learning right away, for <span class="us">FREE.</span></p> 
         </section>
-        <!-- FIRST SECTION -->
+       
 
-        <!-- SECOND SECTION -->
-        <!-- <div class="add-content-div">
-            <form id="search-clear-form" action="index_admin.php" method="POST">
-              <input
-                type="text"
-                name="course-search"
-                class="search-input"
-                placeholder="Search courses..."
-              />
-              <input class="search-btns" type="submit" value="Search" id="search-course-input-button" />
-              <input
-                class="search-btns"
-                type="submit"
-                value="Clear"
-                id="clear-btn"
-                onclick="clearClasses()"
-              />
-            </form>
-            
-          </div> -->
-          
-           <!-- SECOND SECTION -->
-<!--  -->
-
-<form class="search-form" action="">
-<input type="text" name="search" id="search" placeholder="Search courses..." onkeyup="load_data(this.value);" />
+<form class="search-form d-flex justify-content-between align-items-center" action="">
+<input type="text" name="search" id="search" placeholder="Search courses..." maxlength="40" onkeyup="load_data(this.value);" />
+<i class="fa-solid fa-magnifying-glass ml-auto position-absolute fa-lg" style="right: 3rem; color: gray;"></i>
 </form>
 
 <div id="wrapper">
 
           <section id="course-section">
           <h1 class="your-courses">Your courses</h1>  
-          <!-- <p id="no-criteria-p">No courses found matching your criteria</p> -->
-          <!-- THIRD SECTION -->
-
+     
 
        </section>
 
        </div>
-       <!-- THIRD SECTION -->
+      
         </main>
     
 
@@ -178,8 +153,8 @@ echo $_SESSION['login_admin'];
 
         </div>
       </body>
-      <script src="js/sidebar.js?v=dassdssssssssdadassdssadasssssssssssassssssss"></script>
-      <script src="js/loadData.js?v=dsadssdasdadssssdadssasdsassadas"></script>
+      <script src="js/sidebar.js?v=dassdssssssssdadadassdssadasssssssssssassssssss"></script>
+      <script src="js/loadData.js?v=dsadssdasdadsdasdssdadaddadadadadasdadadasassasdsassadas"></script>
     
 
     </html>

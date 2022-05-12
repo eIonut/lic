@@ -1,56 +1,62 @@
-
 load_data();
 
-function load_data(query = '')
-{
-	var form_data = new FormData();
+function load_data(query = "") {
+  var form_data = new FormData();
 
-	form_data.append('query', query);
+  form_data.append("query", query);
 
-	var ajax_request = new XMLHttpRequest();
+  var ajax_request = new XMLHttpRequest();
 
-	ajax_request.open('POST', './process_data.php');
+  ajax_request.open("POST", "./process_data.php");
 
-	ajax_request.send(form_data);
+  ajax_request.send(form_data);
 
-	ajax_request.onreadystatechange = function()
-	{
-		if(ajax_request.readyState == 4 && ajax_request.status == 200)
-		{
-			console.log(ajax_request.responseText);
-			var response = JSON.parse(ajax_request.responseText);
+  ajax_request.onreadystatechange = function () {
+    if (ajax_request.readyState == 4 && ajax_request.status == 200) {
+      console.log(ajax_request.responseText);
+      var response = JSON.parse(ajax_request.responseText);
 
-			var html = '';
-			var serial_no = 1;
-			if(response.length > 0)
-			{
-				
-				for(var count = 0; count < response.length; count++)
-				{
-					console.log(response[count].course_image);
-					console.log(response[count].course_description);
-					console.log(response[count].course_name);
-					
-					html += '<div class="card">';
-					html += '<img class="card-img-top" src="./upload/'+response[count].course_image+'">';
-					html += '<div class="card-body">';
-					html += '<h5 class="card-title">' + response[count].course_name +' </h5>';
-					html += '<p class="card-text">' + response[count].course_description + '</p>';
-					html += '<a class="btn-hover color-2" href="delete_course_admin.php?course_name='+response[count].course_name+'">Start course</a>';
-			
-               		html += '</div>';
-					html += '</div>';
-					serial_no++;
-				}
-			}
-			else
-			{
-				html += '<p class="no-criteria-p" style="width: 100%; margin: auto">No courses found matching your criteria. Please try something else.</p>';
-			}
-			document.getElementById('course-section').innerHTML = html;
-			
-		
-			
-		}
-	}
+      var html = "";
+      var serial_no = 1;
+      if (response.length > 0) {
+        for (var count = 0; count < response.length; count++) {
+          console.log(response[count].course_image);
+          console.log(response[count].course_description);
+          console.log(response[count].course_name);
+          html +=
+            '<div class="card" style="max-height: 400px; box-sizing: content-box;">';
+          html +=
+            '<img class="card-img-top img-fluid" style="height: 150px; max-height: 75%;" src="./upload/' +
+            response[count].course_image +
+            '">';
+          html +=
+            '<div class="card-body d-flex flex-column p-0 mt-4" style="box-sizing: content-box">';
+          html +=
+            '<div class="px-3 d-flex flex-column justify-content-center align-items-start pb-3">';
+          html +=
+            '<h5 class="card-title m-0 w-100 px-0 text-start pb-3">' +
+            response[count].course_name +
+            " </h5>";
+          html +=
+            '<p class="card-text m-0 text-start">' +
+            response[count].course_description +
+            "</p>";
+          html += "</div>";
+
+          html +=
+            '<a class="btn d-block btn-primary mt-auto text-start pl-3 py-2 border-0 rounded-0 w-100 d-flex justify-content-between align-items-center" style="background: linear-gradient(84.57deg, #1b3d7d 0%, #4a6db0 100%);" href="delete_course_admin.php?course_name=' +
+            response[count].course_name +
+            '">Start course<i class="fa-solid fa-book ml-auto"></i></a>';
+
+          html += "</div>";
+          html += "</div>";
+          serial_no++;
+        }
+      } else {
+        html +=
+          '<p class="no-criteria-p" style="width: 100%; margin: auto">No courses found matching your criteria. Please try something else.</p>';
+      }
+      document.getElementById("course-section").innerHTML = html;
+    }
+  };
 }

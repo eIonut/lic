@@ -30,60 +30,6 @@ div.all-content {
   font-weight: 900;
 }
 
-.card-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  height: 130px;
-  background: #0d0f12;
-  color: white;
-  /* border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px; */
-  border: none;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  word-break: break-word;
-}
-
-h5.card-title {
-  font-family: "Montserrat";
-  font-style: normal;
-  width: 100%;
-  font-size: 16px;
-  font-weight: 600;
-  color: #262626;
-  text-align: left;
-  padding: 0px 24px;
-}
-
-div.card-body {
-  font-family: "Montserrat";
-  font-style: normal;
-  height: fit-content;
-  padding-top: 24px;
-  padding-bottom: 0px;
-  padding-left: 0px;
-  padding-right: 0px;
-  background-color: white;
-  color: black;
-  height: 220px;
-}
-
-p.card-text {
-  font-family: "Montserrat";
-  font-style: normal;
-  width: 100%;
-  padding: 0px 24px;
-  text-align: left;
-  font-size: 14px;
-  line-height: 150%;
-  color: #262626;
-
-  opacity: 0.5;
-}
-
 .card-body:hover {
   cursor: default;
 }
@@ -114,12 +60,14 @@ input#search {
   font-style: normal;
   margin-left: 24px;
   margin-right: 24px;
+  color: black;
 }
 
 input#search:focus {
   outline: none;
   font-weight: bold;
   max-height: 200px;
+  border: 1px solid black;
 }
 
 #mySidebar {
@@ -160,12 +108,18 @@ section#course-section {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(auto, 1fr);
-  grid-gap: 36px;
+  grid-gap: 48px;
   padding: 24px;
   padding-top: 0;
 
   /* padding-right: 24px; */
   /* margin-right: 24px; */
+}
+
+div.card:hover {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  outline: none;
+  border: none;
 }
 
 #wrapper {
@@ -187,70 +141,12 @@ section#course-section {
   color: hsla(0, 0%, 100%, 0.95);
 }
 
-div.card {
-  /* border: 1px solid rgb(88, 88, 88); */
-
-  transition: box-shadow 0.2s;
-  outline: none;
-  width: 100%;
-  max-height: 600px;
-  margin: auto;
-  text-align: center;
-  box-sizing: border-box;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  /* margin: 24px; */
-}
-
-div.card:hover {
-  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
-}
-
-.card-img-top {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-size: cover;
-  height: 200px;
-
-  width: 100%;
-  border: none;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  /* border-bottom: 1px solid gray; */
-}
-
 .no-criteria-p {
   margin: auto;
   width: 100%;
   grid-column: 1/6;
   color: black;
   font-size: 24px;
-}
-
-a.btn-hover.color-2 {
-  width: 100%;
-  background: linear-gradient(84.57deg, #1b3d7d 0%, #4a6db0 100%);
-  border-radius: 0px 0px 5px 5px;
-  font-family: "Montserrat";
-  font-style: normal;
-  position: relative;
-  top: 22%;
-
-  text-align: left;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding: 12px 24px;
-  color: white;
-  font-weight: 600;
-  font-size: 16px;
-  outline: none;
-}
-
-a.btn-hover.color-2:hover {
-  outline: none;
-  border: none;
 }
 
 /* butoane */
@@ -291,42 +187,6 @@ form.search-form {
   margin-top: 24px;
   box-sizing: content-box;
 }
-/* #search-clear-form{
-  width: 80%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 24px;
-} */
-
-/* .search-input{
-  width: 84%;
-  padding: 10px;
-  
-  outline: none;
-  border: 1px solid black;
-  font-weight: bold;
-  margin-right: 10px;
-} */
-
-/* input.search-btns{
-  height: 46px;
-  font-size: 18px;
-  border: 1px solid white;
-  width: fit-content;
-  padding: 0px 20px;
-  margin: 0px 10px;
-  background: #111;
-  color: white;
-  font-weight: 400;
-  letter-spacing: 0.2px;
-} */
-
-/* input.search-btns:hover{
-  color: #111;
-  background: white;
-} */
 
 a.start-learn-btn {
   background-image: linear-gradient(to right, #f05a28, #ec008c, #f05a28);
@@ -348,9 +208,3 @@ a.start-learn-btn:hover {
   padding: 20px 0px;
   font-size: 1.4rem;
 }
-
-/* FOR JS CLASSES */
-
-/* .transition{
-  transition: width 4s;
-} */

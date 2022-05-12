@@ -7,9 +7,9 @@ session_regenerate_id(TRUE); //THIS DOES THE TRICK! Calling it after session_sta
 include 'includes.php';
 ?>
 
-<link rel="stylesheet" href="css/coursePageQueries.css?v=addasdaddaddadadaddDdsddasdddaadsdaadadaddasassadadadaddaaddadaasdaddadadaaddadasasadasddaaas" />
-<link rel="stylesheet" href="css/newCourse.css?v=ss03dasssdDDadaddddaaddaadaddaddaddaadddddddaadadadaaaddaadaaddadadddadasasdasasaddaasdasaddadadaasdadasddasas03sssssssdassdasdasssssssssssssssdadsassssssssssssss8b" />
-<link rel="stylesheet" href="css/accordion.css?v=ss03ssdasdaDsdaddaa0ddaadadSdddadadaddadadddaddasdadaadadadsadasaddadasa3dadasdsssdassssssdadasdassssdassssssssssssssdassssssssssss8b" /> 
+<link rel="stylesheet" href="css/coursePageQueries.css?v=addasddaddaddadadadddDdsddasdddaadsdaadadaddasassadadadaddaaddadaasdaddadadaaddadasasadasddaaas" />
+<link rel="stylesheet" href="css/newCourse.css?v=ss03dasssdDDadadddddaaddadadaddaddaddaadddddddaadadadaaaddaadaaddadadddadasasdasasaddaasdasaddadadaasdadasddasas03sssssssdassdasdasssssssssssssssdadsassssssssssssss8b" />
+<link rel="stylesheet" href="css/accordion.css?v=ss03ssdasdaDsdadddaa0ddadadadSdddadadaddadadddaddasdadaadadadsadasaddadasa3dadasdsssdassssssdadasdassssdassssssssssssssdassssssssssss8b" /> 
 
     
 <?php
@@ -65,21 +65,38 @@ if (isset($_GET['course_name'])) {
 $asd = $_GET["course_name"];
 $comm = $_POST['comment'];
 
-
 if(isset($comm)){
+    date_default_timezone_set('Europe/Bucharest');
     $asdf = $_SESSION['login_admin'];
-    $date = date("Y/m/d");
-    
+    $timestamp = date("Y-m-d H:i:s");
     $sql3 = "INSERT INTO comments(user, date, comment_content, course_name)
-    VALUES('$asdf', '$date', '$comm', '$asd')";
+    VALUES('$asdf', '$timestamp', '$comm', '$asd')";
    $result3 = mysqli_query($con, $sql3);
    
 
     
 }
+if(isset($_POST['update'])) {
+   $asdf = $_SESSION['login_admin'];
+    $emp_salary = $_POST['comm-content'];
+    
+    $sql = "UPDATE comments ". "SET comment_content = '$emp_salary' ". 
+       "WHERE user = '$asdf'" ;
+    $retval = mysql_query( $sql, $con );
+    
+    if(! $retval ) {
+       die('Could not update data: ' . mysql_error());
+    }
+    echo "Updated data successfully\n";
+    
+    
+ }
+
+    
+ ?>
 
 
-?>
+
 
 
 <html lang="en">
@@ -158,12 +175,12 @@ if(isset($comm)){
 
     <div class="content">
         <div class="row col-12 h-100 p-0 m-0">
-            <div class="col-xl-8 p-0 m-0 order-2 order-md-2 order-lg-1">
+            <div class="col-xl-8 p-0 m-0">
                 <div id="videoDiv"class="videos d-flex flex-column text-center" style="height: 400px">
                     <p>Here is the video section</p>
                 </div>
 
-                <div class="comments mt-auto p-4" style="height: 80vh; overflow: scroll;">
+                <div class="comments mt-auto p-4" style="height: 80vh; overflow: scroll; overflow-x:hidden;">
                     <h4 class="border-bottom py-4 pt-0">Comments</h4>
                         <?php
                         $sql2 = "SELECT * from comments WHERE course_name='$asd'";
@@ -177,8 +194,15 @@ if(isset($comm)){
                                     echo '<p class="align-self-start font-weight-bold" style="color: #305397">'.$row["user"].'</p>';
                                     echo '<p class="align-self-end ml-auto font-weight-normal" style="opacity: 0.5">'.$row["date"].'</p>';
                                 echo '</div>';
-                                
                                 echo '<p class="font-weight-bold">'.$row["comment_content"].'</p>';
+                                // if($row['user'] == $_SESSION['login_admin']){ //pt partea
+                                echo '<div class="w-100 text-right">';
+                                echo '<a class="px-3 text-dark" style="opacity: 0.75;" href="editcomment.php?id= '. $row['comment_id'] .';"><i class="fa-solid fa-pencil"></i></a>';
+
+                                echo '<a class="text-danger" style="opacity: 0.75;" href="delcomment.php?id= '. $row['comment_id'] .';"><i class="fa-solid fa-trash"></i></a>';
+                                echo '</div>';
+                                // }
+                                
                                 echo '</div>';
                             }
                         }
@@ -189,6 +213,7 @@ if(isset($comm)){
                         ?>
 
 <div class="leave-comment" style="height: fit-content;">
+
                     <form name="form" method="POST" class="was-validated" >
                         <div class="form-group">
                             <h4 class="my-4 p-0" >Leave a comment</h4>
@@ -211,7 +236,7 @@ if(isset($comm)){
 
         
             
-            <div class="col-xl-4 border-info p-0 m-0 courses-div order-1" style="background: #eaeef5; ">
+            <div class="col-xl-4 border-info p-0 m-0 courses-div" style="background: #eaeef5; ">
             <h4 class="px-3 py-3"><?php
     echo htmlspecialchars($course['course_name']);
 ?></h4>
@@ -280,5 +305,5 @@ if ( window.history.replaceState ) {
   window.history.replaceState( null, null, window.location.href );
 }
 </script>
-<script src="js/newAccordionV2.js?v=dasgdfgdassdadadadadaddfadafssfsdadadaadadadaassdasAddaasdsagsf"></script>
+<script src="js/newAccordionV2.js?v=dasgdfgdassdadadadadaddfasdafssfsdadadaadadadaassddasAddaasdsagsf"></script>
 </html>

@@ -153,7 +153,7 @@ $lessons2 = mysqli_fetch_all($result, MYSQLI_ASSOC);
             <select name="class-option" id="">
             <?php
                 foreach($courses as $course){ ?>
-                <option value="<?php echo htmlspecialchars($course['course_name']);?>" name="class-option"><?php echo htmlspecialchars($course['course_name']);?></option>
+                <option value="<?php echo ($course['course_name']);?>" name="class-option"><?php echo ($course['course_name']);?></option>
             <?php } ?>
                 
             </select>
@@ -176,7 +176,7 @@ $lessons2 = mysqli_fetch_all($result, MYSQLI_ASSOC);
             <!-- <select  name="course-delete-option" id="">
             <?php
                 foreach($courses as $course){ ?>
-                <option name="" value="<?php echo htmlspecialchars($course['course_name']);?>""><?php echo htmlspecialchars($course['course_name']);?></option>
+                <option name="" value="<?php echo $course['course_name'];?>""><?php echo $course['course_name'];?></option>
             <?php } ?>
                 
             </select> -->
@@ -189,7 +189,7 @@ $lessons2 = mysqli_fetch_all($result, MYSQLI_ASSOC);
             <?php
             foreach($lessons as $lesson){ ?>
              
-                <option  name="" value="<?php echo htmlspecialchars($lesson['lesson_number']);?>"><?php echo htmlspecialchars($lesson['lesson_number']); echo " " . "-" . " "; echo htmlspecialchars($lesson['lesson_subject']);?></option>
+                <option  name="" value="<?php echo $lesson['lesson_number'];?>"><?php echo $lesson['lesson_number']; echo " " . "-" . " "; echo $lesson['lesson_subject'];?></option>
            
             <?php } ?>
             </select>
