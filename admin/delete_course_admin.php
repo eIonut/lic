@@ -142,7 +142,7 @@ if(isset($_POST['update'])) {
         </div> 
             
         <div class="py-2 d-flex justify-content-between  p0-collapse  py-2 align-items-center">
-            <a class="sidebar-links hide-event py-2" href="add_class.php">Add subject</a>
+            <a class="sidebar-links hide-event py-2" href="add_class.php">Add / remove subject</a>
             <i class="fa-solid fa-plus text-center sidebar-icons"></i>
         </div>
         </div>
@@ -176,11 +176,11 @@ if(isset($_POST['update'])) {
     <div class="content">
         <div class="row col-12 h-100 p-0 m-0">
             <div class="col-xl-8 p-0 m-0">
-                <div id="videoDiv"class="videos d-flex flex-column text-center" style="height: 400px">
-                    <p>Here is the video section</p>
+                <div id="videoDiv"class="videos d-flex flex-column text-center justify-content-center" style="height: 400px">
+                    <p class="mt-50">No videos to watch. Talk to an admin to add more.</p>
                 </div>
 
-                <div class="comments mt-auto p-4" style="height: 80vh; overflow: scroll; overflow-x:hidden;">
+                <div class="comments mt-auto p-4" style="max-height: fit-content; overflow: scroll; overflow-x:hidden;">
                     <h4 class="border-bottom py-4 pt-0">Comments</h4>
                         <?php
                         $sql2 = "SELECT * from comments WHERE course_name='$asd'";
@@ -236,21 +236,27 @@ if(isset($_POST['update'])) {
 
         
             
-            <div class="col-xl-4 border-info p-0 m-0 courses-div" style="background: #eaeef5; ">
-            <h4 class="px-3 py-3"><?php
+            <div class="col-xl-4 border-info p-0 m-0 courses-div" style="background: #eaeef5; height:max-height: 120vh;">
+            <h4 class="mx-3 py-4" style="color: #305397;"><?php
     echo htmlspecialchars($course['course_name']);
 ?></h4>
             <?php
-             $sql    = "SELECT * FROM lessons WHERE lesson_subject= '$asd'";
+             
+             $sql    = "SELECT * FROM lessons WHERE lesson_subject= '$asd' ORDER BY lesson_order ASC";
              $result = mysqli_query($con, $sql);
-             $i = 1;
+             
            
              if (mysqli_num_rows($result) > 0) {
-                echo '<h1>'.$row["lesson_subject"].'</h1>';
+                echo '<h1">'.$row["lesson_subject"].'</h1>';
                  while ($row = mysqli_fetch_assoc($result)) {
                     if (str_contains($row["pdf_location"], '.mp4')) {
                     
-            echo '<button class="accordion py-4 font-weight-bold mx-4" style="background: #eaeef5;">' . $i . '.' . " " . $row["lesson_number"] .'</button>';
+            echo '<button class="accordion py-4 font-weight-bold mx-4 d-flex justify-content-between align-items-center" style="background: #eaeef5;">' . $row['lesson_order'] . '.' . " " . $row["lesson_number"] .'
+            <div class="ml-auto pr-3">
+            <a class="px-3 text-dark" style="opacity: 0.75;" href="edit_lesson.php?id= '. $row['id'] .';"><i class="fa-solid fa-file-pen"></i></a>
+            <a class="text-danger" style="opacity: 0.75;" href="delete_lesson.php?id= '. $row['id'] .';"><i class="fa-solid fa-trash"></i></a>
+            </div>
+            </button>';
             echo '<div class="panel" style="background: #eaeef5;">';
             echo '<video poster="imgs/video-poster.jpg" class="course-video" src="../images/' . $row["pdf_location"] . '" width="100%" height="300px" controls volume="1">';
 
@@ -267,16 +273,22 @@ if(isset($_POST['update'])) {
                     }
                     else{
                          
-        echo '<button class="accordion py-4 mx-4 font-weight-bold" style="background: #eaeef5;">' . $i . '.' . " " . $row["lesson_number"] . " - (Resources)".'</button>';
+        echo '<button class="accordion py-4 mx-4 font-weight-bold d-flex justify-content-between align-items-center" style="background: #eaeef5;">' . $row['lesson_order'] . '.' . " " . $row["lesson_number"] . " - (Resources)".'
+        <div class="ml-auto pr-3">
+        <a class="px-3 text-dark" style="opacity: 0.75;" href="edit_lesson.php?id= '. $row['id'] .';"><i class="fa-solid fa-file-pen"></i></a>
+        <a class="text-danger" style="opacity: 0.75;" href="delete_lesson.php?id= '. $row['id'] .';"><i class="fa-solid fa-trash"></i></a>
+        </div>
+        </button>';
+         ;
         echo '<div class="panel" style="background: #eaeef5;"> ';
         echo '<p>';
-        echo '<span class="bolded bolded-file">File: </span>' . $row["pdf_location"];
+        echo '<span class="bolded bolded-file font-weight-bold pr-1" style="font-size: 0.9em;">File: </span>' . '<span class="text-underline" style="font-size: 0.9em; color: #305397;" ><u>'.$row["pdf_location"].'</u></span>';
         echo '</p>';
         echo "<br>";
         
         echo '<div class="d-flex justify-content-between align-items-center">';
-        echo '<a class="mr-3" style="opacity: 0.75;" href="../images/' . $row["pdf_location"] . '" target="_blank">Download File </a>';
-        echo '<i class="fas fa-md fa-file-download mr-auto" style="opacity: 0.75; color: #0d6efd;"></i>';
+        echo '<a class="mr-2" style="opacity: 0.75; color: #305397;" href="../images/' . $row["pdf_location"] . '" target="_blank">Download File </a>';
+        echo '<i class="fas fa-md fa-file-download mr-auto" style="opacity: 0.75; color: #305397;"></i>';
         echo '</div>';
       
 
@@ -287,7 +299,7 @@ if(isset($_POST['update'])) {
                 }
             }
                     else {
-                        echo '<div class="no-subjects">';
+                        echo '<div class="no-subjects px-3">';
                          echo "<p>No subjects were added to this course so far. Talk to an administrator for adding.</p>";
                         echo "</div>";
                     }

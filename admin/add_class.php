@@ -68,7 +68,6 @@ $file_loc = $_FILES['file']['tmp_name'];
 if(isset($_POST['submit_delete']))
 {   
     $lesson_subjectt =  $_POST['lesson-delete-option'];
-    print_r($lesson_subject);
    
         $query= "DELETE FROM `lessons` WHERE `lesson_number` = '$lesson_subjectt' ";
  
@@ -80,18 +79,6 @@ if(isset($_POST['submit_delete']))
         echo "ERROR: Could not able to execute $query. " . mysqli_error($con);
     }
      
-    // Close connection
-    // mysqli_close($con);
-
-        // save to db and check
-        // if(mysqli_query($con, $sql)){
-        //     // success
-        //     header('Location: index_admin.php');
-        // } else {
-        //     echo 'query error: '. mysqli_error($con);
-        // }
-    
-        // }
 }
 
  
@@ -113,27 +100,6 @@ $result = mysqli_query($con, $sql);
 $lessons2 = mysqli_fetch_all($result, MYSQLI_ASSOC);
 //  mysqli_free_result($result);
 
-
-
- 
-
-
-//  $sql = 'SELECT course_name from courses';
-//  $result = mysqli_query($con, $sql);
-//  $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
-//  mysqli_free_result($result);
- 
-
-    //echo 'errors in form';
-
-
-
-    // echo '<p>'.$doc['lesson_subject'].'</p>';
- 
-   
-    // check title
-   
-// end POST check
 
 ?>
 <html lang="en">

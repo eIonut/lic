@@ -36,21 +36,21 @@ exit();
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <link rel="stylesheet" href="../login.css?v=essdasda0sss" />
+   <link rel="stylesheet" href="css/admin_login.css?v=esdasdasdassada0sss" />
    
 
     <title>Login</title>
   </head>
   <body>
-    <div class="row d-flex mx-auto h-75" style="width: 65%; margin-top: 6rem; box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;">
-      <div class="col mt-auto">
+    <div class="login-form row d-flex mx-auto" style="width: 65%; margin-top: 6rem; box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;">
+      <div class="col mt-auto order-md-1">
           <form class="d-flex flex-column justify-content-center align-items-center 
           w-100 h-100 form-group p-3 m-0 py-0"
            name="login"action="" method="post">
           <h1 class="w-100 text-left" style="opacity: 0.75;" >Admin Login</h1>
             <label class="text-left w-100 py-3 m-0" for="user-input">Username</label>
             <input
-              class="form-control"
+              class="form-control border-0"
               id="user-input"
               type="text"
               placeholder="Enter username"
@@ -61,7 +61,7 @@ exit();
             <label class="text-left w-100 py-3 m-0"  for="user-password">Password</label>
           
             <input
-              class="form-control"
+              class="form-control border-0"
               id="user-password"
               type="password"
               placeholder="Enter password"
@@ -81,10 +81,10 @@ exit();
           </form>
 </div>
 
-          <div class="col d-flex flex-column justify-content-center align-items-center"
-          style="background: linear-gradient(270deg, rgba(48, 83, 151, 0) 0%, #305397 100%);">
+          <div class="col d-flex flex-column justify-content-center align-items-center welcome-login order-md-2"
+          style="background:rgba(48, 83, 151, 0.75);">
          
-          <h1 class="text-light" >Welcome to login</h1>
+          <h1 class="text-light text-center" >Welcome to login</h1>
             <p class="text-white" >Don't have an account?</p>
             <a class="btn btn-danger bg-transparent pt-2 px-3 border border-light" 
             style="border-radius: 25px;"

@@ -40,13 +40,17 @@
 		} else{
 			$course_name = $_POST['course_name'];
 			$course_description = $_POST['course-description'];
-			if(!preg_match('/^[a-zA-Z\s]+$/', $course_name)){
-				$errors['course_name'] = 'Course name must be letters and spaces only';
+			if(!preg_match('/^[a-zA-Z0-9\s]+$/', $course_name)){
+				$errors['course_name'] = 'Course name must be letters, numbers and spaces only';
+				echo '<div class="modal">
+			<p>Course name must be letters, numbers and spaces only!</p>
+			<a href="javascript:void(0)" class="closebtn">&times;</a>
+			</div>';
 			}
 		}
 
 		if(array_filter($errors)){
-			echo 'errors in form';
+			// echo 'errors in form';
 		} else {
 			// escape sql chars
 		
@@ -61,8 +65,12 @@
 			if(mysqli_query($con, $sql)){
 				// success
 				header('Location: index_admin.php');
-			} else {
-				echo 'query error: '. mysqli_error($con);
+			
+						} else {
+				echo '<div class="modal">
+			<p>Please choose another name for the course. This one is already taken!</p>
+			<a href="javascript:void(0)" class="closebtn">&times;</a>
+			</div>';
 			}
 		}catch(Exception $e) {
 			
@@ -91,7 +99,7 @@
 		<form class="white" action="add_course_admin.php" method="POST"  enctype="multipart/form-data">>
 			
 			<label>Course Title</label>
-			<input type="text" name="course_name" value="<?php echo htmlspecialchars($course_name) ?>">
+			<input type="text" name="course_name" maxlength="50" value="<?php echo htmlspecialchars($course_name) ?>">
 
 			<label for="course-description">Course Description</label>
 			<input type="text" name="course-description" value="<?php echo htmlspecialchars($course_description) ?>">

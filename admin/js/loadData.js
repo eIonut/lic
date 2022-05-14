@@ -24,7 +24,7 @@ function load_data(query = "") {
           console.log(response[count].course_description);
           console.log(response[count].course_name);
           html +=
-            '<div class="card" style="max-height: 400px; box-sizing: content-box;">';
+            '<div class="card" style="max-height: 400px; box-sizing: border-box; transition: box-shadow 0.4s;">';
           html +=
             '<img class="card-img-top img-fluid" style="height: 150px; max-height: 75%;" src="./upload/' +
             response[count].course_image +
@@ -44,7 +44,7 @@ function load_data(query = "") {
           html += "</div>";
 
           html +=
-            '<a class="btn d-block btn-primary mt-auto text-start pl-3 py-2 border-0 rounded-0 w-100 d-flex justify-content-between align-items-center" style="background: linear-gradient(84.57deg, #1b3d7d 0%, #4a6db0 100%);" href="delete_course_admin.php?course_name=' +
+            '<a class="btn d-block btn-primary mt-auto text-start pl-3 py-2 border-0 rounded-0 rounded-bottom w-100 d-flex justify-content-between align-items-center" style="background: linear-gradient(84.57deg, #1b3d7d 0%, #4a6db0 100%);" href="delete_course_admin.php?course_name=' +
             response[count].course_name +
             '">Start course<i class="fa-solid fa-book ml-auto"></i></a>';
 

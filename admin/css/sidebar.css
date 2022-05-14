@@ -129,33 +129,6 @@ body {
   color: white;
 }
 
-/* .sidebar .closebtn {
-  position: absolute;
-  top: 0;
-  right: 0px;
-  font-size: 25px;
-  margin-left: 50px;
-  margin-top: -2px;
-  margin-right: 0px;
-  padding: 10px 15px;
-  
-} */
-/* 
-a.closebtn{
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 54px;
-}
-
-
-a.closebtn:hover {
-  text-decoration: none;
-  background-color: #444;
-} */
-
 a.closebtn {
   background: #ffffff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -172,22 +145,6 @@ a.closebtn {
   justify-self: end;
   align-self: center;
 }
-
-/* .addButton{
-  
-  position: absolute;
-  background: #FFFFFF;
-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-border-radius: 100px;
-display: flex;
-flex-direction: row;
-align-items: flex-start;
-  content: url('../imgs/collapse-right.png');
-  padding: 8px;
-  width: 28px;
-height: 28px;
-grid-column: 3;
-/* margin: auto; */
 
 .openbtn {
   display: none;
