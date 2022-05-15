@@ -61,10 +61,14 @@
 			$sql = "INSERT INTO courses(course_name, course_description, course_image) VALUES ('$course_name', '$course_description', '$name')";
 
 			// save to db and check
+
 			try{
 			if(mysqli_query($con, $sql)){
+				
 				// success
-				header('Location: index_admin.php');
+				header('Location: delete_course_admin.php?course_name=' . $course_name);
+
+				
 			
 						} else {
 				echo '<div class="modal">

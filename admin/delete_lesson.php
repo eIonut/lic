@@ -24,3 +24,8 @@ if(isset($_GET['id']) & !empty($_GET['id'])){
 }
  
 ?>
+<script>
+if ( window.history.replaceState ) {
+  window.history.replaceState( null, null, window.location.href );
+}
+</script>

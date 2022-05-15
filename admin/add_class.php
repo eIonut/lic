@@ -39,16 +39,17 @@ $file_loc = $_FILES['file']['tmp_name'];
     
         $lesson_subject = mysqli_real_escape_string($con, $_POST['class-option']);
         $lesson_number = mysqli_real_escape_string($con, $_POST['lesson_number']);
+        $lesson_order = mysqli_real_escape_string($con, $_POST['lesson_order']);
     
         // create sql
-        $sql = "INSERT INTO lessons(lesson_subject, lesson_number, pdf_location) VALUES ('$lesson_subject', '$lesson_number', '$final_file')";
+        $sql = "INSERT INTO lessons(lesson_subject, lesson_number, pdf_location, lesson_order) VALUES ('$lesson_subject', '$lesson_number', '$final_file', '$lesson_order')";
     
    
           try{
         // save to db and check
         if(mysqli_query($con, $sql)){
             // success
-            header('Location: index_admin.php');
+            header('Location: delete_course_admin.php?course_name=' . $lesson_subject);
         } else {
             echo 'query error: '. mysqli_error($con);
         }
@@ -62,6 +63,7 @@ $file_loc = $_FILES['file']['tmp_name'];
   
         $lesson_subject = $_POST['class-option'];
         $lesson_number = $_POST['lesson_number'];
+        $lesson_order = $_POST['lesson_order'];
  }
    
 
@@ -126,6 +128,8 @@ $lessons2 = mysqli_fetch_all($result, MYSQLI_ASSOC);
 			
             <label>Lesson Name</label>
             <input type="text" name="lesson_number">
+            <label for="">Lesson Order</label>
+            <input type="number" name="lesson_order">
             <label for="">File Upload</label>
             <input type="file" name="file">
            

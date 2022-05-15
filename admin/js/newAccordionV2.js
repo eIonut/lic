@@ -1,6 +1,9 @@
 const collapseBtn = document.querySelector(".collapse-btn");
 const gridContainer = document.querySelector(".container-grid");
 const sidebar = document.querySelector(".sidebar");
+const editBtns = document.querySelectorAll(".edit-btn");
+const editModeToggle = document.querySelector(".edit-mode-btn");
+const editIcon = document.querySelector(".edit-icon");
 
 collapseBtn.addEventListener("click", function () {
   let collapseDivsPadding = document.getElementsByClassName("p0-collapse");
@@ -18,6 +21,12 @@ collapseBtn.addEventListener("click", function () {
   for (var i = 0; i < els.length; i++) {
     els[i].classList.toggle("d-none");
     els[i].classList.toggle("mx-auto");
+  }
+
+  if (gridContainer.classList.contains("collapsed")) {
+    editModeToggle.innerHTML = `<i class="fa-solid mx-auto fa-wand-magic "></i>`;
+  } else {
+    editModeToggle.textContent = "Edit Mode";
   }
 });
 
@@ -54,15 +63,15 @@ playBtn.forEach((item, index) => {
 });
 
 window.addEventListener("DOMContentLoaded", function () {
+  editBtns.forEach((item) => {
+    item.classList.add("d-none");
+  });
   courseVideo.forEach((item, index) => {
-    console.log(index);
-    console.log(item.duration);
     item.style.display = "none";
     item.addEventListener("loadedmetadata", (event) => {
       var duration = item.duration;
       var minutes = parseInt(duration / 60, 10);
       var seconds = duration % 60;
-      console.log(minutes, seconds);
       videoDuration[index].textContent = `${minutes}min ${seconds.toFixed(0)}s`;
     });
   });
@@ -85,3 +94,15 @@ const convertVideoDuration = (video) => {
   videoTimer.push(minutes, seconds);
   return videoTimer;
 };
+
+editModeToggle.addEventListener("click", () => {
+  if (editModeToggle.style.opacity == "0.75") {
+    editModeToggle.style.opacity = "1";
+  } else {
+    editModeToggle.style.opacity = "0.75";
+  }
+
+  editBtns.forEach((item) => {
+    item.classList.toggle("d-none");
+  });
+});

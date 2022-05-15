@@ -21,6 +21,7 @@ if(isset($_POST) & !empty($_POST)){
 	//print_r($_POST);
 	// $subject = mysqli_real_escape_string($con, $_POST['subject']);
 	$lesson_edit = mysqli_real_escape_string($con, $_POST['lesson-edit']);
+	$lesson_order = mysqli_real_escape_string($con, $_POST['lesson-order']);
 	$sql = "UPDATE lessons SET lesson_number='$lesson_edit' WHERE id=$id";
 	$res = mysqli_query($con, $sql) or die(mysqli_error($con));
 	//$lid = mysqli_insert_id($connection);
@@ -31,6 +32,9 @@ if(isset($_POST) & !empty($_POST)){
 	}else{
 		$fmsg = "Failed to update Lesson";
 	}
+
+	$sql2 = "UPDATE lessons SET lesson_order='$lesson_order' WHERE id=$id";
+	$res2 = mysqli_query($con, $sql2) or die(mysqli_error($con));
 }
 ?>
 <!DOCTYPE html>
@@ -64,6 +68,9 @@ if(isset($_POST) & !empty($_POST)){
 	  <form id="edit-lesson-form" class="w-100 h-100 p-3 m-0" method="post">
 
 <div class="form-group">
+<label class="text-light" for="lessonOrder">Enter lesson order</label>
+  <input type="number" min="1" name="lesson-order" class="form-control mt-4 mb-4 font-weight-bold" rows="6" required value="<?php echo $courses_array['lesson_order'] ?>"></input>
+
   <label class="text-light" for="exampleInputPassword1">Enter new lesson name</label>
   <input type="text" name="lesson-edit" class="form-control mt-4 mb-4 font-weight-bold" rows="6" required value="<?php echo $courses_array['lesson_number'] ?>"></input>
 </div>

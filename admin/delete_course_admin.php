@@ -7,15 +7,14 @@ session_regenerate_id(TRUE); //THIS DOES THE TRICK! Calling it after session_sta
 include 'includes.php';
 ?>
 
-<link rel="stylesheet" href="css/coursePageQueries.css?v=addasddaddaddadadadddDdsddasdddaadsdaadadaddasassadadadaddaaddadaasdaddadadaaddadasasadasddaaas" />
+<link rel="stylesheet" href="css/coursePageQueries.css?v=addddadasdaasddaddadadaddadadadddDdsddasdddaadsdaadadaddasassadadadaddaaddadaasdaddadadaaddadasasadasddaaas" />
 <link rel="stylesheet" href="css/newCourse.css?v=ss03dasssdDDadadddddaaddadadaddaddaddaadddddddaadadadaaaddaadaaddadadddadasasdasasaddaasdasaddadadaasdadasddasas03sssssssdassdasdasssssssssssssssdadsassssssssssssss8b" />
 <link rel="stylesheet" href="css/accordion.css?v=ss03ssdasdaDsdadddaa0ddadadadSdddadadaddadadddaddasdadaadadadsadasaddadasa3dadasdsssdassssssdadasdassssdassssssssssssssdassssssssssss8b" /> 
 
     
 <?php
 include('../dbconnection.php');
-error_reporting(0);
-
+ error_reporting(0);
 if(isset($_POST['delete'])){
     $asd = mysqli_real_escape_string($con, $_POST['lesson_to_delete']);
     $id_to_delete = mysqli_real_escape_string($con, $_POST['id_to_delete']);
@@ -169,7 +168,15 @@ if(isset($_POST['update'])) {
               
 
               <i class="fa-solid fa-right-from-bracket sidebar-icons"></i>
+
+              
               </div>
+              <button class="btn my-3 text-light edit-mode-btn  d-flex align-items-center justify-content-center
+              text-center w-50 mx-auto" 
+              style="#305397; opacity: 1;
+              box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 0px 2px;
+               border: none; outline: none;">Edit mode</button>
+             
               
     </div>
 
@@ -197,9 +204,9 @@ if(isset($_POST['update'])) {
                                 echo '<p class="font-weight-bold">'.$row["comment_content"].'</p>';
                                 // if($row['user'] == $_SESSION['login_admin']){ //pt partea
                                 echo '<div class="w-100 text-right">';
-                                echo '<a class="px-3 text-dark" style="opacity: 0.75;" href="editcomment.php?id= '. $row['comment_id'] .';"><i class="fa-solid fa-pencil"></i></a>';
+                                echo '<a class="px-3 text-dark edit-btn" style="opacity: 0.75;" href="editcomment.php?id= '. $row['comment_id'] .';"><i class="fa-solid fa-pencil"></i></a>';
 
-                                echo '<a class="text-danger" style="opacity: 0.75;" href="delcomment.php?id= '. $row['comment_id'] .';"><i class="fa-solid fa-trash"></i></a>';
+                                echo '<a class="text-danger edit-btn del-btn" style="opacity: 0.75;" href="delcomment.php?id= '. $row['comment_id'] .';"><i class="fa-solid fa-trash"></i></a>';
                                 echo '</div>';
                                 // }
                                 
@@ -244,23 +251,30 @@ if(isset($_POST['update'])) {
              
              $sql    = "SELECT * FROM lessons WHERE lesson_subject= '$asd' ORDER BY lesson_order ASC";
              $result = mysqli_query($con, $sql);
+             $result_array = mysqli_fetch_array($result);
+
+             
              
            
              if (mysqli_num_rows($result) > 0) {
-                echo '<h1">'.$row["lesson_subject"].'</h1>';
+              
                  while ($row = mysqli_fetch_assoc($result)) {
                     if (str_contains($row["pdf_location"], '.mp4')) {
                     
             echo '<button class="accordion py-4 font-weight-bold mx-4 d-flex justify-content-between align-items-center" style="background: #eaeef5;">' . $row['lesson_order'] . '.' . " " . $row["lesson_number"] .'
             <div class="ml-auto pr-3">
-            <a class="px-3 text-dark" style="opacity: 0.75;" href="edit_lesson.php?id= '. $row['id'] .';"><i class="fa-solid fa-file-pen"></i></a>
-            <a class="text-danger" style="opacity: 0.75;" href="delete_lesson.php?id= '. $row['id'] .';"><i class="fa-solid fa-trash"></i></a>
+            <a class="px-3 text-dark edit-btn" style="opacity: 0.75;" href="edit_lesson.php?id= '. $row['id'] .';"><i class="fa-solid fa-file-pen"></i></a>
+            <a class="text-danger edit-btn" style="opacity: 0.75;" href="delete_lesson.php?id= '. $row['id'] .';"><i class="fa-solid fa-trash"></i></a>
             </div>
             </button>';
             echo '<div class="panel" style="background: #eaeef5;">';
-            echo '<video poster="imgs/video-poster.jpg" class="course-video" src="../images/' . $row["pdf_location"] . '" width="100%" height="300px" controls volume="1">';
+            echo '<video class="course-video" src="../images/' . $row["pdf_location"] . '" width="100%" height="300px" controls volume="1">';
 
             echo ' </video>';
+            
+          
+                
+          
             echo '<div class="mb-4">';
             echo '<i class="fa-solid fa-stopwatch mr-2 text-start"></i>';
             echo '<p class="timer bolded mr-auto d-inline" style="opacity: 0.75;">Duration: <span class="video-duration"></span></p>';
@@ -269,14 +283,14 @@ if(isset($_POST['update'])) {
             style="background: linear-gradient(84.57deg, #1b3d7d 0%, #4a6db0 100%);" type="button">See this lesson<i class="fa-solid fa-xs ml-auto pr-2 fa-arrow-right"></i></button>';
            
             echo '</div>'; 
-            $i++;
+            
                     }
                     else{
                          
         echo '<button class="accordion py-4 mx-4 font-weight-bold d-flex justify-content-between align-items-center" style="background: #eaeef5;">' . $row['lesson_order'] . '.' . " " . $row["lesson_number"] . " - (Resources)".'
         <div class="ml-auto pr-3">
-        <a class="px-3 text-dark" style="opacity: 0.75;" href="edit_lesson.php?id= '. $row['id'] .';"><i class="fa-solid fa-file-pen"></i></a>
-        <a class="text-danger" style="opacity: 0.75;" href="delete_lesson.php?id= '. $row['id'] .';"><i class="fa-solid fa-trash"></i></a>
+        <a class="px-3 text-dark edit-btn" style="opacity: 0.75;" href="edit_lesson.php?id= '. $row['id'] .';"><i class="fa-solid fa-file-pen"></i></a>
+        <a class="text-danger edit-btn  del-btn" style="opacity: 0.75;" href="delete_lesson.php?id= '. $row['id'] .';"><i class="fa-solid fa-trash"></i></a>
         </div>
         </button>';
          ;
@@ -294,7 +308,7 @@ if(isset($_POST['update'])) {
 
        
         echo '</div>';
-        $i++;
+       
                     }
                 }
             }
@@ -313,9 +327,11 @@ if(isset($_POST['update'])) {
 
 
 <script>
+
 if ( window.history.replaceState ) {
   window.history.replaceState( null, null, window.location.href );
 }
+
 </script>
-<script src="js/newAccordionV2.js?v=dasgdfgdassdadadadadaddfasdafssfsdadadaadadadaassddasAddaasdsagsf"></script>
+<script src="js/newAccordionV2.js?v=dasgdfgdadassdasadaddaadassdadaDAddadadsadasdaadadadadadadadadaddadaadadadaddsSafasdafssfsdadadaadadadaassddasAddaasdsagsf"></script>
 </html>
