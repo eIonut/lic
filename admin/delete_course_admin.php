@@ -294,6 +294,7 @@ if(isset($_POST['update'])) {
         </div>
         </button>';
          ;
+         
         echo '<div class="panel" style="background: #eaeef5;"> ';
         echo '<p>';
         echo '<span class="bolded bolded-file font-weight-bold pr-1" style="font-size: 0.9em;">File: </span>' . '<span class="text-underline" style="font-size: 0.9em; color: #305397;" ><u>'.$row["pdf_location"].'</u></span>';

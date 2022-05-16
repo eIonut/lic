@@ -14,7 +14,7 @@ if(isset($_GET['id']) & !empty($_GET['id'])){
 	$courses_array = mysqli_fetch_array($selres);
     
 
-	
+	$Asd = 3;
 }
 
 if(isset($_POST) & !empty($_POST)){

@@ -5,20 +5,24 @@ include 'includes.php';
 if(isset($_POST['signup']))
 {
 
-	$username=$_POST['username'];
-	$email=$_POST['email'];
-	$password=$_POST['password'];
+  $password = mysqli_real_escape_string($con, $_POST['password']);
+$username = mysqli_real_escape_string($con, $_POST['username']);
+
+$email = mysqli_real_escape_string($con, $_POST['email']);
+$name = mysqli_real_escape_string($con, $_POST['name']);
+
+  $role = 1;
  
 
 
-$sql=mysqli_query($con,"select id from admins where username='$username'");
+$sql=mysqli_query($con,"select id from users where username='$username' and role='$role'");
 $row=mysqli_num_rows($sql);
-$hashed_password = md5($password);
+$password = md5($password);
 if($row>0)
 {
 	echo '<div class="mx-auto bg-danger p-1 text-light" style="position: relative; top: 76%; border-radius: 4px; left:0; z-index: 9999; width: fit-content;" >This Email/Username is already taken</div>';
 } else{
-	$msg=mysqli_query($con,"insert into admins(email,password,username) values('$email','$hashed_password','$username')");
+	$msg=mysqli_query($con,"insert into users(role, email,password,username,name) values('$role', '$email','$password','$username', '$name')");
 
 if($msg)
 {
@@ -60,6 +64,11 @@ if($msg)
                     <div class="form-group">
                         <input class="form-control" type="text" name="username" placeholder="Username" required value="">
                         <i class="fa-solid fa-user" style="position: relative; top: -27px;right: -93%; opacity: 0.5;"></i>
+
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="name" placeholder="Name" required value="">
+                        <i class="fa-solid fa-envelope" style="position: relative; top: -27px;right: -93%; opacity: 0.5;"></i>
 
                     </div>
                     <div class="form-group">

@@ -4,11 +4,17 @@ include 'includes.php';
 // Code for login 
 if(isset($_POST['login']))
 {
-$password=$_POST['password'];
-$username=$_POST['username'];
-$dec_password=md5($password);
-$ret= mysqli_query($con,"SELECT * FROM admins WHERE username='$username' and password='$dec_password'");
+
+$password = mysqli_real_escape_string($con, $_POST['password']);
+$username = mysqli_real_escape_string($con, $_POST['username']);
+$password = md5($password);
+
+
+
+$ret= mysqli_query($con, "SELECT * FROM users WHERE username = '$username' AND password='$password'");
+
 $num=mysqli_fetch_array($ret);
+
 if($num>0)
 {
 $extra="index_admin.php";

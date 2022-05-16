@@ -24,35 +24,35 @@ if (!$con) {
 
 
 
-$query1 = @$_POST['course-search'];
+// $query1 = @$_POST['course-search'];
 
 
-if (empty($query1)) {
-    $sql     = 'SELECT course_name, course_description, course_image from courses';
-    $result  = mysqli_query($con, $sql);
-    $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    mysqli_free_result($result);
-    mysqli_close($con);
-}
+// if (empty($query1)) {
+//     $sql     = 'SELECT course_name, course_description, course_image from courses';
+//     $result  = mysqli_query($con, $sql);
+//     $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
+//     mysqli_free_result($result);
+//     mysqli_close($con);
+// }
 
-else {
-    $sql     = 'SELECT course_name, course_id, course_description, course_image from courses WHERE (`course_name` LIKE "%' . $query1 . '%")';
-    $result  = mysqli_query($con, $sql);
-    $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    mysqli_free_result($result);
-    mysqli_close($con);
-}
+// else {
+//     $sql     = 'SELECT course_name, course_id, course_description, course_image from courses WHERE (`course_name` LIKE "%' . $query1 . '%")';
+//     $result  = mysqli_query($con, $sql);
+//     $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
+//     mysqli_free_result($result);
+//     mysqli_close($con);
+// }
 
 
 
-function clearClasses()
-{
-    $sql     = 'SELECT course_name from courses';
-    $result  = mysqli_query($con, $sql);
-    $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    mysqli_free_result($result);
-    mysqli_close($con);
-}
+// function clearClasses()
+// {
+//     $sql     = 'SELECT course_name from courses';
+//     $result  = mysqli_query($con, $sql);
+//     $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
+//     mysqli_free_result($result);
+//     mysqli_close($con);
+// }
 
 ?>
 
