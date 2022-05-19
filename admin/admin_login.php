@@ -9,9 +9,10 @@ $password = mysqli_real_escape_string($con, $_POST['password']);
 $username = mysqli_real_escape_string($con, $_POST['username']);
 $password = md5($password);
 
+$role = 1;
 
 
-$ret= mysqli_query($con, "SELECT * FROM users WHERE username = '$username' AND password='$password'");
+$ret= mysqli_query($con, "SELECT * FROM users WHERE username = '$username' AND password='$password' AND role='$role'");
 
 $num=mysqli_fetch_array($ret);
 
