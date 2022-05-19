@@ -27,7 +27,7 @@ if(isset($_POST['delete'])){
     if(mysqli_query($con, $sql2)){
         //success
         header('Location: index_admin.php');
-    }
+    } else
     {
         echo 'query error: ' . mysqli_error($con);
     }
@@ -35,8 +35,8 @@ if(isset($_POST['delete'])){
     if(mysqli_query($con, $sql)){
         //success
         header('Location: index_admin.php');
-    }
-    {
+    }else
+     {
         echo 'query error: ' . mysqli_error($con);
     }
 
