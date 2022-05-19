@@ -1,12 +1,12 @@
-<?php
-include('../dbconnection.php');
 
+<?php
+
+include('../dbconnection.php');
+include 'includes.php';
 $course_names = '';
 $lesson_subjectt = '';
 $lesson_subject = '';
 $lesson_number = '';
-// $errors = array('lesson_subject' => '', 'lesson_number' => '');
-
 
 $sql = 'SELECT course_name from courses';
 $result = mysqli_query($con, $sql);
@@ -60,29 +60,10 @@ $file_loc = $_FILES['file']['tmp_name'];
     
         }
         
-  
         $lesson_subject = $_POST['class-option'];
         $lesson_number = $_POST['lesson_number'];
         $lesson_order = $_POST['lesson_order'];
  }
-   
-
-if(isset($_POST['submit_delete']))
-{   
-    $lesson_subjectt =  $_POST['lesson-delete-option'];
-   
-        $query= "DELETE FROM `lessons` WHERE `lesson_number` = '$lesson_subjectt' ";
- 
-    
-
-    if(mysqli_query($con, $query)){
-        echo "Records were deleted successfully.";
-    } else{
-        echo "ERROR: Could not able to execute $query. " . mysqli_error($con);
-    }
-     
-}
-
  
  $sql = "SELECT lesson_subject, lesson_number FROM lessons";
 
@@ -111,66 +92,52 @@ $lessons2 = mysqli_fetch_all($result, MYSQLI_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-<section class="container grey-text">
-		<h4 class="center">Add a Subject</h4>
-		<form class="white" action="add_class.php" method="POST"  enctype="multipart/form-data">
-			
-			<label>Lesson Subject</label>
+<body style="  background: rgba(48, 83, 151, 0.75);">
 
-            <select name="class-option" id="">
+<div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-4 form">
+
+            <h4 class="center font-weight-bold" style="opacity: 0.75;">Add a new subject</h4>
+                <form class="m-0" action="add_class.php" method="POST"  enctype="multipart/form-data">
+                <div class="form-group">
+			<label class="font-weight-bold" for="class-option">Lesson Subject</label>
+            <select class="form-control w-100"name="class-option" id="class-option">
+            
             <?php
                 foreach($courses as $course){ ?>
                 <option value="<?php echo ($course['course_name']);?>" name="class-option"><?php echo ($course['course_name']);?></option>
             <?php } ?>
                 
             </select>
+            </div>
 			
-            <label>Lesson Name</label>
-            <input type="text" name="lesson_number">
-            <label for="">Lesson Order</label>
-            <input type="number" name="lesson_order">
-            <label for="">File Upload</label>
-            <input type="file" name="file">
+            <div class="form-group">
+                <label class="font-weight-bold">Lesson Name</label>
+                <input class="form-control w-100"type="text" name="lesson_number">
+            </div>
+            <div class="form-group">
+                <label class="font-weight-bold"for="">Lesson Order</label>
+                <input class="form-control w-100" type="number" name="lesson_order">
+            </div>
+            <div class="form-group">
+                <label class="font-weight-bold"for="">File Upload</label>
+                <input type="file" class="form-control" name="file">
+            </div>
            
-			<div class="center">
-				<input type="submit" name="submit" value="Submit" class="btn brand z-depth-0">
+			<div class="form-group py-3 m-0 pb-0">
+				<input style="background: rgba(48, 83, 151, 0.75); border: none;"type="submit" name="submit" value="Submit" class="w-100 btn btn-primary text-light mx-auto text-center z-depth-0">
+                <p class="mx-auto w-100 text-center py-3 m-0 font-weight-bold">OR</p>
+				<a style="background: rgba(48, 83,151, 0.75); border: none;" class="btn btn-primary text-light mx-auto w-100" href="index_admin.php">Go back to courses</a>
 			</div>
 	
-<!-- SECOND FORM -->
 
-        
-<!-- 			
-			<label>Course name</label> -->
+            </div>
+        </div>
+    </div>
 
-            <!-- <select  name="course-delete-option" id="">
-            <?php
-                foreach($courses as $course){ ?>
-                <option name="" value="<?php echo $course['course_name'];?>""><?php echo $course['course_name'];?></option>
-            <?php } ?>
-                
-            </select> -->
-			
-            <label>Lesson Name</label>
-           
-
-          
-            <select name="lesson-delete-option"id="">
-            <?php
-            foreach($lessons as $lesson){ ?>
-             
-                <option  name="" value="<?php echo $lesson['lesson_number'];?>"><?php echo $lesson['lesson_number']; echo " " . "-" . " "; echo $lesson['lesson_subject'];?></option>
-           
-            <?php } ?>
-            </select>
-           
-           
-			<div class="center">
-				<input type="submit" name="submit_delete" value="Delete" class="btn brand z-depth-0">
-			</div>
-		</form>
-
-	</section>
 
 </body>
+<link rel="stylesheet" href="css/new_login.css?v=sdsafafadassasds" />
+
 </html>

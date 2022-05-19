@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="css/indexPage.css?v=ess0ssssssssDAdadasddadsasdassssssssssassdsssssssdsssssszssss0c3d8b" />
     <link rel="stylesheet" href="css/sidebar.css?v=e031dddsdsassddadasssssssssssssssssssssssdsssssssssssscZd8b" />
     <link rel="stylesheet" href="css/commonStyles.css?v=esssdassdssdassssssssssssssssswssssdssssssssss1se80c32s8b" />
-    <link rel="stylesheet" href="css/indexPageQueries.css?v=esdsdasssdadassssssssssadsssssssssdssssssssssssssss1se80c32s8b" />
+    <link rel="stylesheet" href="css/indexPageQueries.css?v=esdsddadaadasssddaadasdasssssssssadsssssssssdssssssssssssssss1se80c32s8b" />
 
    
     <?php
@@ -94,25 +94,34 @@ echo $_SESSION['login_admin'];
          
 
           <div class="sidebar-top-section">
-          
+          <div class="d-flex justify-content-between align-items-center w-100 query" style="opacity: 0.75;">
   <a class="sidebar-links hide-event" href="index_admin.php">Courses</a>
+  <i class="fa-solid fa-book-open  sidebar-icons" style="opacity: 0.75;"></i>
+</div>
 
   </div>
 
   <div class="add-content"> 
+  <div class="py-2 d-flex justify-content-between align-items-center w-100 query" style="opacity: 0.75;">
     <a class="sidebar-links hide-event py-2" href="add_course_admin.php">Add course</a>
+    <i class="fa-solid fa-plus text-center sidebar-icons" style="opacity: 0.75;"></i>
+</div>
+<div class="py-2 d-flex justify-content-between align-items-center w-100 query" style="opacity: 0.75;">
     <a class="sidebar-links hide-event py-2" href="add_class.php">Add subject</a>
+    <i class="fa-solid fa-plus text-center sidebar-icons" style="opacity: 0.75;"></i>
+</div>
     
   </div>
 
-  
+  <div class="py-4 d-flex justify-content-between align-items-center w-100 query" style="opacity: 0.75;">
               <a
                 href="logout_admin.php"
                 id="logout-btn"
-                class="logout-btn hide-event pt-4 text-decoration-none"
-                >LOGOUT
+                class="logout-btn hide-event text-decoration-none m-0"
+                >Logout
               </a>
-          
+              <i class="fa-solid fa-right-from-bracket sidebar-icons" style="opacity: 0.75;"></i>
+</div>      
 </div>
 </div>
 

@@ -77,9 +77,9 @@ if(isset($comm)){
 }
 if(isset($_POST['update'])) {
    $asdf = $_SESSION['login_admin'];
-    $emp_salary = $_POST['comm-content'];
+    $comm_content = $_POST['comm-content'];
     
-    $sql = "UPDATE comments ". "SET comment_content = '$emp_salary' ". 
+    $sql = "UPDATE comments ". "SET comment_content = '$comm_content' ". 
        "WHERE user = '$asdf'" ;
     $retval = mysql_query( $sql, $con );
     
@@ -87,10 +87,8 @@ if(isset($_POST['update'])) {
        die('Could not update data: ' . mysql_error());
     }
     echo "Updated data successfully\n";
-    
-    
- }
 
+ }
     
  ?>
 
@@ -251,12 +249,13 @@ if(isset($_POST['update'])) {
              
              $sql    = "SELECT * FROM lessons WHERE lesson_subject= '$asd' ORDER BY lesson_order ASC";
              $result = mysqli_query($con, $sql);
-             $result_array = mysqli_fetch_array($result);
+            //  $result_array = mysqli_fetch_array($result);
 
              
              
            
              if (mysqli_num_rows($result) > 0) {
+    
               
                  while ($row = mysqli_fetch_assoc($result)) {
                     if (str_contains($row["pdf_location"], '.mp4')) {

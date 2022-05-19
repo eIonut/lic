@@ -105,6 +105,16 @@
     padding: 24px;
   }
 
+  div.justify-content-between {
+    flex-direction: column;
+    justify-content: center !important;
+    text-align: center;
+  }
+
+  .sidebar-icons {
+    display: none !important;
+  }
+
   section.welcome-section.first-section h1 {
     font-size: 24px;
     padding-top: 24px;
@@ -182,7 +192,7 @@
 
 @media (max-width: 670px) {
   .openbtnAdd {
-    top: 4px;
+    top: 1px;
   }
 }
 

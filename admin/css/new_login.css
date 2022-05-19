@@ -7,10 +7,12 @@ html {
   scroll-behavior: smooth;
   font-family: "Montserrat";
   font-style: normal;
+  margin: 0;
   background: rgba(48, 83, 151, 0.75);
 }
 
 body {
+  margin: 0;
   background: rgba(48, 83, 151, 0.75);
   font-family: "Montserrat";
   font-style: normal;
