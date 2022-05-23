@@ -20,14 +20,17 @@ if(isset($_POST['delete'])){
     $id_to_delete = mysqli_real_escape_string($con, $_POST['id_to_delete']);
     
     $sql2 = "DELETE FROM lessons WHERE lesson_subject = '$asd'";
-    echo($sql2);
+    
     $sql = "DELETE FROM courses WHERE course_id = $id_to_delete";
+
+    $sql3 = "DELETE FROM comments WHERE course_name = '$asd'";
 
 
     if(mysqli_query($con, $sql2)){
         //success
         header('Location: index_admin.php');
     }
+    else
     {
         echo 'query error: ' . mysqli_error($con);
     }
@@ -36,7 +39,15 @@ if(isset($_POST['delete'])){
         //success
         header('Location: index_admin.php');
     }
-    {
+    else{
+        echo 'query error: ' . mysqli_error($con);
+    }
+
+    if(mysqli_query($con, $sql3)){
+        //success
+        header('Location: index_admin.php');
+    }
+    else{
         echo 'query error: ' . mysqli_error($con);
     }
 
@@ -139,7 +150,7 @@ if(isset($_POST['update'])) {
         </div> 
             
         <div class="py-2 d-flex justify-content-between  p0-collapse  py-2 align-items-center">
-            <a class="sidebar-links hide-event py-2" href="add_class.php">Add / remove subject</a>
+            <a class="sidebar-links hide-event py-2" href="add_class.php">Add subject</a>
             <i class="fa-solid fa-plus text-center sidebar-icons"></i>
         </div>
         </div>

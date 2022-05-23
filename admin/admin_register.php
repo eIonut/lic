@@ -53,7 +53,7 @@ if($msg)
         <div class="row">
             <div class="col-md-4 offset-md-4 form">
                 <form  method="POST" autocomplete="">
-                    <h2 class="text-center">Signup Form</h2>
+                    <h2 class="text-center">Sign up</h2>
                     <p class="text-center">It's quick and easy.</p>
                     
                     
