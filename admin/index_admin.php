@@ -153,8 +153,8 @@ echo $_SESSION['login_admin'];
 
         </div>
       </body>
-      <script src="js/sidebar.js?v=dassdssssssssdadadassdssadasssssssssssassssssss"></script>
-      <script src="js/loadData.js?v=dsadssdasdadsdasdssddasdasadadaddadadadadasdadadasassasdsassadas"></script>
+      <script src="js/sidebar.js?v=dassdssssssssdaDAdadadaDAdassdssadasssssssssssassssssss"></script>
+      <script src="js/loadData.js?v=dsadssddaadasdaddasdDAdaasdssdajsdasdadadadadadadadadadadaDADADAddasdasadadadddadadadaDAadadadadasdadadasassasdsassadas"></script>
     
 
     </html>

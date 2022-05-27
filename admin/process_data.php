@@ -5,7 +5,7 @@
 if(isset($_POST["query"]))
 {
 
-	$connect = new PDO("mysql:host=localhost; dbname=licenta", "root", "");
+	$connect = new PDO("mysql:host=localhost; dbname=lic", "root", "");
 
 	$data = array();
 
@@ -19,14 +19,13 @@ if(isset($_POST["query"]))
 		$condition = str_replace(" ", "%", $condition);
 
 		$sample_data = array(
-			':course_name' => '%' . $condition . '%'
+			':name' => '%' . $condition . '%'
 		);
 
 		$query = "
-		SELECT course_name, course_description, course_image
+		SELECT id, name, description, image
 		FROM courses
-		WHERE course_name LIKE :course_name 
-		
+		WHERE name LIKE :name
 		";
 
 		$statement = $connect->prepare($query);
@@ -46,9 +45,10 @@ if(isset($_POST["query"]))
 		foreach($result as $row)
 		{
 			$data[] = array(
-				'course_name' => str_ireplace($replace_array_1, $replace_array_2, $row["course_name"]),
-				'course_description' => str_ireplace($replace_array_1, $replace_array_2, $row["course_description"]),
-				'course_image' => str_ireplace($replace_array_1, $replace_array_2, $row["course_image"]),
+				'id' => str_ireplace($replace_array_1, $replace_array_2, $row["id"]),
+				'name' => str_ireplace($replace_array_1, $replace_array_2, $row["name"]),
+				'description' => str_ireplace($replace_array_1, $replace_array_2, $row["description"]),
+				'image' => str_ireplace($replace_array_1, $replace_array_2, $row["image"]),
 				
                 
 			);
@@ -59,7 +59,7 @@ if(isset($_POST["query"]))
 	{
 
 		$query = "
-		SELECT course_name, course_description, course_image
+		SELECT id, name, description, image
 		FROM courses
 		";
 
@@ -68,9 +68,10 @@ if(isset($_POST["query"]))
 		foreach($result as $row)
 		{
 			$data[] = array(
-				'course_name' => $row['course_name'],
-				'course_description' =>	$row['course_description'],
-				'course_image' => $row['course_image']
+				'id' => $row['id'],
+				'name' => $row['name'],
+				'description' =>	$row['description'],
+				'image' => $row['image']
                 
 			);
 		}
