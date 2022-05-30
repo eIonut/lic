@@ -51,12 +51,12 @@ if(isset($_POST['delete'])){
     $result2 = mysqli_query($con, $sql2);
     $res = mysqli_fetch_assoc($result2);
     //make sql
-    $sql = "SELECT lessons.id, lessons.name, assets.url, lessons_assets.lesson_id, assets.type, courses.name as course_name FROM lessons
+    $sql = "SELECT lessons.id, lessons.name, lessons.lesson_order, assets.url, lessons_assets.lesson_id, assets.type, courses.name as course_name FROM lessons
     INNER JOIN lessons_assets ON lessons_assets.lesson_id = lessons.id
     INNER JOIN assets ON assets.id = lessons_assets.asset_id
     INNER JOIN courses ON lessons.course_id = courses.id
-    WHERE lessons.course_id = $id
-    ORDER BY lessons.id
+    WHERE lessons.course_id = '$id'
+    ORDER BY lessons.lesson_order
     ";
     $result = mysqli_query($con, $sql);
 
@@ -147,6 +147,11 @@ if(isset($_POST['update'])) {
             
         <div class="py-2 d-flex justify-content-between  p0-collapse  py-2 align-items-center">
             <a class="sidebar-links hide-event py-2" href="add_class.php">Add subject</a>
+            <i class="fa-solid fa-plus text-center sidebar-icons"></i>
+        </div>
+
+        <div class="py-2 d-flex justify-content-between  p0-collapse  py-2 align-items-center">
+            <a class="sidebar-links hide-event py-2" href="add_class_v2.php">Add subject V2</a>
             <i class="fa-solid fa-plus text-center sidebar-icons"></i>
         </div>
         </div>
@@ -268,15 +273,17 @@ while($row = mysqli_fetch_assoc($result)){
         $contor ++;
         }  
     }
-    if($row['type'] != 'mp4'){
+    $output = substr($row['url'], 0, strlen($row['url']) - 10) . "...";
+    if($row['type'] != 'video/mp4'){
         echo '<div class="px-4 py-3"style="background: #eaeef5; max-height: fit-content;"> ';
-        echo '<p>'.$row['url'].'</p>';
+        echo '<p>'.$output.'</p>';
         echo '<a class="mr-2" style="opacity: 0.75; color: #305397;" href="../images/' . $row["url"] . '" target="_blank">Download File </a>';
         echo '</div>';
     }
+    
     else{
         echo '<div class="px-4 py-3"style="background: #eaeef5; max-height: fit-content;"> ';
-        echo '<p>'.$row['url'].'</p>';
+        echo '<p>'.$output.'</p>';
         echo '<button>Play</button>';
         echo '</div>';
     }

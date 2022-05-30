@@ -3,16 +3,16 @@
 
 	include('../dbconnection.php');
 
-	$course_name = '';
-	$course_description = '';
-	$course_image = '';
-	$errors = array('course_name' => '');
+	$name = '';
+	$description = '';
+	$image = '';
+	$errors = array('name' => '');
 
 	if(isset($_POST['submit'])){
 		
 		// image
 		
-  $name = $_FILES['file']['name'];
+  $file_name = $_FILES['file']['name'];
   $target_dir = "upload/";
   $target_file = $target_dir . basename($_FILES["file"]["name"]);
 
@@ -25,7 +25,7 @@
   // Check extension
   if( in_array($imageFileType,$extensions_arr) ){
      // Upload file
-     if(move_uploaded_file($_FILES['file']['tmp_name'],$target_dir.$name)){
+     if(move_uploaded_file($_FILES['file']['tmp_name'],$target_dir.$file_name)){
         // Insert record
         // $query = "insert into courses(course_image) values('".$name."')";
      }
@@ -35,13 +35,13 @@
 	
 		
 		// check title
-		if(empty($_POST['course_name'])){
-			$errors['course_name'] = 'A name is required';
+		if(empty($_POST['name'])){
+			$errors['name'] = 'A name is required';
 		} else{
-			$course_name = $_POST['course_name'];
-			$course_description = $_POST['course-description'];
-			if(!preg_match('/^[a-zA-Z0-9\s]+$/', $course_name)){
-				$errors['course_name'] = 'Course name must be letters, numbers and spaces only';
+			$name = $_POST['name'];
+			$description = $_POST['description'];
+			if(!preg_match('/^[a-zA-Z0-9\s]+$/', $name)){
+				$errors['name'] = 'Course name must be letters, numbers and spaces only';
 				echo '<div class="modal">
 			<p>Course name must be letters, numbers and spaces only!</p>
 			<a href="javascript:void(0)" class="closebtn">&times;</a>
@@ -54,19 +54,19 @@
 		} else {
 			// escape sql chars
 		
-			$course_name = mysqli_real_escape_string($con, $_POST['course_name']);
+			$name = mysqli_real_escape_string($con, $_POST['name']);
 			
 
 			// create sql
-			$sql = "INSERT INTO courses(course_name, course_description, course_image) VALUES ('$course_name', '$course_description', '$name')";
+			$sql = "INSERT INTO courses(name, description, image) VALUES ('$name', '$description', '$file_name')";
 
 			// save to db and check
 
 			try{
 			if(mysqli_query($con, $sql)){
-				
+			
 				// success
-				header('Location: delete_course_admin.php?course_name=' . $course_name);
+				header('Location: index_admin.php');
 
 				
 			
@@ -103,11 +103,11 @@
 		<form class="white" action="add_course_admin.php" method="POST"  enctype="multipart/form-data">>
 			
 			<label>Course Title</label>
-			<input type="text" name="course_name" maxlength="50" value="<?php echo htmlspecialchars($course_name) ?>">
+			<input type="text" name="name" maxlength="50" value="<?php echo htmlspecialchars($name) ?>">
 
-			<label for="course-description">Course Description</label>
-			<input type="text" name="course-description" value="<?php echo htmlspecialchars($course_description) ?>">
-			<label for="course_image">Select an image for the course</label>
+			<label for="description">Course Description</label>
+			<input type="text" name="description" value="<?php echo htmlspecialchars($description) ?>">
+			<label for="image">Select an image for the course</label>
 
 			<!-- ADD IMAGE for the course -->
 			<input type="file" 
