@@ -9,7 +9,7 @@ $result = mysqli_query($con, $sql);
 $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
 mysqli_free_result($result);
 
-$sqll = 'SELECT DISTINCT id, url from assets';
+$sqll = 'SELECT * from assets';
 $result = mysqli_query($con, $sqll);
 $assets = mysqli_fetch_all($result, MYSQLI_ASSOC);
 mysqli_free_result($result);
@@ -72,33 +72,18 @@ $sql3 = "INSERT INTO lessons_assets(lesson_id, asset_id)
             <?php } ?>
                 
             </select>
-            <label class="font-weight-bold" for="asset-option">File:</label>
+
             <select class="form-control w-100"name="asset-option" id="class-option">
-            
+            <label class="font-weight-bold" for="class-option">File:</label>
             <?php
-               
-                $sql = "SELECT DISTINCT assets.url from assets";
-                $result = mysqli_query($con, $sql);
-                
                 foreach($assets as $asset){ ?>
-                    <?php
-                while($rowz = mysqli_fetch_assoc($result)){
-                    ?>
-                    
-                <option value="<?php echo $asset['id'];?>" name="asset-option"><?php 
-                
-               
-                    echo $rowz['url'];
-                    
-             
-               
-                 ?></option>
-            <?php    }} ?>
+                <option value="<?php echo $asset['id'];?>" name="asset-option"><?php echo ($asset['url']); ?></option>
+            <?php } ?>
                 
             </select>
-            <label class="font-weight-bold" for="lesson-option">Lesson:</label>
+
             <select class="form-control w-100"name="lesson-option" id="lesson-option">
-           
+            <label class="font-weight-bold" for="class-option">Lesson:</label>
             <?php
 
                 foreach($lessons as $lesson){ ?>           
