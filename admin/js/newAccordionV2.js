@@ -31,11 +31,11 @@ collapseBtn.addEventListener("click", function () {
 });
 
 // var acc = document.getElementsByClassName("accordion");
-// var panels = document.getElementsByClassName("panel");
-// let playBtn = document.querySelectorAll(".play-btn");
-// let courseVideo = document.querySelectorAll(".course-video");
-// let videosDiv = document.querySelector("#videoDiv");
-// var panels = document.querySelectorAll(".panel");
+var panels = document.getElementsByClassName("panel");
+let playBtn = document.querySelectorAll(".play-btn");
+let courseVideo = document.querySelectorAll(".course-video");
+let videosDiv = document.querySelector("#videoDiv");
+var panels = document.querySelectorAll(".panel");
 // var videoDuration = document.querySelectorAll(".timer");
 // var i;
 
@@ -53,40 +53,40 @@ collapseBtn.addEventListener("click", function () {
 //   });
 // }
 
-// playBtn.forEach((item, index) => {
-//   item.addEventListener("click", (event) => {
-//     videosDiv.innerHTML = ``;
-//     let source = courseVideo[index].currentSrc;
-//     videosDiv.innerHTML = `<video
-//     class="course-video" src=${source} width="100%" height="100%" controls volume="1">';
-//     </video>`;
-//   });
-// });
+playBtn.forEach((item, index) => {
+  item.addEventListener("click", (event) => {
+    videosDiv.innerHTML = ``;
+    let source = courseVideo[index].currentSrc;
+    videosDiv.innerHTML = `<video
+    class="course-video" src=${source} width="100%" height="100%" controls volume="1">';
+    </video>`;
+  });
+});
 
-// window.addEventListener("DOMContentLoaded", function () {
-//   editBtns.forEach((item) => {
-//     item.classList.add("d-none");
-//   });
-//   courseVideo.forEach((item, index) => {
-//     item.style.display = "none";
-//     item.addEventListener("loadedmetadata", (event) => {
-//       var duration = item.duration;
-//       var minutes = parseInt(duration / 60, 10);
-//       var seconds = duration % 60;
-//       videoDuration[index].textContent = `${minutes}min ${seconds.toFixed(0)}s`;
-//     });
-//   });
+window.addEventListener("DOMContentLoaded", function () {
+  editBtns.forEach((item) => {
+    item.classList.add("d-none");
+  });
+  courseVideo.forEach((item, index) => {
+    item.style.display = "none";
+    //   item.addEventListener("loadedmetadata", (event) => {
+    //     var duration = item.duration;
+    //     var minutes = parseInt(duration / 60, 10);
+    //     var seconds = duration % 60;
+    //     videoDuration[index].textContent = `${minutes}min ${seconds.toFixed(0)}s`;
+    //   });
+  });
+});
 
-//   courseVideo.forEach((items) => {
-//     panels.forEach((item) => {
-//       if (item.contains(items)) {
-//         videosDiv.innerHTML = `<video
-//         class="course-video" src=${courseVideo[0].currentSrc} width="100%" height="100%" controls volume="1">';
-//         </video>`;
-//       }
-//     });
-//   });
-// });
+courseVideo.forEach((items) => {
+  panels.forEach((item) => {
+    if (item.contains(items)) {
+      videosDiv.innerHTML = `<video
+        class="course-video" src=${courseVideo[0].currentSrc} width="100%" height="100%" controls volume="1">';
+        </video>`;
+    }
+  });
+});
 
 // const convertVideoDuration = (video) => {
 //   var minutes = parseInt(video.duration / 60, 10);
@@ -96,14 +96,14 @@ collapseBtn.addEventListener("click", function () {
 //   return videoTimer;
 // };
 
-// editModeToggle.addEventListener("click", () => {
-//   if (editModeToggle.style.opacity == "0.75") {
-//     editModeToggle.style.opacity = "1";
-//   } else {
-//     editModeToggle.style.opacity = "0.75";
-//   }
+editModeToggle.addEventListener("click", () => {
+  if (editModeToggle.style.opacity == "0.75") {
+    editModeToggle.style.opacity = "1";
+  } else {
+    editModeToggle.style.opacity = "0.75";
+  }
 
-//   editBtns.forEach((item) => {
-//     item.classList.toggle("d-none");
-//   });
-// });
+  editBtns.forEach((item) => {
+    item.classList.toggle("d-none");
+  });
+});

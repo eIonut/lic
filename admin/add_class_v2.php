@@ -4,10 +4,7 @@
 include('../dbconnection.php');
 include 'includes.php';
 
-$sql = 'SELECT DISTINCT * from courses';
-$result = mysqli_query($con, $sql);
-$courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
-mysqli_free_result($result);
+
 
 $sqll = 'SELECT * from assets';
 $result = mysqli_query($con, $sqll);
@@ -15,31 +12,49 @@ $assets = mysqli_fetch_all($result, MYSQLI_ASSOC);
 mysqli_free_result($result);
 
   
-$sqlll = "SELECT DISTINCT * from lessons";
-$result = mysqli_query($con, $sqlll);
-$lessons = mysqli_fetch_all($result, MYSQLI_ASSOC);
+// $sqlll = "SELECT * from lessons";
+// $result = mysqli_query($con, $sqlll);
+// $lessons = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 
+$result3 = mysqli_query($con, "SELECT courses.name as cn, lessons.name as ln, lessons.id as id from courses
+INNER JOIN lessons on lessons.course_id = courses.id
+WHERE lessons.course_id = courses.id" );
+
+       
+// $result2 = mysqli_query($con, "SELECT courses.name from courses
+// INNER JOIN lessons on lessons.course_id = courses.id
+// WHERE lessons.course_id = courses.id" );
 
 
+// $result2 = mysqli_query($con, "SELECT courses.name, courses.id from courses
+// INNER JOIN lessons ON lessons.course_id =  courses.id
+// WHERE lessons.name = '2'" );
 
+// $row = mysqli_fetch_assoc($result2);
 if(isset($_POST['submit']))
 {   
+    
         // escape sql chars
     
-        $lesson_subject = mysqli_real_escape_string($con, $_POST['class-option']);
+        // $lesson_subject = mysqli_real_escape_string($con, $_POST['class-option']);
         
         $asset_option = mysqli_real_escape_string($con, $_POST['asset-option']);
         
         $lesson_option = mysqli_real_escape_string($con, $_POST['lesson-option']);
-
+    
+        // $result2 = mysqli_query($con, "SELECT courses.name from courses
+        // INNER JOIN lessons ON lessons.course_id =  courses.id
+        // WHERE lessons.name = '$lesson_option'" );
+        
+        // $row = mysqli_fetch_assoc($result2);
         
 $sql3 = "INSERT INTO lessons_assets(lesson_id, asset_id)
         VALUES ($lesson_option, $asset_option)";
 
         if(mysqli_query($con, $sql3)){
             // success
-            header('Location: delete_course_admin.php?id=' . $lesson_subject);
+            header('Location: index_admin.php');
         } else {
             echo 'query error: '. mysqli_error($con);
         }
@@ -63,15 +78,9 @@ $sql3 = "INSERT INTO lessons_assets(lesson_id, asset_id)
             <h4 class="center font-weight-bold" style="opacity: 0.75;">Add a new subject</h4>
                 <form class="m-0" action="add_class_v2.php" method="POST"  enctype="multipart/form-data">
                 <div class="form-group">
-			<label class="font-weight-bold" for="class-option">Course:</label>
-            <select class="form-control w-100"name="class-option" id="class-option">
-            
-            <?php
-                foreach($courses as $course){ ?>
-                <option value="<?php echo $course['id'];?>" name="class-option"><?php echo ($course['name']);?></option>
-            <?php } ?>
-                
-            </select>
+			
+
+           
 
             <select class="form-control w-100"name="asset-option" id="class-option">
             <label class="font-weight-bold" for="class-option">File:</label>
@@ -84,10 +93,12 @@ $sql3 = "INSERT INTO lessons_assets(lesson_id, asset_id)
 
             <select class="form-control w-100"name="lesson-option" id="lesson-option">
             <label class="font-weight-bold" for="class-option">Lesson:</label>
-            <?php
+          
 
-                foreach($lessons as $lesson){ ?>           
-                <option value="<?php echo $lesson['id'];?>" name="lesson-option"><?php echo ($lesson['name']);?></option>
+                   
+                <?php while($row = mysqli_fetch_assoc($result3)){      ?>
+                    
+                <option value="<?php echo $row['id'];?>" name="lesson-option"><?php echo '<p class="font-weight-bold">Lesson:</p>' . $row['ln'] . " Course:" . $row['cn']?></option>
             <?php    } ?>
         
             

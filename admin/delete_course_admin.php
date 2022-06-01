@@ -19,9 +19,9 @@ if(isset($_POST['delete'])){
     $asd = mysqli_real_escape_string($con, $_POST['lesson_to_delete']);
     $id_to_delete = mysqli_real_escape_string($con, $_POST['id_to_delete']);
     
-    $sql2 = "DELETE FROM lessons WHERE lesson_subject = '$asd'";
+    $sql2 = "DELETE FROM lessons WHERE name = '$asd'";
     echo($sql2);
-    $sql = "DELETE FROM courses WHERE course_id = $id_to_delete";
+    $sql = "DELETE FROM courses WHERE id = $id_to_delete";
 
 
     if(mysqli_query($con, $sql2)){
@@ -64,21 +64,24 @@ if(isset($_POST['delete'])){
     
 
 
-// $asd = $_GET["course_name"];
 
-if(isset($comm)){
-    date_default_timezone_set('Europe/Bucharest');
+if(isset($_POST['comment'])){
+    // date_default_timezone_set('Europe/Bucharest');
 $comm = $_POST['comment'];
+$id =  mysqli_real_escape_string($con,$_GET['id']);
 
     $asdf = $_SESSION['login_admin'];
-    $timestamp = date("Y-m-d H:i:s");
-    $sql3 = "INSERT INTO comments(user, date, comment_content, course_name)
-    VALUES('$asdf', '$timestamp', '$comm', '$asd')";
-   $result3 = mysqli_query($con, $sql3);
+    // $timestamp = date("Y-m-d H:i:s");
+   
+   $sql3 = "INSERT INTO reviews(course_id, user_id, rating)
+   VALUES($id, $asdf, '$comm')";
+  $result3 = mysqli_query($con, $sql3);
    
 
     
 }
+
+
 if(isset($_POST['update'])) {
    $asdf = $_SESSION['login_admin'];
     $emp_salary = $_POST['comm-content'];
@@ -145,15 +148,26 @@ if(isset($_POST['update'])) {
             <i class="fa-solid fa-plus text-center sidebar-icons"></i>
         </div> 
             
-        <div class="py-2 d-flex justify-content-between  p0-collapse  py-2 align-items-center">
+        <!-- <div class="py-2 d-flex justify-content-between  p0-collapse  py-2 align-items-center">
             <a class="sidebar-links hide-event py-2" href="add_class.php">Add subject</a>
+            <i class="fa-solid fa-plus text-center sidebar-icons"></i>
+        </div> -->
+
+        <div class="py-2 d-flex justify-content-between  p0-collapse  py-2 align-items-center">
+            <a class="sidebar-links hide-event py-2" href="add_class_v2.php">Add content</a>
             <i class="fa-solid fa-plus text-center sidebar-icons"></i>
         </div>
 
         <div class="py-2 d-flex justify-content-between  p0-collapse  py-2 align-items-center">
-            <a class="sidebar-links hide-event py-2" href="add_class_v2.php">Add subject V2</a>
+            <a class="sidebar-links hide-event py-2" href="add_asset.php">Add assets</a>
             <i class="fa-solid fa-plus text-center sidebar-icons"></i>
         </div>
+
+        <div class="py-2 d-flex justify-content-between  p0-collapse  py-2 align-items-center">
+            <a class="sidebar-links hide-event py-2" href="add_lesson.php">Add lessons</a>
+            <i class="fa-solid fa-plus text-center sidebar-icons"></i>
+        </div>
+
         </div>
         <hr>
  
@@ -268,23 +282,42 @@ while($row = mysqli_fetch_assoc($result)){
 
         
         if($contor < count($collecting_names)){
-           echo '<div class="accordion m-4 font-weight-bold py-3" style="color: #000; border-bottom: 1px solid rgba(48, 83, 151, 0.3);">'. $collecting_names[$contor] . '</div>';
-            
+           echo '<div class="accordion py-4 font-weight-bold mx-4 d-flex justify-content-between align-items-center" style="color: #000; border-bottom: 1px solid rgba(48, 83, 151, 0.3);">'. $collecting_names[$contor];
+           echo ' <div class="ml-auto pr-3">
+           <a class="px-3 text-dark edit-btn" style="opacity: 0.75;" href="edit_lesson.php?id= '. $row['id'] .';"><i class="fa-solid fa-file-pen"></i></a>
+           <a class="text-danger edit-btn" style="opacity: 0.75;" href="delete_lesson.php?id= '. $row['id'] .';"><i class="fa-solid fa-trash"></i></a>
+           </div>';
+           echo '</div>';
         $contor ++;
         }  
     }
-    $output = substr($row['url'], 0, strlen($row['url']) - 10) . "...";
+    // $output = substr($row['url'], 0, strlen($row['url']) - 10) . "...";
     if($row['type'] != 'video/mp4'){
+       
         echo '<div class="px-4 py-3"style="background: #eaeef5; max-height: fit-content;"> ';
-        echo '<p>'.$output.'</p>';
+       
+        echo '<p>'.$row['url'].'</p>';
+        echo ' <div class="ml-auto pr-3">';
         echo '<a class="mr-2" style="opacity: 0.75; color: #305397;" href="../images/' . $row["url"] . '" target="_blank">Download File </a>';
+        echo '<i class="fas fa-md fa-file-download mr-auto" style="opacity: 0.75; color: #305397;"></i>';
+        echo '
+        
+        <a class="text-danger edit-btn ml-2" style="opacity: 0.75;" href="delete_lesson.php?id= '. $row['id'] .';">Remove file<i class="fa-solid fa-trash ml-2"></i></a>';
+       
+        echo '</div>';
         echo '</div>';
     }
     
     else{
-        echo '<div class="px-4 py-3"style="background: #eaeef5; max-height: fit-content;"> ';
-        echo '<p>'.$output.'</p>';
-        echo '<button>Play</button>';
+        echo '<div class="panel px-4 py-3"style="background: #eaeef5; max-height: fit-content;"> ';
+        echo '<video class="course-video" src="../images/' . $row["url"] .  '" width="100%" height="300px" controls volume="1"></video>';
+        echo '<p>'.$row["url"].'</p>';
+        echo ' <div class="d-flex justify-content-start align-items-start m-0 py-2">';
+        echo '<a class="text-danger edit-btn" style="opacity: 0.75;" href="delete_asset.php?id= '. $row['id'] .';">Remove file<i class="fa-solid fa-trash ml-2"></i></a>';
+       
+        echo '</div>';
+        echo '<button class="play-btn btn btn-primary w-100 text-start border-0 py-2 pl-4 d-flex justify-content-between align-items-center" 
+        style="background: linear-gradient(84.57deg, #1b3d7d 0%, #4a6db0 100%);" type="button">See this lesson<i class="fa-solid fa-xs ml-auto pr-2 fa-arrow-right"></i></button>';
         echo '</div>';
     }
   }
@@ -305,5 +338,5 @@ if ( window.history.replaceState ) {
 }
 
 </script>
-<script src="js/newAccordionV2.js?v=dasgdfgdadassdasadaddadaadadassdadaDAdaddadadadsadadasdaadadadadadadadadaddadaadadadaddsSafasdafssfsdadadaadadadaassddasAddaasdsagsf"></script>
+<script src="js/newAccordionV2.js?v=dasgdfgdadassdasadadaddadaaddadaadasdczdaadassdadaDAdaddadadadsadadasdaadadadadadadadadaddadaadadadaddsSafasdafssfsdadadaadadadaassddasAddaasdsagsf"></script>
 </html>

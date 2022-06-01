@@ -13,8 +13,14 @@ if(isset($_GET['id']) & !empty($_GET['id'])){
 	$selres = mysqli_query($con, $selsql);
 	$courses_array = mysqli_fetch_array($selres);
     
+	$sql = "SELECT courses.id as cd from courses
+	INNER JOIN lessons ON lessons.course_id = courses.id
+	WHERE lessons.course_id = courses.id";
+	$result = mysqli_query($con, $sql);
+	$cid = mysqli_fetch_array($result);
+    
 
-	$Asd = 3;
+
 }
 
 if(isset($_POST) & !empty($_POST)){
@@ -22,13 +28,13 @@ if(isset($_POST) & !empty($_POST)){
 	// $subject = mysqli_real_escape_string($con, $_POST['subject']);
 	$lesson_edit = mysqli_real_escape_string($con, $_POST['lesson-edit']);
 	$lesson_order = mysqli_real_escape_string($con, $_POST['lesson-order']);
-	$sql = "UPDATE lessons SET lesson_number='$lesson_edit' WHERE id=$id";
+	$sql = "UPDATE lessons SET name='$lesson_edit' WHERE id=$id";
 	$res = mysqli_query($con, $sql) or die(mysqli_error($con));
 	//$lid = mysqli_insert_id($connection);
 	if($res){
 		$smsg = "Lesson updated Successfully";
         // header('Location: index_admin.php');
-		header("Location: delete_course_admin.php?course_name=" .$courses_array["lesson_subject"]);
+		header("Location: delete_course_admin.php?id=" .$courses_array["course_id"]);
 	}else{
 		$fmsg = "Failed to update Lesson";
 	}
@@ -69,14 +75,14 @@ if(isset($_POST) & !empty($_POST)){
 
 <div class="form-group">
 <label class="text-light" for="lessonOrder">Enter lesson order</label>
-  <input type="number" min="1" name="lesson-order" class="form-control mt-4 mb-4 font-weight-bold" rows="6" required value="<?php echo $courses_array['lesson_order'] ?>"></input>
+  <input type="number" min="1" name="lesson-order" class="form-control mt-4 mb-4 font-weight-bold" rows="6" required value="<?php echo $courses_array['lesson_order']?>"></input>
 
   <label class="text-light" for="exampleInputPassword1">Enter new lesson name</label>
-  <input type="text" name="lesson-edit" class="form-control mt-4 mb-4 font-weight-bold" rows="6" required value="<?php echo $courses_array['lesson_number'] ?>"></input>
+  <input type="text" name="lesson-edit" class="form-control mt-4 mb-4 font-weight-bold" rows="6" required value="<?php echo $courses_array['name']?>"></input>
 </div>
 <div class="d-flex flex-row justify-content-start">
 <button id="submit-btn" type="submit" class="btn btn-default mt-2 font-weight-bold ">Submit</button>
-<button class="btn btn-default mt-2 font-weight-bold mx-4 text-muted"><a href="delete_course_admin.php?course_name=<?php echo $courses_array['lesson_number'] ?>"></a>Back to course</button>
+<button class="btn btn-default mt-2 font-weight-bold mx-4 text-muted"><a href="delete_course_admin.php?id=<?php echo $cid['cd'] ?>"></a>Back to course</button>
 
 </div>
 </form>
