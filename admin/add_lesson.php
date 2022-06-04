@@ -56,7 +56,7 @@ if(isset($_POST['submit'])){
                 <div class="form-group">
 			
                 <label class="font-weight-bold" for="class-option">Lesson Subject</label>
-            <select class="form-control w-100"name="class-option" id="class-option">
+            <select class="form-control w-100"name="class-option" id="class-option" required>
             
             <?php
                 foreach($courses as $course){ ?>
@@ -67,11 +67,11 @@ if(isset($_POST['submit'])){
             </select>
             <div class="form-group">
                 <label class="font-weight-bold">Lesson Name</label>
-                <input class="form-control w-100"type="text" name="lesson_number">
+                <input class="form-control w-100"type="text" name="lesson_number" required>
             </div>
             <div class="form-group">
                 <label class="font-weight-bold"for="">Lesson Order</label>
-                <input class="form-control w-100" type="number" name="lesson_order">
+                <input class="form-control w-100" type="number" name="lesson_order" required>
             </div>
            
            

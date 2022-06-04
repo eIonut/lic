@@ -6,7 +6,7 @@ include 'includes.php';
 
 
 
-$sqll = 'SELECT * from assets';
+$sqll = 'SELECT * FROM assets';
 $result = mysqli_query($con, $sqll);
 $assets = mysqli_fetch_all($result, MYSQLI_ASSOC);
 mysqli_free_result($result);
@@ -82,16 +82,34 @@ $sql3 = "INSERT INTO lessons_assets(lesson_id, asset_id)
 
            
 
-            <select class="form-control w-100"name="asset-option" id="class-option">
+            <select class="form-control w-100"name="asset-option" id="class-option" required>
             <label class="font-weight-bold" for="class-option">File:</label>
             <?php
+            $collecting_names = array();
+            $contor = 0;
+           
                 foreach($assets as $asset){ ?>
-                <option value="<?php echo $asset['id'];?>" name="asset-option"><?php echo ($asset['url']); ?></option>
+                <?php
+                $collecting_names[] = $asset['url'];
+                 $collecting_names = array_unique($collecting_names);
+                 if($contor < count($collecting_names)){
+                    ?>
+                    <option value="<?php echo $asset['id'];?>" name="asset-option">
+                    
+                <?php 
+                  echo $collecting_names[$contor];
+                  ?>
+                 </option>
+                     
+                    <?php
+                     $contor++;
+                 }
+               ?>
             <?php } ?>
                 
             </select>
 
-            <select class="form-control w-100"name="lesson-option" id="lesson-option">
+            <select class="form-control w-100"name="lesson-option" id="lesson-option" required>
             <label class="font-weight-bold" for="class-option">Lesson:</label>
           
 

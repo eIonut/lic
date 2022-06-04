@@ -1,8 +1,9 @@
 
+
     <link rel="stylesheet" href="css/indexPage.css?v=ess0ssssssssDAdadasddadsasdassssssssssassdsssssssdsssssszssss0c3d8b" />
     <link rel="stylesheet" href="css/sidebar.css?v=e031dddsdsassddadasssssssssssssssssssssssdsssssssssssscZd8b" />
     <link rel="stylesheet" href="css/commonStyles.css?v=esssdassdssdassssssssssssssssswssssdssssssssss1se80c32s8b" />
-    <link rel="stylesheet" href="css/indexPageQueries.css?v=esdsdasssdadassssssssssadsssssssssdssssssssssssssss1se80c32s8b" />
+    <link rel="stylesheet" href="css/indexPageQueries.css?v=esdsddadaadasssddaadasdasssssssssadsssssssssdssssssssssssssss1se80c32s8b" />
 
    
     <?php
@@ -24,35 +25,35 @@ if (!$con) {
 
 
 
-// $query1 = @$_POST['course-search'];
+$query1 = @$_POST['course-search'];
 
 
-// if (empty($query1)) {
-//     $sql     = 'SELECT course_name, course_description, course_image from courses';
-//     $result  = mysqli_query($con, $sql);
-//     $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
-//     mysqli_free_result($result);
-//     mysqli_close($con);
-// }
+if (empty($query1)) {
+    $sql     = 'SELECT name, description, image from courses';
+    $result  = mysqli_query($con, $sql);
+    $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_free_result($result);
+    mysqli_close($con);
+}
 
-// else {
-//     $sql     = 'SELECT course_name, course_id, course_description, course_image from courses WHERE (`course_name` LIKE "%' . $query1 . '%")';
-//     $result  = mysqli_query($con, $sql);
-//     $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
-//     mysqli_free_result($result);
-//     mysqli_close($con);
-// }
+else {
+    $sql     = 'SELECT courses.name, courses.id, courses.description, courses.image from courses WHERE (`courses.name` LIKE "%' . $query1 . '%")';
+    $result  = mysqli_query($con, $sql);
+    $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_free_result($result);
+    mysqli_close($con);
+}
 
 
 
-// function clearClasses()
-// {
-//     $sql     = 'SELECT course_name from courses';
-//     $result  = mysqli_query($con, $sql);
-//     $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
-//     mysqli_free_result($result);
-//     mysqli_close($con);
-// }
+function clearClasses()
+{
+    $sql     = 'SELECT courses.name from courses';
+    $result  = mysqli_query($con, $sql);
+    $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_free_result($result);
+    mysqli_close($con);
+}
 
 ?>
 
@@ -94,25 +95,44 @@ echo $_SESSION['login_admin'];
          
 
           <div class="sidebar-top-section">
-          
+          <div class="d-flex justify-content-between align-items-center w-100" style="opacity: 0.75;">
   <a class="sidebar-links hide-event" href="index_admin.php">Courses</a>
+  <i class="fa-solid fa-book-open  sidebar-icons" style="opacity: 0.75;"></i>
+</div>
 
   </div>
 
   <div class="add-content"> 
+  <div class="py-0 d-flex justify-content-between align-items-center w-100" style="opacity: 0.75;">
     <a class="sidebar-links hide-event py-2" href="add_course_admin.php">Add course</a>
-    <a class="sidebar-links hide-event py-2" href="add_class.php">Add subject</a>
+    <i class="fa-solid fa-plus text-center sidebar-icons" style="opacity: 0.75;"></i>
+</div>
+<div class="py-0 d-flex justify-content-between align-items-center w-100" style="opacity: 0.75;">
+    <a class="sidebar-links hide-event py-2" href="add_class_v2.php">Add content</a>
+    <i class="fa-solid fa-plus text-center sidebar-icons" style="opacity: 0.75;"></i>
+</div>
+
+<div class="py-0 d-flex justify-content-between align-items-center w-100 " style="opacity: 0.75;">
+    <a class="sidebar-links hide-event py-2" href="add_asset.php">Add assets</a>
+    <i class="fa-solid fa-plus text-center sidebar-icons" style="opacity: 0.75;"></i>
+</div>
+
+<div class="py-0 d-flex justify-content-between align-items-center w-100 " style="opacity: 0.75;">
+    <a class="sidebar-links hide-event py-2" href="add_lesson.php">Add lessons</a>
+    <i class="fa-solid fa-plus text-center sidebar-icons" style="opacity: 0.75;"></i>
+</div>
     
   </div>
 
-  
+  <div class="py-4 d-flex justify-content-between align-items-center w-100 query" style="opacity: 0.75;">
               <a
                 href="logout_admin.php"
                 id="logout-btn"
-                class="logout-btn hide-event pt-4 text-decoration-none"
-                >LOGOUT
+                class="logout-btn hide-event text-decoration-none m-0"
+                >Logout
               </a>
-          
+              <i class="fa-solid fa-right-from-bracket sidebar-icons" style="opacity: 0.75;"></i>
+</div>      
 </div>
 </div>
 
@@ -153,8 +173,8 @@ echo $_SESSION['login_admin'];
 
         </div>
       </body>
-      <script src="js/sidebar.js?v=dassdssssssssdaDAdadadaDAdassdssadasssssssssssassssssss"></script>
-      <script src="js/loadData.js?v=dsadssddaadasdaddasdDAdaasdssdajsdasdadadadadadadadadadadaDADADAddasdasadadadddadadadaDAadadadadasdadadasassasdsassadas"></script>
+      <script src="js/sidebar.js?v=dassdssssssssdadadassdssadasssssssssssassssssss"></script>
+      <script src="js/loadData.js?v=dsadssdasdadsdasdssddasdasadadaddadadadadasdadadasassasdsassadas"></script>
     
 
     </html>

@@ -2,7 +2,7 @@
 <?php
 
 	include('../dbconnection.php');
-
+	include 'includes.php';
 	$name = '';
 	$description = '';
 	$image = '';
@@ -96,30 +96,40 @@
 	
 	<body>
 		
-	
+	<div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-4 form">
+				<h4 class="center font-weight-bold" style="opacity: 0.75;">Add a new course</h4>
+		<form action="add_course_admin.php" method="POST"  enctype="multipart/form-data">
+		<div class="form-group">
+			<label class="font-weight-bold">Course Title</label>
+			<input class="form-control" type="text" name="name" maxlength="50" value="<?php echo htmlspecialchars($name) ?>">
+			</div>
 
-	<section class="container grey-text">
-		<h4 class="center">Add a Course</h4>
-		<form class="white" action="add_course_admin.php" method="POST"  enctype="multipart/form-data">>
-			
-			<label>Course Title</label>
-			<input type="text" name="name" maxlength="50" value="<?php echo htmlspecialchars($name) ?>">
+			<div class="form-group">
+			<label class="font-weight-bold" for="description">Course Description</label>
+			<input class="form-control" type="text" name="description" value="<?php echo htmlspecialchars($description) ?>">
+			</div>
 
-			<label for="description">Course Description</label>
-			<input type="text" name="description" value="<?php echo htmlspecialchars($description) ?>">
-			<label for="image">Select an image for the course</label>
+			<div class="form-group">
+			<label  class="font-weight-bold" for="image">Select an image for the course</label>
 
 			<!-- ADD IMAGE for the course -->
-			<input type="file" 
+			<input class="form-control" type="file" 
                    name="file" 
 				   required
             />
-
-			<div class="center">
-				<input type="submit" name="submit" value="Submit" class="btn brand z-depth-0">
 			</div>
+
+			<div class="form-group py-3 m-0 pb-0">
+						<input style="background: rgba(48, 83, 151, 0.75); border: none;" class="form-control text-light" type="submit" name="submit" value="Submit" class="btn brand z-depth-0">
+						<p class="mx-auto w-100 text-center py-3 m-0 font-weight-bold">OR</p>
+						<a style="background: rgba(48, 83,151, 0.75); border: none;" class="btn btn-primary text-light mx-auto w-100" href="index_admin.php">Go back to courses</a>
+					</div>
 		</form>
 	</section>
 	</body>
 	<script src="js/addCourseModal.js"></script>
+	<link rel="stylesheet" href="css/modals.css?v=esss0das3rsszss0c3d8b" />
+<link rel="stylesheet" href="css/new_login.css?v=sdsafadafadassasds" />
 </html>

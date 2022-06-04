@@ -11,21 +11,35 @@ include('../dbconnection.php');
  $selsql = "SELECT * FROM lessons";
  $selres = mysqli_query($con, $selsql);
  $courses_array = mysqli_fetch_array($selres);
+ $lid = $courses_array['id'];
+
+ $selsql2 = "SELECT * FROM assets";
+ $selres2 = mysqli_query($con, $selsql2);
+ $courses_array2 = mysqli_fetch_array($selres2);
+ $aid = $courses_array2['id'];
 
 if(isset($_GET['id']) & !empty($_GET['id'])){
 	$id = $_GET['id'];
  
-	$delsql="DELETE FROM lessons WHERE id=$id";
-	$delsql2 = "DELETE FROM lessons_assets WHERE lessons_assets.lesson_id = $id";
-
+	$delsql="DELETE FROM courses WHERE id=$id";
 	if(mysqli_query($con, $delsql)){
-		header("Location: delete_course_admin.php?id=" .$courses_array["course_id"]);
+		header("Location: index_admin.php");
 	}
 }else{
 	header('location: index_admin.php');
 }
+
+$delsql2 = "DELETE FROM lessons WHERE lessons.course_id = $id";
 	if(mysqli_query($con, $delsql2)){
-		header("Location: delete_course_admin.php?id=" .$courses_array["course_id"]);
+		header("Location: index_admin.php");
+	}
+else{
+	header('location: index_admin.php');
+}
+
+$delsql3 = "DELETE FROM lessons_assets WHERE lessons_assets.lesson_id = $lid AND lessons_assets.asset_id = $aid";
+	if(mysqli_query($con, $delsql3)){
+		header("Location: index_admin.php");
 	}
 else{
 	header('location: index_admin.php');

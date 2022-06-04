@@ -107,3 +107,17 @@ editModeToggle.addEventListener("click", () => {
     item.classList.toggle("d-none");
   });
 });
+
+editBtns.forEach((item) => {
+  item.addEventListener("click", function (e) {
+    var txt;
+    var r = confirm("Are you sure you want to delete?");
+    if (r == true) {
+      txt = "You pressed OK!";
+    } else {
+      txt = "You pressed Cancel!";
+      e.preventDefault();
+    }
+    return txt;
+  });
+});

@@ -14,34 +14,6 @@ include 'includes.php';
     
 <?php
 include('../dbconnection.php');
-//  error_reporting(0);
-if(isset($_POST['delete'])){
-    $asd = mysqli_real_escape_string($con, $_POST['lesson_to_delete']);
-    $id_to_delete = mysqli_real_escape_string($con, $_POST['id_to_delete']);
-    
-    $sql2 = "DELETE FROM lessons WHERE name = '$asd'";
-    echo($sql2);
-    $sql = "DELETE FROM courses WHERE id = $id_to_delete";
-
-
-    if(mysqli_query($con, $sql2)){
-        //success
-        header('Location: index_admin.php');
-    } else
-    {
-        echo 'query error: ' . mysqli_error($con);
-    }
-    
-    if(mysqli_query($con, $sql)){
-        //success
-        header('Location: index_admin.php');
-    }else
-     {
-        echo 'query error: ' . mysqli_error($con);
-    }
-
-}
-
 
 //check GET request name param
  
@@ -170,17 +142,6 @@ if(isset($_POST['update'])) {
 
         </div>
         <hr>
- 
-        <form action="delete_course_admin.php" class="del-course-form  p0-collapse d-flex px-2 py-2 align-items-center my-0" method="POST">
-           
-                <input  class="form-control" type="hidden" name="id_to_delete" value="<?php echo $course['course_id'];?>"> 
-                <input  class="form-control" type="hidden" name="lesson_to_delete" value="<?php echo $course['course_name'];?>"> 
-                <input  class="delete-course-btn hide-event sidebar-links" type="submit" name="delete" value="Delete course">
-                
-           
-            <i class="fa-solid fa-trash ml-auto sidebar-icons"></i> 
-        </form>
-        <hr>
         <div class="logout-div px-2 d-flex p0-collapse flex-row py-3 justify-content-between align-items-center">
         
         <a
@@ -271,7 +232,10 @@ if(isset($_POST['update'])) {
 <?php
 $collecting_names = array();
 $contor = 0;
-echo '<h4 class="px-4 py-3"style="color: #305397;">'.$res['name'].'</h4>';
+echo '<div class="w-100 d-flex align-items-center">';
+echo '<h4 class="px-4 py-3 m-0"style="color: #305397;">'.$res['name'].'</h4>';
+echo '<a class="text-danger edit-btn" style="opacity: 0.75;" href="delete_course.php?id= '. $res['id'] .';"><i class="fa-solid fa-trash"></i></a>';
+echo '</div>';
 while($row = mysqli_fetch_assoc($result)){
   
     $collecting_names[] = $row['name'];
@@ -297,12 +261,16 @@ while($row = mysqli_fetch_assoc($result)){
         echo '<div class="px-4 py-3"style="background: #eaeef5; max-height: fit-content;"> ';
        
         echo '<p>'.$row['url'].'</p>';
-        echo ' <div class="ml-auto pr-3">';
+        echo ' <div class="ml-auto pr-3  d-flex">';
         echo '<a class="mr-2" style="opacity: 0.75; color: #305397;" href="../images/' . $row["url"] . '" target="_blank">Download File </a>';
         echo '<i class="fas fa-md fa-file-download mr-auto" style="opacity: 0.75; color: #305397;"></i>';
-        echo '
-        
-        <a class="text-danger edit-btn ml-2" style="opacity: 0.75;" href="delete_lesson.php?id= '. $row['id'] .';">Remove file<i class="fa-solid fa-trash ml-2"></i></a>';
+        ?>
+    
+         <?php
+          echo '<a class="text-danger edit-btn text-left" style="opacity: 0.75;" href="delete_asset.php?id= '. $row['id'] .'">Remove file<i class="fa-solid fa-trash ml-2"></i></a>';
+          ?>
+      
+  <?php
        
         echo '</div>';
         echo '</div>';
@@ -313,7 +281,7 @@ while($row = mysqli_fetch_assoc($result)){
         echo '<video class="course-video" src="../images/' . $row["url"] .  '" width="100%" height="300px" controls volume="1"></video>';
         echo '<p>'.$row["url"].'</p>';
         echo ' <div class="d-flex justify-content-start align-items-start m-0 py-2">';
-        echo '<a class="text-danger edit-btn" style="opacity: 0.75;" href="delete_asset.php?id= '. $row['id'] .';">Remove file<i class="fa-solid fa-trash ml-2"></i></a>';
+        echo '<a class="text-danger edit-btn" style="opacity: 0.75;" href="delete_asset.php?id= '. $row['id'] .'">Remove file<i class="fa-solid fa-trash ml-2"></i></a>';
        
         echo '</div>';
         echo '<button class="play-btn btn btn-primary w-100 text-start border-0 py-2 pl-4 d-flex justify-content-between align-items-center" 
@@ -338,5 +306,5 @@ if ( window.history.replaceState ) {
 }
 
 </script>
-<script src="js/newAccordionV2.js?v=dasgdfgdadassdasadadaddadaaddadaadasdczdaadassdadaDAdaddadadadsadadasdaadadadadadadadadaddadaadadadaddsSafasdafssfsdadadaadadadaassddasAddaasdsagsf"></script>
+<script src="js/newAccordionV2.js?v=dasgdfgdadassdasdadaadadadasdadasadadaddaadadadsadadasdaadadadadadadadadaddadaadadadaddsSafasdafssfsdadadaadadadaassddasAddaasdsagsf"></script>
 </html>
