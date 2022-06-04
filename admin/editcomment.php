@@ -1,15 +1,29 @@
 <?php
 include 'includes.php';
 include('../dbconnection.php');
+unset($_SESSION);
+$_SESSION = array();
+session_unset();
+session_start();
+session_regenerate_id(TRUE); //THIS DOES THE TRICK! Calling it after session_start. Dunno if true makes a difference.
+
+if (strlen($_SESSION['id'] == 0)) {
+    header('location:logout_admin.php');
+}
+
+if (!$con) {
+    echo 'Connection error' . mysqli_connect_error();
+}
+
 ?>
 
     
 <?php
 
-if(isset($_GET['id']) & !empty($_GET['id'])){
+if(isset($_GET['id'])){
 	//select query
 	$id = $_GET['id'];
-	$selsql = "SELECT * FROM comments WHERE comment_id=$id";
+	$selsql = "SELECT * FROM reviews WHERE reviews.id=$id";
 	$selres = mysqli_query($con, $selsql);
 	$courses_array = mysqli_fetch_array($selres);
 
@@ -20,16 +34,34 @@ if(isset($_POST) & !empty($_POST)){
 	//print_r($_POST);
 	$subject = mysqli_real_escape_string($con, $_POST['subject']);
 	
+	$id = $_GET['id'];
+	$selsql = "SELECT * FROM reviews WHERE reviews.id=$id";
+	$selres = mysqli_query($con, $selsql);
+	$courses_array = mysqli_fetch_array($selres);
 
-	$sql = "UPDATE comments SET comment_content='$subject' WHERE comment_id=$id";
+	date_default_timezone_set('Europe/Bucharest');
+    $timestamp = date("Y-m-d H:i:s");
+
+	$sql = "UPDATE reviews SET reviews.rating='$subject' WHERE reviews.id=$id";
 	$res = mysqli_query($con, $sql) or die(mysqli_error($con));
+
+	$sql2 = "UPDATE reviews SET reviews.update_at='$timestamp' WHERE reviews.id=$id";
+	$res2 = mysqli_query($con, $sql2) or die(mysqli_error($con));
 	//$lid = mysqli_insert_id($connection);
 	if($res){
 		$smsg = "Comment updated Successfully";
         // header('Location: index_admin.php');
-		header("Location: delete_course_admin.php?course_name=" .$courses_array["course_name"]);
+		header("Location: delete_course_admin.php?id=" . $courses_array["course_id"]);
 	}else{
 		$fmsg = "Failed to update Comment";
+	}
+
+	if($res2){
+		$smg = "COmment updated successfully";
+		header("Location: delete_course_admin.php?id=" . $courses_array["course_id"]);
+	}
+	else{
+		$fmsg = "Failed to update comment";
 	}
 }
 ?>
@@ -64,13 +96,13 @@ if(isset($_POST) & !empty($_POST)){
 	  <form id="edit-comment-form" class="w-100 h-100 p-3 m-0" method="post">
 
 <div class="form-group">
-	<p class="text-light">Your comment: <?php echo $courses_array['comment_content']; ?></p>
+	<p class="text-light">Your comment: <?php echo $courses_array['rating']; ?></p>
   <label class="text-light" for="exampleInputPassword1">Enter your new comment</label>
-  <input type="text" name="subject" class="form-control mt-4 mb-4 font-weight-bold" rows="6" required value="<?php echo $courses_array['comment_content'] ?>"></input>
+  <input type="text" name="subject" class="form-control mt-4 mb-4 font-weight-bold" rows="6" required value="<?php echo $courses_array['rating'] ?>"></input>
 </div>
 <div class="d-flex flex-row justify-content-start">
 <button id="submit-btn" type="submit" class="btn btn-default mt-2 font-weight-bold ">Submit</button>
-<button class="btn btn-default mt-2 font-weight-bold mx-4 text-muted"><a href="delete_course_admin.php?course_name=<?php echo $courses_array['course_name'] ?>"></a>Back to course</button>
+<button class="btn btn-default mt-2 font-weight-bold mx-4 text-muted"><a href="delete_course_admin.php?course_name=<?php echo $courses_array['course_id'] ?>"></a>Back to course</button>
 </div>
 </form>
 </div>

@@ -1,10 +1,21 @@
 <?php
+
+include 'includes.php';
+include('../dbconnection.php');
 unset($_SESSION);
 $_SESSION = array();
 session_unset();
 session_start();
 session_regenerate_id(TRUE); //THIS DOES THE TRICK! Calling it after session_start. Dunno if true makes a difference.
-include 'includes.php';
+
+if (strlen($_SESSION['id'] == 0)) {
+    header('location:logout_admin.php');
+}
+
+if (!$con) {
+    echo 'Connection error' . mysqli_connect_error();
+}
+
 ?>
 
 <link rel="stylesheet" href="css/coursePageQueries.css?v=addddadasdaasddaddadadaddadadadddDdsddasdddaadsdaadadaddasassadadadaddaaddadaasdaddadadaaddadasasadasddaaas" />
@@ -13,7 +24,7 @@ include 'includes.php';
 
     
 <?php
-include('../dbconnection.php');
+
 
 //check GET request name param
  
@@ -33,48 +44,35 @@ include('../dbconnection.php');
     $result = mysqli_query($con, $sql);
 
     
+    $asdfg = $_SESSION['login_admin'];
+    $sql3 = "SELECT * from users WHERE users.username = '$asdfg'";
+                        $result3 = mysqli_query($con, $sql3);
+                        $rows = mysqli_fetch_assoc($result3);
+                        $user_id = $rows['id'];
+
+
+   
     
-
-
-
 if(isset($_POST['comment'])){
-    // date_default_timezone_set('Europe/Bucharest');
-$comm = $_POST['comment'];
-$id =  mysqli_real_escape_string($con,$_GET['id']);
-
-    $asdf = $_SESSION['login_admin'];
-    // $timestamp = date("Y-m-d H:i:s");
-   
-   $sql3 = "INSERT INTO reviews(course_id, user_id, rating)
-   VALUES($id, $asdf, '$comm')";
-  $result3 = mysqli_query($con, $sql3);
-   
-
+ 
     
+$asdf = $_SESSION['login_admin'];
+
+$comment = $_POST['comment'];
+   $sql3 = "INSERT INTO reviews(course_id, user_id, rating)
+   VALUES($id, '$user_id', '$comment')";
+  if(mysqli_query($con, $sql3)){
+    // success
+
+    header("Location: delete_course_admin.php?id=" . $res['id']);
+
+} else {
+    echo 'query error: '. mysqli_error($con);
+}   
 }
 
 
-if(isset($_POST['update'])) {
-   $asdf = $_SESSION['login_admin'];
-    $emp_salary = $_POST['comm-content'];
-    
-    $sql = "UPDATE comments ". "SET comment_content = '$emp_salary' ". 
-       "WHERE user = '$asdf'" ;
-    $retval = mysql_query( $sql, $con );
-    
-    if(! $retval ) {
-       die('Could not update data: ' . mysql_error());
-    }
-    echo "Updated data successfully\n";
-    
-    
- }
-
-    
  ?>
-
-
-
 
 
 <html lang="en">
@@ -174,35 +172,41 @@ if(isset($_POST['update'])) {
 
                 <div class="comments mt-auto p-4" style="max-height: fit-content; overflow: scroll; overflow-x:hidden;">
                     <h4 class="border-bottom py-4 pt-0">Comments</h4>
-                        <?php
-                        // $sql2 = "SELECT * from comments WHERE course_name='$asd'";
-                        // $result2 = mysqli_query($con, $sql2);
+                        <?php                                          
+                    
+                        $sql2 = "SELECT users.username as user_username, reviews.update_at as reviews_update, reviews.rating as reviews_rating, reviews.id as reviews_id from reviews 
+                        INNER JOIN courses ON courses.id = reviews.course_id
+                        INNER JOIN users on users.id = reviews.user_id
+                        WHERE courses.id=$id
+                        ORDER BY reviews_update";
+                        $result2 = mysqli_query($con, $sql2);
 
-                        // if (mysqli_num_rows($result2) > 0) {
-                        //     while ($row = mysqli_fetch_assoc($result2)) {
+
+                        if (mysqli_num_rows($result2) > 0) {
+                            while ($row = mysqli_fetch_assoc($result2)) {
                                 
-                        //         echo '<div class="border-bottom py-3">';
-                        //         echo '<div class="d-flex">';
-                        //             echo '<p class="align-self-start font-weight-bold" style="color: #305397">'.$row["user"].'</p>';
-                        //             echo '<p class="align-self-end ml-auto font-weight-normal" style="opacity: 0.5">'.$row["date"].'</p>';
-                        //         echo '</div>';
-                        //         echo '<p class="font-weight-bold">'.$row["comment_content"].'</p>';
-                        //         // if($row['user'] == $_SESSION['login_admin']){ //pt partea
-                        //         echo '<div class="w-100 text-right">';
-                        //         echo '<a class="px-3 text-dark edit-btn" style="opacity: 0.75;" href="editcomment.php?id= '. $row['comment_id'] .';"><i class="fa-solid fa-pencil"></i></a>';
+                                echo '<div class="border-bottom py-3">';
+                                echo '<div class="d-flex">';
+                                    echo '<p class="align-self-start font-weight-bold" style="color: #305397">'.$row["user_username"].'</p>';
+                                    echo '<p class="align-self-end ml-auto font-weight-normal" style="opacity: 0.5">'.$row["reviews_update"].'</p>';
+                                echo '</div>';
+                                echo '<p class="font-weight-bold">'.$row["reviews_rating"].'</p>';
+                                // if($row['user'] == $_SESSION['login_admin']){ //pt partea
+                                echo '<div class="w-100 text-right">';
+                                echo '<a class="px-3 text-dark edit-btn" style="opacity: 0.75;" href="editcomment.php?id='.$row['reviews_id'].';"><i class="fa-solid fa-pencil"></i></a>';
 
-                        //         echo '<a class="text-danger edit-btn del-btn" style="opacity: 0.75;" href="delcomment.php?id= '. $row['comment_id'] .';"><i class="fa-solid fa-trash"></i></a>';
-                        //         echo '</div>';
-                        //         // }
+                                echo '<a class="text-danger edit-btn del-btn" style="opacity: 0.75;" href="delcomment.php?id='.$row['reviews_id'].';"><i class="fa-solid fa-trash"></i></a>';
+                                echo '</div>';
+                                // }
                                 
-                        //         echo '</div>';
-                        //     }
-                        // }
+                                echo '</div>';
+                            }
+                        }
 
-                        // else{
-                        //     echo 'No comments found.';
-                        // }
-                        // ?>
+                        else{
+                            echo 'No comments found.';
+                        }
+                        ?>
 
 <div class="leave-comment" style="height: fit-content;">
 
@@ -234,7 +238,7 @@ $collecting_names = array();
 $contor = 0;
 echo '<div class="w-100 d-flex align-items-center">';
 echo '<h4 class="px-4 py-3 m-0"style="color: #305397;">'.$res['name'].'</h4>';
-echo '<a class="text-danger edit-btn" style="opacity: 0.75;" href="delete_course.php?id= '. $res['id'] .';"><i class="fa-solid fa-trash"></i></a>';
+echo '<a class="text-danger delete-btn" style="opacity: 0.75;" href="delete_course.php?id= '. $res['id'] .';"><i class="fa-solid fa-trash"></i></a>';
 echo '</div>';
 while($row = mysqli_fetch_assoc($result)){
   
@@ -249,7 +253,7 @@ while($row = mysqli_fetch_assoc($result)){
            echo '<div class="accordion py-4 font-weight-bold mx-4 d-flex justify-content-between align-items-center" style="color: #000; border-bottom: 1px solid rgba(48, 83, 151, 0.3);">'. $collecting_names[$contor];
            echo ' <div class="ml-auto pr-3">
            <a class="px-3 text-dark edit-btn" style="opacity: 0.75;" href="edit_lesson.php?id= '. $row['id'] .';"><i class="fa-solid fa-file-pen"></i></a>
-           <a class="text-danger edit-btn" style="opacity: 0.75;" href="delete_lesson.php?id= '. $row['id'] .';"><i class="fa-solid fa-trash"></i></a>
+           <a class="text-danger delete-btn" style="opacity: 0.75;" href="delete_lesson.php?id= '. $row['id'] .';"><i class="fa-solid fa-trash"></i></a>
            </div>';
            echo '</div>';
         $contor ++;
@@ -267,7 +271,7 @@ while($row = mysqli_fetch_assoc($result)){
         ?>
     
          <?php
-          echo '<a class="text-danger edit-btn text-left" style="opacity: 0.75;" href="delete_asset.php?id= '. $row['id'] .'">Remove file<i class="fa-solid fa-trash ml-2"></i></a>';
+          echo '<a class="text-danger text-left delete-btn" style="opacity: 0.75;" href="delete_asset.php?id= '. $row['id'] .'">Remove file<i class="fa-solid fa-trash ml-2"></i></a>';
           ?>
       
   <?php
@@ -281,7 +285,7 @@ while($row = mysqli_fetch_assoc($result)){
         echo '<video class="course-video" src="../images/' . $row["url"] .  '" width="100%" height="300px" controls volume="1"></video>';
         echo '<p>'.$row["url"].'</p>';
         echo ' <div class="d-flex justify-content-start align-items-start m-0 py-2">';
-        echo '<a class="text-danger edit-btn" style="opacity: 0.75;" href="delete_asset.php?id= '. $row['id'] .'">Remove file<i class="fa-solid fa-trash ml-2"></i></a>';
+        echo '<a class="text-danger delete-btn" style="opacity: 0.75;" href="delete_asset.php?id= '. $row['id'] .'">Remove file<i class="fa-solid fa-trash ml-2"></i></a>';
        
         echo '</div>';
         echo '<button class="play-btn btn btn-primary w-100 text-start border-0 py-2 pl-4 d-flex justify-content-between align-items-center" 
@@ -306,5 +310,5 @@ if ( window.history.replaceState ) {
 }
 
 </script>
-<script src="js/newAccordionV2.js?v=dasgdfgdadassdasdadaadadadasdadasadadaddaadadadsadadasdaadadadadadadadadaddadaadadadaddsSafasdafssfsdadadaadadadaassddasAddaasdsagsf"></script>
+<script src="js/newAccordionV2.js?v=dasgdfgdadassdasdadaadaddaadasdadasadadadddadaaadadadsadadasdaadadadadadadadadaddadaadadadaddsSafasdafssfsdadadaadadadaassddasAddaasdsagsf"></script>
 </html>

@@ -1,6 +1,7 @@
 const collapseBtn = document.querySelector(".collapse-btn");
 const gridContainer = document.querySelector(".container-grid");
 const sidebar = document.querySelector(".sidebar");
+const deleteBtns = document.querySelectorAll(".delete-btn");
 const editBtns = document.querySelectorAll(".edit-btn");
 const editModeToggle = document.querySelector(".edit-mode-btn");
 const editIcon = document.querySelector(".edit-icon");
@@ -64,6 +65,10 @@ playBtn.forEach((item, index) => {
 });
 
 window.addEventListener("DOMContentLoaded", function () {
+  deleteBtns.forEach((item) => {
+    item.classList.add("d-none");
+  });
+
   editBtns.forEach((item) => {
     item.classList.add("d-none");
   });
@@ -103,12 +108,16 @@ editModeToggle.addEventListener("click", () => {
     editModeToggle.style.opacity = "0.75";
   }
 
+  deleteBtns.forEach((item) => {
+    item.classList.toggle("d-none");
+  });
+
   editBtns.forEach((item) => {
     item.classList.toggle("d-none");
   });
 });
 
-editBtns.forEach((item) => {
+deleteBtns.forEach((item) => {
   item.addEventListener("click", function (e) {
     var txt;
     var r = confirm("Are you sure you want to delete?");

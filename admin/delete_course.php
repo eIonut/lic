@@ -1,6 +1,20 @@
 <?php
 include 'includes.php';
 include('../dbconnection.php');
+unset($_SESSION);
+$_SESSION = array();
+session_unset();
+session_start();
+session_regenerate_id(TRUE); //THIS DOES THE TRICK! Calling it after session_start. Dunno if true makes a difference.
+
+if (strlen($_SESSION['id'] == 0)) {
+    header('location:logout_admin.php');
+}
+
+if (!$con) {
+    echo 'Connection error' . mysqli_connect_error();
+}
+
 ?>
 
 <link rel="stylesheet" href="css/coursePageQueries.css?v=addasddaddaddadadadddDdsddasdddaadsdaadadaddasassadadadaddaaddadaasdaddadadaaddadasasadasddaaas" />

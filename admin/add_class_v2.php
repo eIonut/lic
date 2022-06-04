@@ -3,6 +3,19 @@
 
 include('../dbconnection.php');
 include 'includes.php';
+unset($_SESSION);
+$_SESSION = array();
+session_unset();
+session_start();
+session_regenerate_id(TRUE); //THIS DOES THE TRICK! Calling it after session_start. Dunno if true makes a difference.
+
+if (strlen($_SESSION['id'] == 0)) {
+    header('location:logout_admin.php');
+}
+
+if (!$con) {
+    echo 'Connection error' . mysqli_connect_error();
+}
 
 
 
@@ -11,50 +24,25 @@ $result = mysqli_query($con, $sqll);
 $assets = mysqli_fetch_all($result, MYSQLI_ASSOC);
 mysqli_free_result($result);
 
-  
-// $sqlll = "SELECT * from lessons";
-// $result = mysqli_query($con, $sqlll);
-// $lessons = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-
-$result3 = mysqli_query($con, "SELECT courses.name as cn, lessons.name as ln, lessons.id as id from courses
+$result3 = mysqli_query($con, "SELECT courses.name as cn, courses.id as cd, lessons.name as ln, lessons.id as id from courses
 INNER JOIN lessons on lessons.course_id = courses.id
 WHERE lessons.course_id = courses.id" );
 
-       
-// $result2 = mysqli_query($con, "SELECT courses.name from courses
-// INNER JOIN lessons on lessons.course_id = courses.id
-// WHERE lessons.course_id = courses.id" );
+$res3 = mysqli_fetch_assoc($result3);
 
-
-// $result2 = mysqli_query($con, "SELECT courses.name, courses.id from courses
-// INNER JOIN lessons ON lessons.course_id =  courses.id
-// WHERE lessons.name = '2'" );
-
-// $row = mysqli_fetch_assoc($result2);
 if(isset($_POST['submit']))
 {   
-    
-        // escape sql chars
-    
-        // $lesson_subject = mysqli_real_escape_string($con, $_POST['class-option']);
-        
         $asset_option = mysqli_real_escape_string($con, $_POST['asset-option']);
         
         $lesson_option = mysqli_real_escape_string($con, $_POST['lesson-option']);
     
-        // $result2 = mysqli_query($con, "SELECT courses.name from courses
-        // INNER JOIN lessons ON lessons.course_id =  courses.id
-        // WHERE lessons.name = '$lesson_option'" );
-        
-        // $row = mysqli_fetch_assoc($result2);
-        
 $sql3 = "INSERT INTO lessons_assets(lesson_id, asset_id)
         VALUES ($lesson_option, $asset_option)";
 
         if(mysqli_query($con, $sql3)){
             // success
-            header('Location: index_admin.php');
+            header('Location:delete_course_admin.php?id=' . $res3['cd']);
+            
         } else {
             echo 'query error: '. mysqli_error($con);
         }
