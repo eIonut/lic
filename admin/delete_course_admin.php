@@ -34,7 +34,7 @@ if (!$con) {
     $result2 = mysqli_query($con, $sql2);
     $res = mysqli_fetch_assoc($result2);
     //make sql
-    $sql = "SELECT lessons.id, lessons.name, lessons.lesson_order, assets.url, lessons_assets.lesson_id, assets.type, courses.name as course_name FROM lessons
+    $sql = "SELECT lessons.id, lessons.name, lessons.lesson_order, assets.url, lessons_assets.lesson_id, lessons_assets.id as ai, assets.type, courses.name as course_name FROM lessons
     INNER JOIN lessons_assets ON lessons_assets.lesson_id = lessons.id
     INNER JOIN assets ON assets.id = lessons_assets.asset_id
     INNER JOIN courses ON lessons.course_id = courses.id
@@ -240,6 +240,7 @@ echo '<div class="w-100 d-flex align-items-center">';
 echo '<h4 class="px-4 py-3 m-0"style="color: #305397;">'.$res['name'].'</h4>';
 echo '<a class="text-danger delete-btn" style="opacity: 0.75;" href="delete_course.php?id= '. $res['id'] .';"><i class="fa-solid fa-trash"></i></a>';
 echo '</div>';
+
 while($row = mysqli_fetch_assoc($result)){
   
     $collecting_names[] = $row['name'];
@@ -271,7 +272,9 @@ while($row = mysqli_fetch_assoc($result)){
         ?>
     
          <?php
-          echo '<a class="text-danger text-left delete-btn" style="opacity: 0.75;" href="delete_asset.php?id= '. $row['id'] .'">Remove file<i class="fa-solid fa-trash ml-2"></i></a>';
+         
+       
+          echo '<a class="text-danger text-left delete-btn" style="opacity: 0.75;" href="delete_asset.php?id= '. $row['ai'] .'">Remove file<i class="fa-solid fa-trash ml-2"></i></a>';
           ?>
       
   <?php
@@ -285,7 +288,7 @@ while($row = mysqli_fetch_assoc($result)){
         echo '<video class="course-video" src="../images/' . $row["url"] .  '" width="100%" height="300px" controls volume="1"></video>';
         echo '<p>'.$row["url"].'</p>';
         echo ' <div class="d-flex justify-content-start align-items-start m-0 py-2">';
-        echo '<a class="text-danger delete-btn" style="opacity: 0.75;" href="delete_asset.php?id= '. $row['id'] .'">Remove file<i class="fa-solid fa-trash ml-2"></i></a>';
+        echo '<a class="text-danger delete-btn" style="opacity: 0.75;" href="delete_asset.php?id= '. $row['ai'] .'">Remove file<i class="fa-solid fa-trash ml-2"></i></a>';
        
         echo '</div>';
         echo '<button class="play-btn btn btn-primary w-100 text-start border-0 py-2 pl-4 d-flex justify-content-between align-items-center" 
