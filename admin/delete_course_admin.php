@@ -170,7 +170,7 @@ $comment = $_POST['comment'];
                     <p class="mt-50">No videos to watch. Talk to an admin to add more.</p>
                 </div>
 
-                <div class="comments mt-auto p-4" style="max-height: fit-content; overflow: scroll; overflow-x:hidden;">
+                <div class="comments mt-auto p-4" style="background: #eaeef5; height:50vh; max-height: 100vh; overflow: scroll; overflow-x: hidden;"">
                     <h4 class="border-bottom py-4 pt-0">Comments</h4>
                         <?php                                          
                     
@@ -232,7 +232,7 @@ $comment = $_POST['comment'];
 
         
             
-            <div class="col-xl-4 border-info p-0 m-0 courses-div" style="background: #eaeef5; height:100vh; max-height: 100vh; overflow: scroll; overflow-x: hidden;">
+            <div class="col-xl-4 border-info p-0 m-0 courses-div" style="background: #eaeef5; height:100%; max-height: 100vh; overflow: scroll; overflow-x: hidden;">
 <?php
 $collecting_names = array();
 $contor = 0;
@@ -240,6 +240,9 @@ echo '<div class="w-100 d-flex align-items-center">';
 echo '<h4 class="px-4 py-3 m-0"style="color: #305397;">'.$res['name'].'</h4>';
 echo '<a class="text-danger delete-btn" style="opacity: 0.75;" href="delete_course.php?id= '. $res['id'] .';"><i class="fa-solid fa-trash"></i></a>';
 echo '</div>';
+
+
+
 
 while($row = mysqli_fetch_assoc($result)){
   
