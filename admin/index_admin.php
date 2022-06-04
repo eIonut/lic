@@ -107,10 +107,6 @@ echo $_SESSION['login_admin'];
     <a class="sidebar-links hide-event py-2" href="add_course_admin.php">Add course</a>
     <i class="fa-solid fa-plus text-center sidebar-icons" style="opacity: 0.75;"></i>
 </div>
-<div class="py-0 d-flex justify-content-between align-items-center w-100" style="opacity: 0.75;">
-    <a class="sidebar-links hide-event py-2" href="add_class_v2.php">Add content</a>
-    <i class="fa-solid fa-plus text-center sidebar-icons" style="opacity: 0.75;"></i>
-</div>
 
 <div class="py-0 d-flex justify-content-between align-items-center w-100 " style="opacity: 0.75;">
     <a class="sidebar-links hide-event py-2" href="add_asset.php">Add assets</a>
@@ -121,6 +117,13 @@ echo $_SESSION['login_admin'];
     <a class="sidebar-links hide-event py-2" href="add_lesson.php">Add lessons</a>
     <i class="fa-solid fa-plus text-center sidebar-icons" style="opacity: 0.75;"></i>
 </div>
+
+<div class="py-0 d-flex justify-content-between align-items-center w-100" style="opacity: 0.75;">
+    <a class="sidebar-links hide-event py-2" href="add_class_v2.php">Add content</a>
+    <i class="fa-solid fa-plus text-center sidebar-icons" style="opacity: 0.75;"></i>
+</div>
+
+
     
   </div>
 

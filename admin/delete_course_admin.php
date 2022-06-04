@@ -124,11 +124,6 @@ $comment = $_POST['comment'];
         </div> -->
 
         <div class="py-2 d-flex justify-content-between  p0-collapse  py-2 align-items-center">
-            <a class="sidebar-links hide-event py-2" href="add_class_v2.php">Add content</a>
-            <i class="fa-solid fa-plus text-center sidebar-icons"></i>
-        </div>
-
-        <div class="py-2 d-flex justify-content-between  p0-collapse  py-2 align-items-center">
             <a class="sidebar-links hide-event py-2" href="add_asset.php">Add assets</a>
             <i class="fa-solid fa-plus text-center sidebar-icons"></i>
         </div>
@@ -137,6 +132,13 @@ $comment = $_POST['comment'];
             <a class="sidebar-links hide-event py-2" href="add_lesson.php">Add lessons</a>
             <i class="fa-solid fa-plus text-center sidebar-icons"></i>
         </div>
+
+        <div class="py-2 d-flex justify-content-between  p0-collapse  py-2 align-items-center">
+            <a class="sidebar-links hide-event py-2" href="add_class_v2.php">Add content</a>
+            <i class="fa-solid fa-plus text-center sidebar-icons"></i>
+        </div>
+
+        
 
         </div>
         <hr>
@@ -290,12 +292,12 @@ while($row = mysqli_fetch_assoc($result)){
         echo '<div class="panel px-4 py-3"style="background: #eaeef5; max-height: fit-content;"> ';
         echo '<video class="course-video" src="../images/' . $row["url"] .  '" width="100%" height="300px" controls volume="1"></video>';
         echo '<p>'.$row["url"].'</p>';
-        echo ' <div class="d-flex justify-content-start align-items-start m-0 py-2">';
+        echo ' <div class="d-flex justify-content-start align-items-start m-0 py-3">';
         echo '<a class="text-danger delete-btn" style="opacity: 0.75;" href="delete_asset.php?id= '. $row['ai'] .'">Remove file<i class="fa-solid fa-trash ml-2"></i></a>';
        
         echo '</div>';
         echo '<button class="play-btn btn btn-primary w-100 text-start border-0 py-2 pl-4 d-flex justify-content-between align-items-center" 
-        style="background: linear-gradient(84.57deg, #1b3d7d 0%, #4a6db0 100%);" type="button">See this lesson<i class="fa-solid fa-xs ml-auto pr-2 fa-arrow-right"></i></button>';
+        style="background: linear-gradient(84.57deg, #1b3d7d 0%, #4a6db0 100%);" type="button">Watch this video<i class="fa-solid fa-xs ml-auto pr-2 fa-arrow-right"></i></button>';
         echo '</div>';
     }
   }
