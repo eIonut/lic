@@ -236,9 +236,9 @@ $comment = $_POST['comment'];
 <?php
 $collecting_names = array();
 $contor = 0;
-echo '<div class="w-100 d-flex align-items-center">';
+echo ' <div class="d-flex justify-content-between align-items-center m-0 py-2">';
 echo '<h4 class="px-4 py-3 m-0"style="color: #305397;">'.$res['name'].'</h4>';
-echo '<a class="text-danger delete-btn" style="opacity: 0.75;" href="delete_course.php?id= '. $res['id'] .';"><i class="fa-solid fa-trash"></i></a>';
+echo '<a class="text-danger delete-btn ml-auto px-3 mr-4" style="opacity: 0.75;" href="delete_course.php?id= '. $res['id'] .';">Delete course<i class="fa-solid fa-trash ml-2"></i></a>';
 echo '</div>';
 
 
