@@ -10,13 +10,12 @@ include('../dbconnection.php');
 <?php
  $selsql = "SELECT * FROM lessons";
  $selres = mysqli_query($con, $selsql);
- $courses_array = mysqli_fetch_array($selres);
- $lid = $courses_array['id'];
+
 
  $selsql2 = "SELECT * FROM assets";
  $selres2 = mysqli_query($con, $selsql2);
- $courses_array2 = mysqli_fetch_array($selres2);
- $aid = $courses_array2['id'];
+
+
 
 if(isset($_GET['id']) & !empty($_GET['id'])){
 	$id = $_GET['id'];
@@ -37,12 +36,16 @@ else{
 	header('location: index_admin.php');
 }
 
-$delsql3 = "DELETE FROM lessons_assets WHERE lessons_assets.lesson_id = $lid AND lessons_assets.asset_id = $aid";
+
+while($row = mysqli_fetch_assoc($selres)){
+$lid = $row['id'];
+$delsql3 = "DELETE FROM lessons_assets WHERE lessons_assets.lesson_id = $lid";
 	if(mysqli_query($con, $delsql3)){
 		header("Location: index_admin.php");
 	}
 else{
 	header('location: index_admin.php');
+}
 }
 ?>
 <script>
