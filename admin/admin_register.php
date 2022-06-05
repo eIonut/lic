@@ -20,13 +20,13 @@ $row=mysqli_num_rows($sql);
 $password = md5($password);
 if($row>0)
 {
-	echo '<div class="mx-auto bg-danger p-1 text-light" style="position: relative; top: 76%; border-radius: 4px; left:0; z-index: 9999; width: fit-content;" >This Email/Username is already taken</div>';
+	echo '<div class="mx-auto bg-danger p-1 text-light" style="position: relative; top: 77%; border-radius: 4px; left:0; z-index: 9999; width: fit-content;" >This Email/Username is already taken</div>';
 } else{
 	$msg=mysqli_query($con,"insert into users(role, email,password,username,name) values('$role', '$email','$password','$username', '$name')");
 
 if($msg)
 {
-  echo '<div class="mx-auto bg-success p-1 text-light" style="position: relative; top: 76%; border-radius: 4px; left:0; z-index: 9999; width: fit-content;" >Registered successfuly</div>';
+  echo '<div class="mx-auto bg-success p-1 text-light" style="position: relative; top: 77%; border-radius: 4px; left:0; z-index: 9999; width: fit-content;" >Registered successfuly</div>';
 
 }
 }

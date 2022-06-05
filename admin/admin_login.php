@@ -28,7 +28,7 @@ exit();
 }
 else
 {
-	echo '<div class="mx-auto bg-danger p-1 text-light" style="position: relative; top: 68%; border-radius: 4px; left:0; z-index: 9999; width: fit-content;" >Invalid username or password</div>';
+	echo '<div class="mx-auto bg-danger p-1 text-light" style="position: relative; top: 66%; border-radius: 4px; left:0; z-index: 9999; width: fit-content;" >Invalid username or password</div>';
 
 }
 }

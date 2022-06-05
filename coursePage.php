@@ -85,8 +85,8 @@ $comment = $_POST['comment'];
 <body style="background: white;">
 
 <div class="container-grid">
-    <div class="sidebar text-light px-4" style="padding: 0px 24px!important;">
-        <div class="text-light sidebar-header pt-4 mx-auto d-flex justify-content-between align-items-center  p0-collapse" style="width: 100%; overflow:hidden;">
+    <div class="sidebar text-light px-3">
+        <div class="text-light sidebar-header pt-4 mx-auto d-flex justify-content-between align-items-center px-2 p0-collapse" style="width: 100%; overflow:hidden;">
         <div>
         <h3 class="hide-event m-0 p-0 welcome-top-sidebar">
         Welcome back,
@@ -103,7 +103,7 @@ $comment = $_POST['comment'];
             
             </div>
             <hr>
-        <div class="sidebar-top-section  p0-collapse d-flex py-2 flex-column">
+        <div class="sidebar-top-section  p0-collapse d-flex py-2 flex-column px-2">
 
             <div class="d-flex justify-content-between  align-items-center">
                 <a class="sidebar-links hide-event py-2" href="index.php">Courses</a>
@@ -114,7 +114,7 @@ $comment = $_POST['comment'];
 <hr>
         <!--  -->
         
-        <div class="logout-div d-flex p0-collapse flex-row py-4 justify-content-between align-items-center">
+        <div class="logout-div d-flex p0-collapse flex-row py-3 justify-content-between align-items-center px-2">
         
         <a
                 href="logout.php"

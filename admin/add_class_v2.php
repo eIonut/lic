@@ -102,14 +102,17 @@ $res4 = mysqli_fetch_assoc($result4);
                 
             </select>
 
-            <select class="form-control w-100"name="lesson-option" id="lesson-option" required>
+            <select class="form-control w-100 font-weight-bold"name="lesson-option" id="lesson-option" required>
             <label class="font-weight-bold" for="class-option">Lesson:</label>
           
 
                    
                 <?php while($row = mysqli_fetch_assoc($result3)){      ?>
                     
-                <option value="<?php echo $row['id'];?>" name="lesson-option"><?php echo '<p class="font-weight-bold">Lesson:</p>' . $row['ln'] . " Course:" . $row['cn']?></option>
+                <option class="font-weight-bold" value="<?php echo $row['id'];?>" name="lesson-option">
+                <?php echo '<p>Lesson: </p>' . $row['ln'];
+                
+                echo '<span> Course: </span>' . $row['cn']?></option>
             <?php    } ?>
         
             
@@ -129,6 +132,6 @@ $res4 = mysqli_fetch_assoc($result4);
 
 
 </body>
-<link rel="stylesheet" href="css/new_login.css?v=sdsafafadassasds" />
+<link rel="stylesheet" href="css/new_login.css?v=sdsafafadassdsaasds" />
 
 </html>
