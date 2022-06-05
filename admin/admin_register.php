@@ -91,8 +91,7 @@ if($msg)
     </div>
     
   </body>
-  <script src="js/add_password.js?v=dadasdadadads"></script>
+  
 
   
 </html>
-

@@ -1,4 +1,3 @@
-
 <?php
 
 include('../dbconnection.php');
@@ -28,8 +27,8 @@ $result3 = mysqli_query($con, "SELECT courses.name as cn, courses.id as cd, less
 INNER JOIN lessons on lessons.course_id = courses.id
 WHERE lessons.course_id = courses.id" );
 
-$res3 = mysqli_fetch_assoc($result3);
 
+// $res3 = mysqli_fetch_all($result3, MYSQLI_ASSOC);
 if(isset($_POST['submit']))
 {   
         $asset_option = mysqli_real_escape_string($con, $_POST['asset-option']);
@@ -39,9 +38,15 @@ if(isset($_POST['submit']))
 $sql3 = "INSERT INTO lessons_assets(lesson_id, asset_id)
         VALUES ($lesson_option, $asset_option)";
 
+$result4 = mysqli_query($con, "SELECT  courses.id as cd from courses
+INNER JOIN lessons on lessons.course_id = courses.id
+WHERE lessons.id = $lesson_option" );
+
+$res4 = mysqli_fetch_assoc($result4);
+
         if(mysqli_query($con, $sql3)){
             // success
-            header('Location:delete_course_admin.php?id=' . $res3['cd']);
+            header('Location:delete_course_admin.php?id=' . $res4['cd']);
             
         } else {
             echo 'query error: '. mysqli_error($con);

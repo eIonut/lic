@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="css/modals.css?v=esss0s3rsszss0c3d8b" />
+
 <?php
 
 	include('../dbconnection.php');
@@ -57,12 +57,12 @@ if (!$con) {
 			if(!preg_match('/^[a-zA-Z0-9\s]+$/', $name)){
 				$errors['name'] = 'Course name must be letters, numbers and spaces only';
 				echo '<div class="modal">
-			<p>Course name must be letters, numbers and spaces only!</p>
-			<a href="javascript:void(0)" class="closebtn">&times;</a>
-			</div>';
+				<p class="text-center">Course name must be letters, numbers and spaces only!</p>
+				<a href="javascript:void(0)" class="closebtn">&times;</a>
+				</div>';
 			}
 		}
-
+		
 		if(array_filter($errors)){
 			// echo 'errors in form';
 		} else {
@@ -106,6 +106,11 @@ if (!$con) {
 ?>
 
 
+
+<link rel="stylesheet" href="css/modals.css?v=esss0das3rsddadaszdass0c3d8b" />
+<link rel="stylesheet" href="css/new_login.css?v=sdsafaddaafadadadassasds" />
+
+
 <!DOCTYPE html>
 <html>
 	
@@ -144,7 +149,5 @@ if (!$con) {
 		</form>
 	</section>
 	</body>
-	<script src="js/addCourseModal.js"></script>
-	<link rel="stylesheet" href="css/modals.css?v=esss0das3rsszss0c3d8b" />
-<link rel="stylesheet" href="css/new_login.css?v=sdsafadafadassasds" />
+	<script src="js/addCourseModal.js?v=dasddadaaddaasdadasda"></script>
 </html>
