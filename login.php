@@ -1,7 +1,6 @@
 <?php session_start();
 require_once('dbconnection.php');
-include 'admin/includes.php';
-// Code for login 
+include 'admin/includes.php'; 
 if(isset($_POST['login']))
 {
 
@@ -10,7 +9,6 @@ $username = mysqli_real_escape_string($con, $_POST['username']);
 $password = md5($password);
 
 $role = 0;
-
 
 $ret= mysqli_query($con, "SELECT * FROM users WHERE username = '$username' AND password='$password' AND role='$role'");
 
@@ -71,7 +69,6 @@ else
             </div>
         </div>
     </div>
-    
     
   </body>
   <script src="login.js"></script>

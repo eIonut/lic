@@ -14,7 +14,6 @@ body {
   background: rgba(48, 83, 151, 0.75);
   font-family: "Montserrat";
   font-style: normal;
-  /* cursor: url('../imgs/cursor.png'), auto; */
 }
 
 ::selection {

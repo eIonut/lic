@@ -1,43 +1,3 @@
-<link rel="stylesheet" href="admin/css/indexPage.css?v=ess0ssssssssDAdadasddadsasdassssssssssassdsssssssdsssssszssss0c3d8b" />
-<link rel="stylesheet" href="admin/css/sidebar.css?v=e031dddsdsassddadasssssssssssssssssssssssdsssssssssssscZd8b" />
-<link rel="stylesheet" href="admin/css/commonStyles.css?v=esssdassdssdassssssssssssssssswssssdssssssssss1se80c32s8b" />
-<link rel="stylesheet" href="admin/css/indexPageQueries.css?v=esdsddadaadasssddaadasdasssssssssadsssssssssdssssssssssssssss1se80c32s8b" />
-<?php
-include 'dbconnection.php';
-include 'admin/includes.php';
-unset($_SESSION);
-$_SESSION = array();
-session_unset();
-session_start();
-session_regenerate_id(TRUE); 
-if (strlen($_SESSION['id'] == 0)) {
-    header('location:logout.php');
-}
-
-if (!$con) {
-    echo 'Connection error' . mysqli_connect_error();
-}
-
-$query1 = @$_POST['course-search'];
-
-if (empty($query1)) {
-    $sql     = 'SELECT name, description, image from courses';
-    $result  = mysqli_query($con, $sql);
-    $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    mysqli_free_result($result);
-    mysqli_close($con);
-}
-
-else {
-    $sql     = 'SELECT courses.name, courses.id, courses.description, courses.image from courses WHERE (`courses.name` LIKE "%' . $query1 . '%")';
-    $result  = mysqli_query($con, $sql);
-    $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    mysqli_free_result($result);
-    mysqli_close($con);
-}
-
-?>
-
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -132,9 +92,3 @@ echo $_SESSION['login_user'];
     </div>
   </body>
 </html>
-
-      <script src="admin/js/sidebar.js?v=dassdssssssssdaddaadassdssadasssssssssssassssssss"></script>
-      <script src="loadDataUser.js?v=dsadssdasdadsdasdadadadssddasdasadadaddadadadadasdadadasassasdsassadas"></script>
-    
-
-    </html>

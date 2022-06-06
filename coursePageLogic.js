@@ -28,28 +28,11 @@ collapseBtn.addEventListener("click", function () {
   }
 });
 
-// var acc = document.getElementsByClassName("accordion");
 var panels = document.getElementsByClassName("panel");
 let playBtn = document.querySelectorAll(".play-btn");
 let courseVideo = document.querySelectorAll(".course-video");
 let videosDiv = document.querySelector("#videoDiv");
 var panels = document.querySelectorAll(".panel");
-// var videoDuration = document.querySelectorAll(".timer");
-// var i;
-
-// for (i = 0; i < acc.length; i++) {
-//   acc[i].addEventListener("click", function () {
-//     this.classList.toggle("active");
-//     var panel = this.nextElementSibling;
-//     if (panel.style.maxHeight) {
-//       panel.classList.remove("p-4");
-//       panel.style.maxHeight = null;
-//     } else {
-//       panel.classList.add("p-4");
-//       panel.style.maxHeight = panel.scrollHeight + "px";
-//     }
-//   });
-// }
 
 playBtn.forEach((item, index) => {
   item.addEventListener("click", (event) => {

@@ -15,7 +15,6 @@ body {
   --black-color: #262626;
 }
 
-/* The sidebar menu */
 .sidebar {
   font-family: "Montserrat";
   font-style: normal;
@@ -28,12 +27,9 @@ body {
   position: fixed;
   width: 15%;
   color: white;
-  /* max-width: 10%; */
   z-index: 9999;
   font-size: 14px;
   padding: 0px 24px;
-
-  /* display: none; */
 }
 
 .right-content-div {
@@ -171,16 +167,6 @@ a.closebtn {
   left: 24px;
 }
 
-/* .openbtn:hover {
-  background-color: #444;
-  color: #e43603;
-}
-
-.openbtn:focus{
-  border: none;
-  outline: none;
-} */
-
 .hide-event {
   font-size: 14px;
   font-weight: 500;
@@ -199,21 +185,6 @@ a.logout-btn {
   opacity: 0.75;
 }
 
-/* a.sidebar-btns{
-  border: 1px solid lightgray;
-  padding: 10px;
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-a.sidebar-btns:hover{
-  color: black;
-  background: white;
-  border: 1px solid transparent;
-
-} */
-
 .hide {
   display: none;
 }
@@ -229,16 +200,6 @@ a.sidebar-btns:hover{
 .display-event {
   display: block;
 }
-
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-/* @media screen and (max-height: 450px) {
-  .sidebar {
-    padding-top: 15px;
-  }
-  .sidebar a {
-    font-size: 18px;
-  }
-} */
 
 .dimensions {
   grid-column: 1/4;

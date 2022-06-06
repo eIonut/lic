@@ -7,9 +7,6 @@
   --black-color: #262626;
 }
 
-/* background: linear-gradient(84.57deg, #1B3D7D 0%, #4A6DB0 100%); Culoare secundara pagina curs
- */
-
 body {
   animation: fadeInAnimation ease 3s;
   animation-iteration-count: 1;
@@ -62,13 +59,6 @@ main.main-content {
   width: 100%;
   height: 100%;
   overflow: auto;
-  /* display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-left: auto; */
-
-  /* max-height: fit-content; */
 }
 
 .course-video {
@@ -93,23 +83,12 @@ main.main-content {
   color: white;
   outline: none;
   border: none;
-
-  /* Inside auto layout */
-
   flex: none;
   order: 3;
   align-self: stretch;
   flex-grow: 0;
   margin: 12px 0px;
 }
-
-/* .play-btn:hover{
-    outline: none;
-    color: black;
-    background: white;
-    border: 1px solid white;
-    transition: all 0.5s;
-} */
 
 div.panel p {
   margin: 0;

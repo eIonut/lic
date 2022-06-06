@@ -36,14 +36,6 @@
     width: 25%;
   }
 
-  /* section#course-section {
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 24px;
-    padding: 0;
-    padding-bottom: 24px;
-    padding: 24px;
-  } */
-
   div.all-content {
     margin: 0;
     padding: 0;
@@ -81,21 +73,6 @@
     padding: 24px;
   }
 }
-
-/* @media (max-width: 730px) {
-  section.welcome-section.first-section h1 {
-    font-size: 24px;
-    margin-top: 64px;
-  }
-
-  section.welcome-section.first-section p {
-    font-size: 18px;
-  }
-
-  section.welcome-section.first-section {
-    padding-bottom: 42px;
-  }
-} */
 
 @media (max-width: 768px) {
   section.welcome-section {

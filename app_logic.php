@@ -15,7 +15,7 @@ if (isset($_POST['reset-password'])) {
     if (empty($email)) {
         array_push($errors, "Your email is required");
     } elseif (mysqli_num_rows($results) <= 0) {
-        array_push($errors, "Sorry, no user exists on our system with that email");
+        array_push($errors, "We are sorry, there is no user associated with this email, try again.");
     }
     // generate a unique random token of length 100
     $token = bin2hex(random_bytes(50));
@@ -41,8 +41,7 @@ if (isset($_POST['new_password'])) {
     $new_pass = mysqli_real_escape_string($con, $_POST['new_pass']);
     $new_pass_c = mysqli_real_escape_string($con, $_POST['new_pass_c']);
 
-    // Grab to token that came from the email link
-    // $tokens = $_GET['token'];
+    // Grab the token that came from the email link
     $tokensql = "SELECT password_resets.token from password_resets";
     $resulttoken = mysqli_query($con, $tokensql);
     $restoken = mysqli_fetch_array($resulttoken);
@@ -51,7 +50,7 @@ if (isset($_POST['new_password'])) {
         array_push($errors, "Password is required");
     }
     if ($new_pass !== $new_pass_c) {
-        array_push($errors, "Password do not match");
+        array_push($errors, "Passwords do not match");
     }
     if (count($errors) == 0) {
         // select email address of user from the password_reset table
