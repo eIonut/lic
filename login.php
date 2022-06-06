@@ -39,7 +39,7 @@ else
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <link rel="stylesheet" href="admin/css/new_login.css?v=sdasds" />
+   <link rel="stylesheet" href="admin/css/new_login.css?v=sdaczxxsds" />
    
 
     <title>Login</title>
@@ -59,13 +59,13 @@ else
                         <input class="form-control" type="password" name="password" placeholder="Password" required>
                         <i class="fa-solid fa-key" style="position: relative; top: -27px;right: -93%; opacity: 0.5;"></i>
                         <div>
-                        <a href="enter_email.php">Forgot your password?</a>
+                        <a class="link login-link"href="enter_email.php">Forgot your password?</a>
                     </div>
                     </div>
                     <div class="form-group">
                         <input class="form-control button" type="submit" name="login" value="Login">
                     </div>
-                    <div class="link login-link text-center">Not having an account? <a href="register.php">Register here</a></div>
+                    <div class="text-center">Not having an account? <a class="link login-link"href="register.php">Register here.</a></div>
                     
                 </form>
             </div>

@@ -38,31 +38,10 @@ body {
   font-size: 15px;
 }
 
-.container .form form .button {
+.reset-pass {
   background: rgba(48, 83, 151, 0.75);
   color: #fff;
   font-size: 17px;
   font-weight: 500;
   transition: all 0.3s ease;
-}
-.container .form form .button:hover {
-  background: linear-gradient(84.57deg, #1b3d7d 0%, #4a6db0 100%);
-  transition: all 3s;
-}
-.container .form form .link {
-  padding: 5px 0;
-}
-.container .form form .link a {
-  color: rgba(48, 83, 151, 0.75);
-}
-.container .login-form form p {
-  font-size: 14px;
-}
-
-.login-link:visited {
-  color: rgba(48, 83, 151, 0.75);
-}
-
-.login-link {
-  text-decoration: none;
 }

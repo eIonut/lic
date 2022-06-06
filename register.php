@@ -42,7 +42,7 @@ if($msg)
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="admin/css/new_login.css?v=dsadada" />
+    <link rel="stylesheet" href="admin/css/new_login.css?v=dsadadada" />
     <link
       rel="stylesheet"
       href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -84,7 +84,7 @@ if($msg)
                     <div class="form-group">
                         <input class="form-control button" type="submit" name="signup" value="Signup">
                     </div>
-                    <div class="link login-link text-center">Already a member? <a href="login.php">Login here</a></div>
+                    <div class="text-center">Already a member? <a class="link login-link"href="login.php">Login here.</a></div>
                 </form>
             </div>
         </div>
