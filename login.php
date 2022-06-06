@@ -28,7 +28,7 @@ exit();
 }
 else
 {
-	echo '<div class="mx-auto bg-danger p-1 text-light" style="position: relative; top: 66%; border-radius: 4px; left:0; z-index: 9999; width: fit-content;" >Invalid username or password</div>';
+	echo '<div class="mx-auto bg-danger p-1 text-light" style="position: relative; top: 67.5%; border-radius: 4px; left:0; z-index: 9999; width: fit-content;" >Invalid username or password</div>';
 
 }
 }
@@ -58,11 +58,15 @@ else
                     <div class="form-group">
                         <input class="form-control" type="password" name="password" placeholder="Password" required>
                         <i class="fa-solid fa-key" style="position: relative; top: -27px;right: -93%; opacity: 0.5;"></i>
+                        <div>
+                        <a href="enter_email.php">Forgot your password?</a>
+                    </div>
                     </div>
                     <div class="form-group">
                         <input class="form-control button" type="submit" name="login" value="Login">
                     </div>
                     <div class="link login-link text-center">Not having an account? <a href="register.php">Register here</a></div>
+                    
                 </form>
             </div>
         </div>
