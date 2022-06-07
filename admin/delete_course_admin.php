@@ -32,6 +32,9 @@ if (!$con) {
 
     $sql2 = "SELECT * from courses WHERE courses.id = '$id'";
     $result2 = mysqli_query($con, $sql2);
+    if (mysqli_num_rows($result2)==0) { 
+        header("Location: index_admin.php");
+    }
     $res = mysqli_fetch_assoc($result2);
     //make sql
     $sql = "SELECT lessons.id, lessons.name, lessons.lesson_order, assets.url, lessons_assets.lesson_id, lessons_assets.id as ai, assets.type, courses.name as course_name FROM lessons

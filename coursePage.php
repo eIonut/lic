@@ -23,7 +23,11 @@ if (!$con) {
 $id = mysqli_real_escape_string($con, $_GET['id']);
 $sql2 = "SELECT * from courses WHERE courses.id = '$id'";
 $result2 = mysqli_query($con, $sql2);
+if (mysqli_num_rows($result2)==0) { 
+    header("Location: index.php");
+}
 $res = mysqli_fetch_assoc($result2);
+
 $sql = "SELECT lessons.id, lessons.name, lessons.lesson_order, assets.url, lessons_assets.lesson_id, lessons_assets.id as ai, assets.type, courses.name as course_name FROM lessons
             INNER JOIN lessons_assets ON lessons_assets.lesson_id = lessons.id
             INNER JOIN assets ON assets.id = lessons_assets.asset_id

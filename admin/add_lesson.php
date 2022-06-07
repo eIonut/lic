@@ -68,7 +68,7 @@ if(isset($_POST['submit'])){
                 <form class="m-0" action="add_lesson.php" method="POST"  enctype="multipart/form-data">
                 <div class="form-group">
 			
-                <label class="font-weight-bold" for="class-option">Lesson Subject</label>
+                <label class="font-weight-bold" for="class-option">Course Name</label>
             <select class="form-control w-100"name="class-option" id="class-option" required>
             
             <?php

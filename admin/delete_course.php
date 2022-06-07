@@ -29,6 +29,9 @@ if (!$con) {
  $selsql2 = "SELECT * FROM assets";
  $selres2 = mysqli_query($con, $selsql2);
 
+ $selsql3 = "SELECT * FROM reviews";
+ $selres3 = mysqli_query($con, $selsql3);
+
 
 
 if(isset($_GET['id']) & !empty($_GET['id'])){
@@ -48,6 +51,14 @@ $delsql2 = "DELETE FROM lessons WHERE lessons.course_id = $id";
 	}
 else{
 	header('location: index_admin.php');
+}
+
+$delsql3 = "DELETE FROM reviews WHERE reviews.course_id = $id";
+if(mysqli_query($con, $delsql3)){
+	header("Location: index_admin.php");
+}
+else{
+header('location: index_admin.php');
 }
 
 

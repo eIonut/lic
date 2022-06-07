@@ -107,10 +107,14 @@ $res4 = mysqli_fetch_assoc($result4);
           
 
                    
-                <?php while($row = mysqli_fetch_assoc($result3)){      ?>
+                <?php 
+
+                 
+                while($row = mysqli_fetch_assoc($result3)){      ?>
+        
                     
                 <option class="font-weight-bold" value="<?php echo $row['id'];?>" name="lesson-option">
-                <?php echo '<p>Lesson: </p>' . $row['ln'];
+                <?php echo '<p>Lesson: </p>' . $row['ln'] . " |";
                 
                 echo '<span> Course: </span>' . $row['cn']?></option>
             <?php    } ?>
