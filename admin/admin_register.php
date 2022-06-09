@@ -1,7 +1,6 @@
 <?php session_start();
 require_once('../dbconnection.php');
 include 'includes.php'; 
-//Code for Registration 
 if(isset($_POST['signup']))
 {
 
@@ -12,8 +11,6 @@ $email = mysqli_real_escape_string($con, $_POST['email']);
 $name = mysqli_real_escape_string($con, $_POST['name']);
 
   $role = 1;
- 
-
 
 $sql=mysqli_query($con,"select id from users where username='$username' and role='$role'");
 $row=mysqli_num_rows($sql);
@@ -31,9 +28,6 @@ if($msg)
 }
 }
 }
-
-//
-
 
 ?>
 

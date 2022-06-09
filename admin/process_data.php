@@ -1,7 +1,5 @@
 <?php
 
-//process_data.php
-
 if(isset($_POST["query"]))
 {
 

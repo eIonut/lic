@@ -6,7 +6,7 @@ unset($_SESSION);
 $_SESSION = array();
 session_unset();
 session_start();
-session_regenerate_id(TRUE); //THIS DOES THE TRICK! Calling it after session_start. Dunno if true makes a difference.
+session_regenerate_id(TRUE);
 
 if (strlen($_SESSION['id'] == 0)) {
     header('location:logout_admin.php');
@@ -20,14 +20,9 @@ if (!$con) {
 
 <link rel="stylesheet" href="css/coursePageQueries.css?v=addddadasdaasddaddadadaddadadadddDdsddasdddaadsdaadadaddasassadadadaddaaddadaasdaddadadaaddadasasadasddaaas" />
 <link rel="stylesheet" href="css/newCourse.css?v=ss03dasssdDDadadddddaaddadadaddaddaddaadddddddaadadadaaaddaadaaddadadddadasasdasasaddaasdasaddadadaasdadasddasas03sssssssdassdasdasssssssssssssssdadsassssssssssssss8b" />
-<!-- <link rel="stylesheet" href="css/accordion.css?v=ss03ssdadasdadaDsdadddaa0ddadadadSdddadadaddadadddaddasdadaadadadsadasaddadasa3dadasdsssdassssssdadasdassssdassssssssssssssdassssssssssss8b" />  -->
-
 
 <?php
 
-
-//check GET request name param
- 
     $id =  mysqli_real_escape_string($con,$_GET['id']);
 
     $sql2 = "SELECT * from courses WHERE courses.id = '$id'";
@@ -53,9 +48,6 @@ if (!$con) {
                         $rows = mysqli_fetch_assoc($result3);
                         $user_id = $rows['id'];
 
-
-   
-    
 if(isset($_POST['comment'])){
  
     
@@ -65,7 +57,6 @@ $comment = $_POST['comment'];
    $sql3 = "INSERT INTO reviews(course_id, user_id, rating)
    VALUES($id, '$user_id', '$comment')";
   if(mysqli_query($con, $sql3)){
-    // success
 
     header("Location: delete_course_admin.php?id=" . $res['id']);
 
@@ -74,9 +65,7 @@ $comment = $_POST['comment'];
 }   
 }
 
-
  ?>
-
 
 <html lang="en">
 <head>
@@ -120,11 +109,6 @@ $comment = $_POST['comment'];
             <a class="sidebar-links hide-event py-2" href="add_course_admin.php">Add course</a>
             <i class="fa-solid fa-plus text-center sidebar-icons"></i>
         </div> 
-            
-        <!-- <div class="py-2 d-flex justify-content-between  p0-collapse  py-2 align-items-center">
-            <a class="sidebar-links hide-event py-2" href="add_class.php">Add subject</a>
-            <i class="fa-solid fa-plus text-center sidebar-icons"></i>
-        </div> -->
 
         <div class="py-2 d-flex justify-content-between  p0-collapse  py-2 align-items-center">
             <a class="sidebar-links hide-event py-2" href="add_asset.php">Add assets</a>
@@ -139,9 +123,7 @@ $comment = $_POST['comment'];
         <div class="py-2 d-flex justify-content-between  p0-collapse  py-2 align-items-center">
             <a class="sidebar-links hide-event py-2" href="add_class_v2.php">Add content</a>
             <i class="fa-solid fa-plus text-center sidebar-icons"></i>
-        </div>
-
-        
+        </div> 
 
         </div>
         <hr>
@@ -196,14 +178,11 @@ $comment = $_POST['comment'];
                                     echo '<p class="align-self-end ml-auto font-weight-normal" style="opacity: 0.5">'.$row["reviews_update"].'</p>';
                                 echo '</div>';
                                 echo '<p class="font-weight-bold">'.$row["reviews_rating"].'</p>';
-                                // if($row['user'] == $_SESSION['login_admin']){ //pt partea
                                 echo '<div class="w-100 text-right">';
                                 echo '<a class="px-3 text-dark edit-btn" style="opacity: 0.75;" href="editcomment.php?id='.$row['reviews_id'].';"><i class="fa-solid fa-pencil"></i></a>';
 
                                 echo '<a class="text-danger delete-btn" style="opacity: 0.75;" href="delcomment.php?id='.$row['reviews_id'].';"><i class="fa-solid fa-trash"></i></a>';
                                 echo '</div>';
-                                // }
-                                
                                 echo '</div>';
                             }
                         }
@@ -230,8 +209,6 @@ $comment = $_POST['comment'];
                     </form>
                 </div>
                 </div>
-
-                
             </div>
         
 
@@ -246,14 +223,10 @@ echo '<h4 class="px-4 py-3 m-0"style="color: #305397;">'.$res['name'].'</h4>';
 echo '<a class="text-danger delete-btn ml-auto px-3 mr-4" style="opacity: 0.75;" href="delete_course.php?id= '. $res['id'] .';">Delete course<i class="fa-solid fa-trash ml-2"></i></a>';
 echo '</div>';
 
-
-
-
 while($row = mysqli_fetch_assoc($result)){
   
     $collecting_names[] = $row['name'];
     $collecting_names = array_unique($collecting_names);
-    // echo $res;
     
     if($row['lesson_id'] == $row['id']){
 
@@ -268,7 +241,7 @@ while($row = mysqli_fetch_assoc($result)){
         $contor ++;
         }  
     }
-    // $output = substr($row['url'], 0, strlen($row['url']) - 10) . "...";
+
     if($row['type'] != 'video/mp4'){
        
         echo '<div class="px-4 py-3"style="background: #eaeef5; max-height: fit-content;"> ';
@@ -276,11 +249,9 @@ while($row = mysqli_fetch_assoc($result)){
         echo '<p>'.$row['url'].'</p>';
         echo ' <div class="ml-auto pr-3  d-flex">';
         echo '<a class="mr-2" style="opacity: 0.75; color: #305397;" href="../images/' . $row["url"] . '" target="_blank">Download File </a>';
-        echo '<i class="fas fa-md fa-file-download mr-auto" style="opacity: 0.75; color: #305397;"></i>';
+        echo '<i class="fas fa-md fa-file-download mr-auto d-flex justify-content-center align-items-center" style="opacity: 0.75; color: #305397;"></i>';
         ?>
-    
          <?php
-         
        
           echo '<a class="text-danger text-left delete-btn" style="opacity: 0.75;" href="delete_asset.php?id= '. $row['ai'] .'">Remove file<i class="fa-solid fa-trash ml-2"></i></a>';
           ?>

@@ -5,7 +5,7 @@ unset($_SESSION);
 $_SESSION = array();
 session_unset();
 session_start();
-session_regenerate_id(TRUE); //THIS DOES THE TRICK! Calling it after session_start. Dunno if true makes a difference.
+session_regenerate_id(TRUE); 
 
 if (strlen($_SESSION['id'] == 0)) {
     header('location:logout_admin.php');
@@ -43,12 +43,8 @@ if(isset($_GET['id'])){
                                             $rows = mysqli_fetch_assoc($result3);
                                             $user_id = $rows['id'];
 											
-	
-	
-
 	$delsql="DELETE FROM reviews WHERE reviews.id = $id";
 	if(mysqli_query($con, $delsql)){
-		// header("Location: index_admin.php");
 		header("Location: delete_course_admin.php?id=" . $courses_array2['course_id']);
 		}
 }else{

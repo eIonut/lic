@@ -6,7 +6,7 @@ unset($_SESSION);
 $_SESSION = array();
 session_unset();
 session_start();
-session_regenerate_id(TRUE); //THIS DOES THE TRICK! Calling it after session_start. Dunno if true makes a difference.
+session_regenerate_id(TRUE); 
 
 if (strlen($_SESSION['id'] == 0)) {
     header('location:logout_admin.php');
@@ -27,8 +27,6 @@ $result3 = mysqli_query($con, "SELECT courses.name as cn, courses.id as cd, less
 INNER JOIN lessons on lessons.course_id = courses.id
 WHERE lessons.course_id = courses.id" );
 
-
-// $res3 = mysqli_fetch_all($result3, MYSQLI_ASSOC);
 if(isset($_POST['submit']))
 {   
         $asset_option = mysqli_real_escape_string($con, $_POST['asset-option']);

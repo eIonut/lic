@@ -15,7 +15,7 @@ if (!$con) {
 ?>
 
 <link rel="stylesheet" href="admin/css/coursePageQueries.css?v=addddadasdaasddaddadadadddaadadadddDdsddasdddaadsdaadadaddasassadadadaddaaddadaasdaddadadaaddadasasadasddaaas" />
-<link rel="stylesheet" href="admin/css/newCourse.css?v=ss03dasssdDDadadddddaaddadadaddadaddaddaadddddddaadadadaaaddaadaaddadadddadasasdasasaddaasdasaddadadaasdadasddasas03sssssssdassdasdasssssssssssssssdadsassssssssssssss8b" />
+<link rel="stylesheet" href="admin/css/newCourse.css?v=ss03dasssdadadadDDaddadadaadddddaaddadadaddadaddaddaadddddddaadadadaaaddaadaaddadadddadasasdasasaddaasdasaddadadaasdadasddasas03sssssssdassdasdasssssssssssssssdadsassssssssssssss8b" />
 <link rel="stylesheet" href="admin/css/accordion.css?v=ss03ssdadasdadaDsdadddaa0ddadadaddaSdddadadaddadadddaddasdadaadadadsadasaddadasa3dadasdsssdassssssdadasdassssdassssssssssssssdassssssssssss8b" /> 
 
 
@@ -65,7 +65,7 @@ if (isset($_POST['comment'])) {
 <body style="background: white;">
 
 <div class="container-grid">
-    <div class="sidebar text-light px-3">
+    <div class="sidebar text-light px-3" style="transition: all 0.5s ease;">
         <div class="text-light sidebar-header pt-4 mx-auto d-flex justify-content-between align-items-center px-2 p0-collapse" style="width: 100%; overflow:hidden;">
         <div>
             <h3 class="hide-event m-0 p-0 welcome-top-sidebar">
@@ -176,7 +176,7 @@ if (isset($_POST['comment'])) {
                         echo '<p>' . $row['url'] . '</p>';
                         echo ' <div class="ml-auto pr-3  d-flex">';
                         echo '<a class="mr-2" style="opacity: 0.75; color: #305397;" href="images/' . $row["url"] . '" target="_blank">Download File </a>';
-                        echo '<i class="fas fa-md fa-file-download mr-auto" style="opacity: 0.75; color: #305397;"></i>';
+                        echo '<i class="fas fa-md fa-file-download mr-auto d-flex justify-content-center align-items-center" style="opacity: 0.75; color: #305397;"></i>';
                 ?>
                     
                 <?php
@@ -207,5 +207,5 @@ if ( window.history.replaceState ) {
 }
 
 </script>
-<script src="coursePageLogic.js?v=dasgdfgdadassdasdadaadadddaaadasdadasdaaddadadadaaddaaddddaadadadaaadadadsadadasdaadadadadadadadadaddadaadadadaddsSafasdafssfsdadadaadadadaassddasAddaasdsagsf"></script>
+<script src="coursePageLogic.js?v=dasgdfgdadassdasdadaadadddaaadaeqsdadasdaaddadadadaaddaaddddaadadadaaadadadsadadasdaadadadadadadadadaddadaadadadaddsSafasdafssfsdadadaadadadaassddasAddaasdsagsf"></script>
 </html>

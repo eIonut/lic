@@ -5,7 +5,7 @@ unset($_SESSION);
 $_SESSION = array();
 session_unset();
 session_start();
-session_regenerate_id(TRUE); //THIS DOES THE TRICK! Calling it after session_start. Dunno if true makes a difference.
+session_regenerate_id(TRUE); 
 
 if (strlen($_SESSION['id'] == 0)) {
     header('location:logout_admin.php');
@@ -17,11 +17,9 @@ if (!$con) {
 
 ?>
 
-    
 <?php
 
 if(isset($_GET['id'])){
-	//select query
 	$id = $_GET['id'];
 	$selsql = "SELECT * FROM reviews WHERE reviews.id=$id";
 	$selres = mysqli_query($con, $selsql);
@@ -31,7 +29,6 @@ if(isset($_GET['id'])){
 }
 
 if(isset($_POST) & !empty($_POST)){
-	//print_r($_POST);
 	$subject = mysqli_real_escape_string($con, $_POST['subject']);
 	
 	$id = $_GET['id'];
@@ -47,10 +44,8 @@ if(isset($_POST) & !empty($_POST)){
 
 	$sql2 = "UPDATE reviews SET reviews.update_at='$timestamp' WHERE reviews.id=$id";
 	$res2 = mysqli_query($con, $sql2) or die(mysqli_error($con));
-	//$lid = mysqli_insert_id($connection);
 	if($res){
 		$smsg = "Comment updated Successfully";
-        // header('Location: index_admin.php');
 		header("Location: delete_course_admin.php?id=" . $courses_array["course_id"]);
 	}else{
 		$fmsg = "Failed to update Comment";
@@ -69,21 +64,14 @@ if(isset($_POST) & !empty($_POST)){
 <html>
 <head>
 	<title>Home Page</title>
-	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-
-	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
-
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<link rel="stylesheet" href="styles.css" >
 	<link rel="stylesheet" href="css/fonts.css" /> 
-<link rel="stylesheet" href="css/coursePageQueries.css?v=addasddaddaddadadadddDdsddasdddaadsdaadadaddasassadadadaddaaddadaasdaddadadaaddadasasadasddaaas" />
-<link rel="stylesheet" href="css/newCourse.css?v=ss03dasssdDDadadddddaaddadadaddaddaddaadddddddaadadadaaaddaadaaddadadddadasasdasasaddaasdasaddadadaasdadasddasas03sssssssdassdasdasssssssssssssssdadsassssssssssssss8b" />
-<link rel="stylesheet" href="css/accordion.css?v=ss03ssdasdaDsdadddaa0ddadadadSdddadadaddadadddaddasdadaadadadsadasaddadasa3dadasdsssdassssssdadasdassssdassssssssssssssdassssssssssss8b" /> 
-
-
-	<!-- Latest compiled and minified JavaScript -->
+	<link rel="stylesheet" href="css/coursePageQueries.css?v=addasddaddaddadadadddDdsddasdddaadsdaadadaddasassadadadaddaaddadaasdaddadadaaddadasasadasddaaas" />
+	<link rel="stylesheet" href="css/newCourse.css?v=ss03dasssdDDadadddddaaddadadaddaddaddaadddddddaadadadaaaddaadaaddadadddadasasdasasaddaasdasaddadadaasdadasddasas03sssssssdassdasdasssssssssssssssdadsassssssssssssss8b" />
+	<link rel="stylesheet" href="css/accordion.css?v=ss03ssdasdaDsdadddaa0ddadadadSdddadadaddadadddaddasdadaadadadsadasaddadasa3dadasdsssdassssssdadasdassssdassssssssssssssdassssssssssss8b" /> 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 </head>
 <body>

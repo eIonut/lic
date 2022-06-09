@@ -7,7 +7,7 @@ unset($_SESSION);
 $_SESSION = array();
 session_unset();
 session_start();
-session_regenerate_id(TRUE); //THIS DOES THE TRICK! Calling it after session_start. Dunno if true makes a difference.
+session_regenerate_id(TRUE); 
 
 if (strlen($_SESSION['id'] == 0)) {
     header('location:logout_admin.php');
@@ -22,8 +22,6 @@ $result = mysqli_query($con, $sql);
 $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
 mysqli_free_result($result);
 
-
-        // escape sql chars
 if(isset($_POST['submit'])){
     $lesson_subject = mysqli_real_escape_string($con, $_POST['class-option']);
         $lesson_number = mysqli_real_escape_string($con, $_POST['lesson_number']);
@@ -33,22 +31,12 @@ if(isset($_POST['submit'])){
         $sql = "INSERT INTO lessons(course_id, name, lesson_order)
         VALUES ('$lesson_subject', '$lesson_number', '$lesson_order')";
 
-         
-        // save to db and check
         if(mysqli_query($con, $sql)){
-            // success
             header('Location: add_class_v2.php');
         } else {
             echo 'query error: '. mysqli_error($con);
         }
-
-
     }
-
-  
-        
- 
- 
 
 ?>
 <html lang="en">
@@ -94,7 +82,6 @@ if(isset($_POST['submit'])){
 				<a style="background: rgba(48, 83,151, 0.75); border: none;" class="btn btn-primary text-light mx-auto w-100" href="index_admin.php">Go back to courses</a>
 			</div>
 	
-
             </div>
         </div>
     </div>

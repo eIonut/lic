@@ -1,7 +1,6 @@
 <?php session_start();
 require_once('../dbconnection.php');
 include 'includes.php';
-// Code for login 
 if(isset($_POST['login']))
 {
 

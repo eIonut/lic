@@ -5,7 +5,7 @@ unset($_SESSION);
 $_SESSION = array();
 session_unset();
 session_start();
-session_regenerate_id(TRUE); //THIS DOES THE TRICK! Calling it after session_start. Dunno if true makes a difference.
+session_regenerate_id(TRUE);
 
 if (strlen($_SESSION['id'] == 0)) {
     header('location:logout_admin.php');
