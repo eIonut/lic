@@ -58,15 +58,15 @@ $res4 = mysqli_fetch_assoc($result4);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Add Course Content</title>
 </head>
 <body style="  background: rgba(48, 83, 151, 0.75);">
 
 <div class="container">
         <div class="row">
-            <div class="col-md-4 offset-md-4 form">
+            <div class="form">
 
-            <h4 class="center font-weight-bold" style="opacity: 0.75;">Add a new subject</h4>
+            <h4 class="center font-weight-bold" style="opacity: 0.75;">Add course content</h4>
                 <form class="m-0" action="add_class_v2.php" method="POST"  enctype="multipart/form-data">
                 <div class="form-group">
 			

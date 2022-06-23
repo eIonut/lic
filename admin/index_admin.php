@@ -63,7 +63,7 @@ function clearClasses()
         
 
 
-        <title>Document</title>
+        <title>Homepage</title>
       </head>
       <body>
 

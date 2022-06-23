@@ -26,7 +26,8 @@ exit();
 }
 else
 {
-	echo '<div class="mx-auto bg-danger p-1 text-light" style="position: relative; top: 67.5%; border-radius: 4px; left:0; z-index: 9999; width: fit-content;" >Invalid username or password</div>';
+	echo '<div class="mx-auto bg-danger p-1 text-light" style="position: relative; top: 67.5%; border-radius: 4px;
+    left:0; z-index: 9999; width: fit-content;" >Invalid username or password</div>';
 
 }
 }
@@ -37,7 +38,7 @@ else
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <link rel="stylesheet" href="admin/css/new_login.css?v=sdaczxsxsds" />
+   <link rel="stylesheet" href="admin/css/new_login.css?v=sdacdazxsxsds" />
    
 
     <title>Login</title>
@@ -45,7 +46,7 @@ else
   <body> 
         <div class="container">
         <div class="row">
-            <div class="col-md-4 offset-md-4 form">
+            <div class="form">
                 <form method="POST" autocomplete="">
                     <h2 class="text-center">Login</h2>
                     

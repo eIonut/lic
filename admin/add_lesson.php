@@ -44,20 +44,20 @@ if(isset($_POST['submit'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Add a Subject</title>
 </head>
 <body style="  background: rgba(48, 83, 151, 0.75);">
 
 <div class="container">
         <div class="row">
-            <div class="col-md-4 offset-md-4 form">
+            <div class="form">
 
             <h4 class="center font-weight-bold" style="opacity: 0.75;">Add a new subject</h4>
                 <form class="m-0" action="add_lesson.php" method="POST"  enctype="multipart/form-data">
                 <div class="form-group">
 			
                 <label class="font-weight-bold" for="class-option">Course Name</label>
-            <select class="form-control w-100"name="class-option" id="class-option" required>
+            <select class="form-control w-100 mb-3"name="class-option" id="class-option" required>
             
             <?php
                 foreach($courses as $course){ ?>

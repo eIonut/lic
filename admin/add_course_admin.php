@@ -86,7 +86,7 @@ if (!$con) {
 
 
 <link rel="stylesheet" href="css/modals.css?v=esss0das3rsddadaszdass0c3d8b" />
-<link rel="stylesheet" href="css/new_login.css?v=sdsafaddaafadadadassasds" />
+<link rel="stylesheet" href="css/new_login.css?v=sdsafaddaafaddaadadassasds" />
 
 
 <!DOCTYPE html>
@@ -96,7 +96,7 @@ if (!$con) {
 		
 	<div class="container">
         <div class="row">
-            <div class="col-md-4 offset-md-4 form">
+            <div class="form">
 				<h4 class="center font-weight-bold" style="opacity: 0.75;">Add a new course</h4>
 		<form action="add_course_admin.php" method="POST"  enctype="multipart/form-data">
 		<div class="form-group">

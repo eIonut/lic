@@ -85,9 +85,9 @@ if(isset($_POST) & !empty($_POST)){
 			<label class="text-light" for="exampleInputPassword1">Enter your new comment</label>
 			<input type="text" name="subject" class="form-control mt-4 mb-4 font-weight-bold" rows="6" required value="<?php echo $courses_array['rating'] ?>"></input>
 		</div>
-		<div class="d-flex flex-row justify-content-start">
+		<div class="d-flex flex-row justify-content-center align-items-center">
 			<button id="submit-btn" type="submit" class="btn btn-default mt-2 font-weight-bold ">Submit</button>
-			<button class="btn btn-default mt-2 font-weight-bold mx-4 text-muted"><a href="delete_course_admin.php?course_name=<?php echo $courses_array['course_id'] ?>"></a>Back to course</button>
+			<button class="btn btn-default mt-2 font-weight-bold ml-1 text-muted"><a href="delete_course_admin.php?course_name=<?php echo $courses_array['course_id'] ?>"></a>Back to course</button>
 		</div>
 	</form>
 	</div>

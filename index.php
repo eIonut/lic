@@ -5,6 +5,7 @@
 <?php
 include 'dbconnection.php';
 include 'admin/includes.php';
+// include 'session.php';
 unset($_SESSION);
 $_SESSION = array();
 session_unset();
@@ -122,7 +123,6 @@ echo $_SESSION['login_user'];
             style="right: 3rem; color: gray"
           ></i>
         </form>
-
         <div id="wrapper">
           <section id="course-section">
             <h1 class="your-courses">Your courses</h1>
@@ -133,8 +133,8 @@ echo $_SESSION['login_user'];
   </body>
 </html>
 
-      <script src="admin/js/sidebar.js?v=dassdssssssssdaddaadassdssadasssssssssssassssssss"></script>
-      <script src="loadDataUser.js?v=dsadssdasdadsdasdadadadssddasdasadadaddadadadadasdadadasassasdsassadas"></script>
+      <script src="admin/js/sidebar.js?v=dassdssssssssdaddaadassdssadadasssssssssssassssssss"></script>
+      <script src="loadDataUser.js?v=dsadssdasdadsdasdadadaddssddasdasadadaddadadadadasdadadasassasdsassadas"></script>
     
 
     </html>

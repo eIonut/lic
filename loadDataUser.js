@@ -18,6 +18,7 @@ function load_data(query = "") {
 
       var html = "";
       var serial_no = 1;
+      console.log(response);
       if (response.length > 0) {
         for (var count = 0; count < response.length; count++) {
           console.log(response[count].image);

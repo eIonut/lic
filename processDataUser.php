@@ -11,44 +11,32 @@ if(isset($_POST["query"]))
 	{
 
 		$condition = preg_replace('/[^A-Za-z0-9\- ]/', '', $_POST["query"]);
-
 		$condition = trim($condition);
-
 		$condition = str_replace(" ", "%", $condition);
-
 		$sample_data = array(
 			':name' => '%' . $condition . '%'
 		);
-
 		$query = "
 		SELECT id, name, description, image
 		FROM courses
 		WHERE name LIKE :name
 		";
-
 		$statement = $connect->prepare($query);
-
 		$statement->execute($sample_data);
-
 		$result = $statement->fetchAll();
-
 		$replace_array_1 = explode('%', $condition);
-
 		foreach($replace_array_1 as $row_data)
 		{
 			$replace_array_2[] = ''.$row_data.'';
 			
 		}
-
 		foreach($result as $row)
 		{
 			$data[] = array(
 				'id' => str_ireplace($replace_array_1, $replace_array_2, $row["id"]),
 				'name' => str_ireplace($replace_array_1, $replace_array_2, $row["name"]),
 				'description' => str_ireplace($replace_array_1, $replace_array_2, $row["description"]),
-				'image' => str_ireplace($replace_array_1, $replace_array_2, $row["image"]),
-				
-                
+				'image' => str_ireplace($replace_array_1, $replace_array_2, $row["image"]),   
 			);
 		}
 

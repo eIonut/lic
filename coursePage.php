@@ -28,14 +28,17 @@ if (mysqli_num_rows($result2)==0) {
 }
 $res = mysqli_fetch_assoc($result2);
 
-$sql = "SELECT lessons.id, lessons.name, lessons.lesson_order, assets.url, lessons_assets.lesson_id, lessons_assets.id as ai, assets.type, courses.name as course_name FROM lessons
+$sql = "SELECT lessons.id, lessons.name, lessons.lesson_order, assets.url,
+            lessons_assets.lesson_id, lessons_assets.id as ai,
+            assets.type, courses.name as course_name FROM lessons
             INNER JOIN lessons_assets ON lessons_assets.lesson_id = lessons.id
             INNER JOIN assets ON assets.id = lessons_assets.asset_id
             INNER JOIN courses ON lessons.course_id = courses.id
             WHERE lessons.course_id = '$id'
             ORDER BY lessons.lesson_order
-            ";
+        ";
 $result = mysqli_query($con, $sql);
+
 $asdfg = $_SESSION['login_user'];
 $sql3 = "SELECT * from users WHERE users.username = '$asdfg'";
 $result3 = mysqli_query($con, $sql3);
@@ -164,7 +167,8 @@ if (isset($_POST['comment'])) {
                     $collecting_names = array_unique($collecting_names);
                     if ($row['lesson_id'] == $row['id']) {
                         if ($contor < count($collecting_names)) {
-                            echo '<div class="accordion py-4 font-weight-bold mx-4 d-flex justify-content-between align-items-center" style="color: #000; border-bottom: 1px solid rgba(48, 83, 151, 0.3);">' . $collecting_names[$contor];
+                            echo '<div class="accordion py-4 font-weight-bold mx-4 d-flex justify-content-between align-items-center" 
+                            style="color: #000; border-bottom: 1px solid rgba(48, 83, 151, 0.3);">' . $collecting_names[$contor];
                             echo ' <div class="ml-auto pr-3">
                         </div>';
                             echo '</div>';
@@ -175,10 +179,11 @@ if (isset($_POST['comment'])) {
                         echo '<div class="px-4 py-3"style="background: #eaeef5; max-height: fit-content;"> ';
                         echo '<p>' . $row['url'] . '</p>';
                         echo ' <div class="ml-auto pr-3  d-flex">';
-                        echo '<a class="mr-2" style="opacity: 0.75; color: #305397;" href="images/' . $row["url"] . '" target="_blank">Download File </a>';
-                        echo '<i class="fas fa-md fa-file-download mr-auto d-flex justify-content-center align-items-center" style="opacity: 0.75; color: #305397;"></i>';
+                        echo '<a class="mr-2" style="opacity: 0.75; color: #305397;" href="images/' . $row["url"] . '" 
+                        target="_blank">Download File </a>';
+                        echo '<i class="fas fa-md fa-file-download mr-auto d-flex
+                         justify-content-center align-items-center" style="opacity: 0.75; color: #305397;"></i>';
                 ?>
-                    
                 <?php
                         echo '</div>';
                         echo '</div>';
@@ -186,8 +191,10 @@ if (isset($_POST['comment'])) {
                         echo '<div class="panel px-4 py-3"style="background: #eaeef5; max-height: fit-content;"> ';
                         echo '<video class="course-video" src="images/' . $row["url"] . '" width="100%" height="300px" controls volume="1"></video>';
                         echo '<p>' . $row["url"] . '</p>';
-                        echo '<button class="play-btn btn btn-primary w-100 text-start border-0 py-2 pl-4 d-flex justify-content-between align-items-center" 
-                        style="background: linear-gradient(84.57deg, #1b3d7d 0%, #4a6db0 100%);" type="button">Watch this video<i class="fa-solid fa-xs ml-auto pr-2 fa-arrow-right"></i></button>';
+                        echo '<button class="play-btn btn btn-primary w-100 text-start border-0 py-2 pl-4 d-flex justify-content-between 
+                        align-items-center" 
+                        style="background: linear-gradient(84.57deg, #1b3d7d 0%, #4a6db0 100%);" 
+                        type="button">Watch this video<i class="fa-solid fa-xs ml-auto pr-2 fa-arrow-right"></i></button>';
                         echo '</div>';
                     }
                 }
