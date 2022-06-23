@@ -214,7 +214,7 @@ $comment = $_POST['comment'];
 
         
             
-            <div class="col-xl-4 border-info p-0 m-0 courses-div" style="background: #eaeef5; height:100%; max-height: 100vh; overflow: scroll; overflow-x: hidden;">
+            <div class="col-xl-4 border-info p-0 m-0 courses-div" style="background: #eaeef5; max-height: 100vh; overflow: scroll; overflow-x: hidden;">
 <?php
 $collecting_names = array();
 $contor = 0;
