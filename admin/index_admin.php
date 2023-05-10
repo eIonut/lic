@@ -1,17 +1,26 @@
-<?php
-include '../dbconnection.php';
-unset($_SESSION);
-    $_SESSION=array();
-    session_unset();
-    session_start();
-    session_regenerate_id(TRUE); //THIS DOES THE TRICK! Calling it after session_start. Dunno if true makes a difference.
 
-if (strlen($_SESSION['id']==0)) {
-  header('location:logout_admin.php');
-  }
-	
-if(!$con){
-    echo 'Connection error'. mysqli_connect_error();
+
+    <link rel="stylesheet" href="css/indexPage.css?v=ess0ssssssssDAdadasddadsasdassssssssssassdsssssssdsssssszssss0c3d8b" />
+    <link rel="stylesheet" href="css/sidebar.css?v=e031dddsdsassddadasssssssssssssssssssssssdsssssssssssscZd8b" />
+    <link rel="stylesheet" href="css/commonStyles.css?v=esssdassdssdassssssssssssssssswssssdssssssssss1se80c32s8b" />
+    <link rel="stylesheet" href="css/indexPageQueries.css?v=esdsddadaadasssddaadasdasssssssssadsssssssssdssssssssssssssss1se80c32s8b" />
+
+   
+    <?php
+include '../dbconnection.php';
+include 'includes.php';
+unset($_SESSION);
+$_SESSION = array();
+session_unset();
+session_start();
+session_regenerate_id(TRUE); 
+
+if (strlen($_SESSION['id'] == 0)) {
+    header('location:logout_admin.php');
+}
+
+if (!$con) {
+    echo 'Connection error' . mysqli_connect_error();
 }
 
 
@@ -19,28 +28,26 @@ if(!$con){
 $query1 = @$_POST['course-search'];
 
 
-    if(empty($query1))
-    {
-        $sql = 'SELECT course_name from courses';
-        $result = mysqli_query($con, $sql);
-        $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
-        mysqli_free_result($result);
-        mysqli_close($con);
-    }
-  
-    else{
-        $sql = 'SELECT course_name, course_id from courses WHERE (`course_name` LIKE "%'.$query1.'%")';
-        $result = mysqli_query($con, $sql);
-        $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
-        mysqli_free_result($result);
-        mysqli_close($con);
-    }
-    
+if (empty($query1)) {
+    $sql     = 'SELECT name, description, image from courses';
+    $result  = mysqli_query($con, $sql);
+    $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_free_result($result);
+    mysqli_close($con);
+}
 
+else {
+    $sql     = 'SELECT courses.name, courses.id, courses.description, courses.image from courses WHERE (`courses.name` LIKE "%' . $query1 . '%")';
+    $result  = mysqli_query($con, $sql);
+    $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_free_result($result);
+    mysqli_close($con);
+}
 
-function clearClasses(){
-    $sql = 'SELECT course_name from courses';
-    $result = mysqli_query($con, $sql);
+function clearClasses()
+{
+    $sql     = 'SELECT courses.name from courses';
+    $result  = mysqli_query($con, $sql);
     $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
     mysqli_free_result($result);
     mysqli_close($con);
@@ -48,66 +55,127 @@ function clearClasses(){
 
 ?>
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/indexPage.css" />
-
-    <title>Document</title>
-</head>
-<body>
-    
-    <nav id="navbar">
-        <div class="add-content-div">
-            <a href="add_course_admin.php">Add Course</a>
-            <a href="add_class.php">Add Subject</a>
-        </div>
-
-        <button id="toggle">Change Theme</button>
-
-        <form id="search-clear-form"action="index_admin.php" method="POST">
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         
-            <input type="text" name="course-search" class="search-input" placeholder="Search courses..."/>
-            <input type="submit" value="" id="search-course-input-button" />
-            <input type="submit" value="Clear search" id="clear-btn" onclick=clearClasses()/>
-        </form>
+
+
+        <title>Homepage</title>
+      </head>
+      <body>
+
+     <div class="all-content">
+     
+<button class="openbtn"></button>
+
+<div id="mySidebar" class="sidebar">
+     
+        <div class="sidebar-content">
         
-        <div class="right-content-div">
-            <h1>Welcome back, <?php echo $_SESSION['login_admin'] . "!";?></h1>
-            <button id="logout-btn">
-                <a href="logout_admin.php" id="logout-btn" class="btn btn-primary btn-large">Logout </a>
-            </button>
-        </div>
-
-       
-    </nav>
-
-   
-   
-    <main id="main-content"> 
-    <div class="blob">
   
- <svg xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 310 350">
-  <path d="M156.4,339.5c31.8-2.5,59.4-26.8,80.2-48.5c28.3-29.5,40.5-47,56.1-85.1c14-34.3,20.7-75.6,2.3-111  c-18.1-34.8-55.7-58-90.4-72.3c-11.7-4.8-24.1-8.8-36.8-11.5l-0.9-0.9l-0.6,0.6c-27.7-5.8-56.6-6-82.4,3c-38.8,13.6-64,48.8-66.8,90.3c-3,43.9,17.8,88.3,33.7,128.8c5.3,13.5,10.4,27.1,14.9,40.9C77.5,309.9,111,343,156.4,339.5z"/>
-  </svg>
+  <div class="right-content-div">
+            <h1 class="hide-event">
+                <span class="welcome">Welcome back,</span>
+              
+              <span class="user-name-log">
+                  <br>
+              <?php
+echo $_SESSION['login_admin'];
+?>
+</span>
+           </h1>
+           <a href="javascript:void(0)" class="closebtn">adassd</a>
+            
+          </div>
+         
+
+          <div class="sidebar-top-section">
+          <div class="d-flex justify-content-between align-items-center w-100" style="opacity: 0.75;">
+  <a class="sidebar-links hide-event" href="index_admin.php">Courses</a>
+  <i class="fa-solid fa-book-open  sidebar-icons" style="opacity: 0.75;"></i>
 </div>
-        <h1 class="your-courses">YOUR COURSES</h1>
-            <section id="course-section">
-                <?php
-                    foreach($courses as $course){ ?>
-                        <div class="course-content">
-                            <h6><?php echo htmlspecialchars($course['course_name']);?></h6>
-                            <a href="delete_course_admin.php?course_name=<?php echo $course['course_name']?>">More info</a>
-                        </div>
-                <?php } ?>
-            </section>
+
+  </div>
+
+  <div class="add-content"> 
+  <div class="py-0 d-flex justify-content-between align-items-center w-100" style="opacity: 0.75;">
+    <a class="sidebar-links hide-event py-2" href="add_course_admin.php">Add course</a>
+    <i class="fa-solid fa-plus text-center sidebar-icons" style="opacity: 0.75;"></i>
+</div>
+
+<div class="py-0 d-flex justify-content-between align-items-center w-100 " style="opacity: 0.75;">
+    <a class="sidebar-links hide-event py-2" href="add_asset.php">Add assets</a>
+    <i class="fa-solid fa-plus text-center sidebar-icons" style="opacity: 0.75;"></i>
+</div>
+
+<div class="py-0 d-flex justify-content-between align-items-center w-100 " style="opacity: 0.75;">
+    <a class="sidebar-links hide-event py-2" href="add_lesson.php">Add lessons</a>
+    <i class="fa-solid fa-plus text-center sidebar-icons" style="opacity: 0.75;"></i>
+</div>
+
+<div class="py-0 d-flex justify-content-between align-items-center w-100" style="opacity: 0.75;">
+    <a class="sidebar-links hide-event py-2" href="add_class_v2.php">Add content</a>
+    <i class="fa-solid fa-plus text-center sidebar-icons" style="opacity: 0.75;"></i>
+</div>
+
+
+    
+  </div>
+
+  <div class="py-4 d-flex justify-content-between align-items-center w-100 query" style="opacity: 0.75;">
+              <a
+                href="logout_admin.php"
+                id="logout-btn"
+                class="logout-btn hide-event text-decoration-none m-0"
+                >Logout
+              </a>
+              <i class="fa-solid fa-right-from-bracket sidebar-icons" style="opacity: 0.75;"></i>
+</div>      
+</div>
+</div>
+
+
+      <main id="main-content">
+      
+     
+        <section id="Asd" class="welcome-section first-section">
+          <h1>Learn everything at your own pace... with us!</h1>
+          <p>Take your pen and start learning right away, for <span class="us">FREE.</span></p> 
+        </section>
+       
+
+<form class="search-form d-flex justify-content-between align-items-center" action="">
+<input type="text" name="search" id="search" placeholder="Search courses..." maxlength="40" onkeyup="load_data(this.value);" />
+<i class="fa-solid fa-magnifying-glass ml-auto position-absolute fa-lg" style="right: 3rem; color: gray;"></i>
+</form>
+
+<div id="wrapper">
+
+          <section id="course-section">
+          <h1 class="your-courses">Your courses</h1>  
+     
+
+       </section>
+
+       </div>
+      
+        </main>
     
 
-       
-    </main>
+      
+
+
+
+
+        
+
+        </div>
+      </body>
+      <script src="js/sidebar.js?v=dassdssssssssdadadassdssadasssssssssssassssssss"></script>
+      <script src="js/loadData.js?v=dsadssdasdadsdasdssddasdasadadaddadadadadasdadadasassasdsassadas"></script>
     
-</body>
-<script src="./js/toggleModev2.js"></script>
-</html>
+
+    </html>

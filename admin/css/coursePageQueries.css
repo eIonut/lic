@@ -1,0 +1,92 @@
+@media (min-width: 576px) {
+}
+
+@media (max-width: 960px) {
+  div.container-grid {
+    grid-template-columns: 1fr;
+    height: 100vh;
+    width: 100%;
+  }
+
+  div.sidebar {
+    justify-content: center;
+    align-items: center;
+  }
+  .sidebar-top-section,
+  .add-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: start;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  form.del-course-form {
+    margin: auto;
+    width: fit-content;
+  }
+
+  .edit-mode-btn {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .opacity-btn {
+    opacity: 0.5;
+  }
+
+  .logout-div {
+    width: fit-content;
+    margin: auto;
+    margin-bottom: 18px;
+  }
+
+  .hide-event {
+    padding: 18px !important;
+  }
+
+  .sidebar-links {
+    text-align: left;
+  }
+
+  div.sidebar-header {
+    width: fit-content;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: auto;
+    text-align: center;
+    padding: 0 !important;
+    padding-top: 1rem !important;
+  }
+
+  .sidebar-header h3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 !important;
+    margin-right: 12px !important;
+  }
+
+  .sidebar-header i {
+    margin-bottom: 32px;
+  }
+  body
+    > div
+    > div.sidebar.text-light.px-3
+    > div.text-light.sidebar-header.px-2.py-4.mx-auto.d-flex.justify-content-between.align-items-center.p0-collapse
+    > i {
+    align-self: flex-start;
+    justify-self: flex-start;
+    margin-top: 5px;
+  }
+
+  .p0-collapse {
+    padding-bottom: 0px !important;
+    padding-top: 0px !important;
+  }
+}

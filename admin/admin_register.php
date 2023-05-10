@@ -1,33 +1,33 @@
 <?php session_start();
 require_once('../dbconnection.php');
-
-//Code for Registration 
+include 'includes.php'; 
 if(isset($_POST['signup']))
 {
 
-	$username=$_POST['username'];
-	$email=$_POST['email'];
-	$password=$_POST['password'];
- 
+  $password = mysqli_real_escape_string($con, $_POST['password']);
+$username = mysqli_real_escape_string($con, $_POST['username']);
 
+$email = mysqli_real_escape_string($con, $_POST['email']);
+$name = mysqli_real_escape_string($con, $_POST['name']);
 
-$sql=mysqli_query($con,"select id from admins where email='$email'");
+  $role = 1;
+
+$sql=mysqli_query($con,"select id from users where username='$username' and role='$role'");
 $row=mysqli_num_rows($sql);
+$password = md5($password);
 if($row>0)
 {
-	echo "<script>alert('Email id already exist with another account. Please try with other email id');</script>";
+	echo '<div class="mx-auto bg-danger p-1 text-light" style="position: relative; top: 81%; border-radius: 4px; left:0; z-index: 9999; width: fit-content;" >This Email/Username is already taken</div>';
 } else{
-	$msg=mysqli_query($con,"insert into admins(email,password,username) values('$email','$password','$username')");
+	$msg=mysqli_query($con,"insert into users(role, email,password,username,name) values('$role', '$email','$password','$username', '$name')");
 
 if($msg)
 {
-	echo "<script>alert('Register successfully');</script>";
-}
-}
-}
+  echo '<div class="mx-auto bg-success p-1 text-light" style="position: relative; top: 81%; border-radius: 4px; left:0; z-index: 9999; width: fit-content;" >Registered successfuly</div>';
 
-//
-
+}
+}
+}
 
 ?>
 
@@ -36,7 +36,7 @@ if($msg)
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../register.css" />
+    <link rel="stylesheet" href="css/new_login.css?v=dsaddaa" />
     <link
       rel="stylesheet"
       href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -47,56 +47,45 @@ if($msg)
     <title>Register Admin</title>
   </head>
   <body>
-    <main class="main-section">
-      <section>
-        <h1>Register Admin</h1>
-        <form name="registration" method="post" action="" enctype="multipart/form-data">
+    <div class="container">
+        <div class="row">
+            <div class="form">
+                <form  method="POST" autocomplete="">
+                    <h2 class="text-center">Signup Form</h2>
+                    <p class="text-center">It's quick and easy.</p>
+                    
+                    
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="username" placeholder="Username" required value="">
+                        <i class="fa-solid fa-user" style="position: relative; top: -27px;right: -93%; opacity: 0.5;"></i>
 
-          <label for="user-input">Username</label>
-          <i id="user-icon" class="far fa-user"></i>
-          <input
-            id="user-input"
-            type="text"
-            placeholder="Introduceti username-ul"
-            required
-            name="username"
-            value=""
-          />
-          <label for="user-email">Email</label>
-          <i id="email-icon" class="far fa-envelope"></i>
-          <input
-            id="user-email"
-            type="email"
-            required
-            placeholder="Introduceti email-ul"
-            name="email"
-            value=""
-          />
-          <label for="user-password">Password</label>
-          <i id="password-icon" class="far fa-lock"></i>
-          <input
-            id="user-password"
-            type="password"
-            placeholder="Introduceti parola"
-            required
-            name="password"
-            value=""
-          />
-          <i class="far fa-eye toggle-show-password"></i>
-          <input
-            class="register-btn"
-            type="submit"
-            name="signup"
-            value="Register"
-          />
-        </form>
-        <div class="register-div">
-          <p>Aveti deja cont?</p>
-          <a id="register-link" href="admin_login.php">Logati-va</a>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="name" placeholder="Name" required value="">
+                        <i class="fa-solid fa-envelope" style="position: relative; top: -27px;right: -93%; opacity: 0.5;"></i>
+
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="email" name="email" placeholder="Email Address" required value="">
+                        <i class="fa-solid fa-envelope" style="position: relative; top: -27px;right: -93%; opacity: 0.5;"></i>
+
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="password" name="password" placeholder="Password" minlength="8" required>
+                        <i class="fa-solid fa-key" style="position: relative; top: -27px;right: -93%; opacity: 0.5;"></i>
+
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control button" type="submit" name="signup" value="Signup">
+                    </div>
+                    <div class="link login-link text-center">Already a member? <a href="admin_login.php">Login here</a></div>
+                </form>
+            </div>
         </div>
-      </section>
-    </main>
+    </div>
+    
   </body>
-  <script src="login.js"></script>
-</html>
+  
 
+  
+</html>

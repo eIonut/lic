@@ -1,0 +1,15 @@
+.accordion {
+  color: #444;
+  cursor: pointer;
+  padding: 0;
+  width: 90%;
+  text-align: left;
+  outline: none;
+  transition: 0.4s;
+  border: none;
+  border-bottom: 1px solid rgba(48, 83, 151, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}

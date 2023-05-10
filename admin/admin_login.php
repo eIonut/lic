@@ -1,13 +1,20 @@
 <?php session_start();
 require_once('../dbconnection.php');
-// Code for login 
+include 'includes.php';
 if(isset($_POST['login']))
 {
-$password=$_POST['password'];
-$username=$_POST['username'];
-$dec_password=$password;
-$ret= mysqli_query($con,"SELECT * FROM admins WHERE username='$username' and password='$dec_password'");
+
+$password = mysqli_real_escape_string($con, $_POST['password']);
+$username = mysqli_real_escape_string($con, $_POST['username']);
+$password = md5($password);
+
+$role = 1;
+
+
+$ret= mysqli_query($con, "SELECT * FROM users WHERE username = '$username' AND password='$password' AND role='$role'");
+
 $num=mysqli_fetch_array($ret);
+
 if($num>0)
 {
 $extra="index_admin.php";
@@ -20,12 +27,8 @@ exit();
 }
 else
 {
-echo "<script>alert('Invalid username or password');</script>";
-$extra="admin_register.php";
-$host  = $_SERVER['HTTP_HOST'];
-$uri  = rtrim(dirname($_SERVER['PHP_SELF']),'/\\');
-//header("location:http://$host$uri/$extra");
-exit();
+	echo '<div class="mx-auto bg-danger p-1 text-light" style="position: relative; top: 66%; border-radius: 4px; left:0; z-index: 9999; width: fit-content;" >Invalid username or password</div>';
+
 }
 }
 ?>
@@ -35,53 +38,36 @@ exit();
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../login.css" />
-    <link
-      rel="stylesheet"
-      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-      crossorigin="anonymous"
-    />
+   <link rel="stylesheet" href="css/new_login.css?v=sdadadadasdads" />
+   
 
     <title>Login</title>
   </head>
-  <body>
-    <main class="main-section">
-      <section>
-        <h1>Admin Login</h1>
-        <form name="login"action="" method="post">
-          <label for="user-input">Username</label>
-          <i id="user-icon" class="far fa-user"></i>
-          <input
-            id="user-input"
-            type="text"
-            placeholder="Introduceti username-ul"
-            name="username"
-            required
-          />
-          <label for="user-password">Password</label>
-          <i id="password-icon" class="far fa-lock"></i>
-          <input
-            id="user-password"
-            type="password"
-            placeholder="Introduceti parola"
-            name="password"
-            required
-          />
-          <i class="far fa-eye toggle-show-password"></i>
-          <input
-            class="login-btn"
-            type="submit"
-            name="login"
-            value="Login"
-          />
-        </form>
-        <div class="register-div">
-          <p>Nu aveti cont?</p>
-          <a id="register-link" href="">INREGISTRARE</a>
+  <body> 
+        <div class="container">
+        <div class="row">
+            <div class="form">
+                <form method="POST" autocomplete="">
+                    <h2 class="text-center">Login</h2>
+                    
+                    <div class="form-group">
+                        <input class="form-control w-100" type="text" name="username" placeholder="Username" required value="">
+                        <i class="fa-solid fa-user" style="position: relative; top: -27px;right: -93%; opacity: 0.5;"></i>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="password" name="password" placeholder="Password" required>
+                        <i class="fa-solid fa-key" style="position: relative; top: -27px;right: -93%; opacity: 0.5;"></i>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control button" type="submit" name="login" value="Login">
+                    </div>
+                    <div class="link login-link text-center">Not having an account? <a href="admin_register.php">Register here</a></div>
+                </form>
+            </div>
         </div>
-      </section>
-    </main>
+    </div>
+    
+    
   </body>
   <script src="login.js"></script>
 </html>
